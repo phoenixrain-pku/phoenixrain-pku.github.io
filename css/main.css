@@ -1,58 +1,26 @@
 :root {
-  --body-bg-color: #f5f7f9;
+  --body-bg-color: #fae5ef;
   --content-bg-color: #fff;
   --card-bg-color: #f5f5f5;
-  --text-color: #482336;
+  --text-color: #22111a;
   --blockquote-color: #666;
-  --link-color: #482336;
-  --link-hover-color: #8b475d;
+  --link-color: #22111a;
+  --link-hover-color: #ad7184;
   --brand-color: #fff;
   --brand-hover-color: #fff;
   --table-row-odd-bg-color: #f9f9f9;
   --table-row-hover-bg-color: #f5f5f5;
   --menu-item-bg-color: #f5f5f5;
   --btn-default-bg: #fff;
-  --btn-default-color: #482336;
-  --btn-default-border-color: #482336;
-  --btn-default-hover-bg: #8b475d;
+  --btn-default-color: #22111a;
+  --btn-default-border-color: #22111a;
+  --btn-default-hover-bg: #ad7184;
   --btn-default-hover-color: #fff;
-  --btn-default-hover-border-color: #8b475d;
+  --btn-default-hover-border-color: #ad7184;
   --highlight-background: #f0f0f0;
   --highlight-foreground: #444;
   --highlight-gutter-background: #dedede;
   --highlight-gutter-foreground: #555;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --body-bg-color: #282828;
-    --content-bg-color: #333;
-    --card-bg-color: #482336;
-    --text-color: #8b475d;
-    --blockquote-color: #bbb;
-    --link-color: #8b475d;
-    --link-hover-color: #eee;
-    --brand-color: $grey-lighter;
-    --brand-hover-color: $grey-lighter;
-    --table-row-odd-bg-color: #282828;
-    --table-row-hover-bg-color: #363636;
-    --menu-item-bg-color: #482336;
-    --btn-default-bg: #8b475d;
-    --btn-default-color: #8b475d;
-    --btn-default-border-color: #482336;
-    --btn-default-hover-bg: #666;
-    --btn-default-hover-color: #8b475d;
-    --btn-default-hover-border-color: #666;
-    --highlight-background: #1d1f21;
-    --highlight-foreground: #c5c8c6;
-    --highlight-gutter-background: #2d2f31;
-    --highlight-gutter-foreground: #b4b7b5;
-  }
-  img {
-    opacity: 0.75;
-  }
-  img:hover {
-    opacity: 0.9;
-  }
 }
 html {
   line-height: 1.15; /* 1 */
@@ -203,7 +171,7 @@ template {
   display: none;
 }
 ::selection {
-  background: #262a30;
+  background: #8b475d;
   color: #eee;
 }
 html,
@@ -493,84 +461,6 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   font-weight: bold;
 }
 
-@media (prefers-color-scheme: dark) {
-/* Tomorrow Night Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-  color: #969896;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-  color: #cc6666;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-  color: #de935f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-  color: #f0c674;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-  color: #b5bd68;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-  color: #81a2be;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-  color: #b294bb;
-}
-
-.hljs {
-  display: block;
-  overflow-x: auto;
-  background: #1d1f21;
-  color: #c5c8c6;
-  padding: 0.5em;
-}
-
-.hljs-emphasis {
-  font-style: italic;
-}
-
-.hljs-strong {
-  font-weight: bold;
-}
-
-}
 code,
 kbd,
 figure.highlight,
@@ -729,7 +619,7 @@ pre code {
   width: 100%;
 }
 .post-body .label {
-  color: #482336;
+  color: #22111a;
   padding: 0 2px;
 }
 .post-body .label.default {
@@ -1247,7 +1137,7 @@ pre code {
   padding-top: 0;
 }
 .headband {
-  background: #8b475d;
+  background: #ad7184;
   height: 3px;
 }
 @media (max-width: 991px) {
@@ -1567,7 +1457,7 @@ pre code {
   height: 12px;
   padding: 6px 5px;
   width: 14px;
-  background: #8b475d;
+  background: #ad7184;
   cursor: pointer;
   opacity: 0.6;
   position: fixed;
@@ -1805,7 +1695,7 @@ body {
   color: #fff;
   padding: 0 6px;
   transition: bottom 0.2s ease-in-out;
-  background: #8b475d;
+  background: #ad7184;
   cursor: pointer;
   opacity: 0.6;
   position: fixed;
@@ -1955,7 +1845,7 @@ body {
   border-bottom-color: #666;
 }
 .posts-collapse .post-content .post-header:hover::before {
-  background: #8b475d;
+  background: #ad7184;
 }
 .posts-collapse .post-content .post-meta-container {
   display: inline;
@@ -2381,11 +2271,11 @@ body {
   padding-left: 10px;
 }
 .event-list hr {
-  background: #8b475d;
+  background: #ad7184;
   margin: 20px 0 45px 0;
 }
 .event-list hr::after {
-  background: #8b475d;
+  background: #ad7184;
   color: #fff;
   content: 'NOW';
   display: inline-block;
@@ -2393,7 +2283,7 @@ body {
   padding: 0 5px;
 }
 .event-list .event {
-  --event-background: #8b475d;
+  --event-background: #ad7184;
   --event-foreground: #bbb;
   --event-title: #fff;
   background: var(--event-background);
@@ -2457,7 +2347,7 @@ body {
 .event-list .event-past {
   --event-background: #f5f5f5;
   --event-foreground: #999;
-  --event-title: #8b475d;
+  --event-title: #ad7184;
 }
 @-moz-keyframes dot-flash {
   from {
@@ -2568,52 +2458,6 @@ ul.breadcrumb li:last-child {
   border-bottom-color: #111;
   color: #111;
 }
-@media (prefers-color-scheme: dark) {
-  .tag-cloud-0 {
-    border-bottom-color: #555;
-    color: #555;
-  }
-  .tag-cloud-1 {
-    border-bottom-color: #646464;
-    color: #646464;
-  }
-  .tag-cloud-2 {
-    border-bottom-color: #737373;
-    color: #737373;
-  }
-  .tag-cloud-3 {
-    border-bottom-color: #828282;
-    color: #828282;
-  }
-  .tag-cloud-4 {
-    border-bottom-color: #929292;
-    color: #929292;
-  }
-  .tag-cloud-5 {
-    border-bottom-color: #a1a1a1;
-    color: #a1a1a1;
-  }
-  .tag-cloud-6 {
-    border-bottom-color: #b0b0b0;
-    color: #b0b0b0;
-  }
-  .tag-cloud-7 {
-    border-bottom-color: #c0c0c0;
-    color: #c0c0c0;
-  }
-  .tag-cloud-8 {
-    border-bottom-color: #cfcfcf;
-    color: #cfcfcf;
-  }
-  .tag-cloud-9 {
-    border-bottom-color: #dedede;
-    color: #dedede;
-  }
-  .tag-cloud-10 {
-    border-bottom-color: #eee;
-    color: #eee;
-  }
-}
 .use-motion .animated {
   animation-fill-mode: none;
   visibility: inherit;
@@ -2678,7 +2522,7 @@ ul.breadcrumb li:last-child {
   }
 }
 .site-brand-container {
-  background: #8b475d;
+  background: #ad7184;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
