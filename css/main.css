@@ -3,7 +3,7 @@
   --content-bg-color: #fce4ef;
   --card-bg-color: #f5f5f5;
   --text-color: #430e2b;
-  --blockquote-color: #666;
+  --blockquote-color: #f1e0e6;
   --link-color: #22111a;
   --link-hover-color: #ad7184;
   --brand-color: #fff;
@@ -222,7 +222,7 @@ p {
 }
 a,
 span.exturl {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #cdb6bf;
   color: var(--link-color);
   outline: 0;
   text-decoration: none;
@@ -1303,7 +1303,7 @@ pre code {
   visibility: hidden;
 }
 .sidebar-inner {
-  color: #999;
+  color: #cdb6bf;
   padding: 18px 10px;
   text-align: center;
 }
@@ -1331,7 +1331,7 @@ pre code {
   margin: 0;
 }
 .site-description {
-  color: #999;
+  color: #cdb6bf;
   font-size: 0.8125em;
   margin-top: 0;
 }
@@ -1567,11 +1567,11 @@ pre code {
   font-weight: 600;
 }
 .site-state-item-name {
-  color: #999;
+  color: #cdb6bf;
   font-size: 0.8125em;
 }
 .footer {
-  color: #999;
+  color: #cdb6bf;
   font-size: 0.875em;
   padding: 20px 0;
 }
@@ -1786,7 +1786,7 @@ body {
   position: relative;
 }
 .posts-collapse .post-content .collection-title::before {
-  background: #999;
+  background: #cdb6bf;
   border: 1px solid #fff;
   margin-left: -6px;
   margin-top: -4px;
@@ -1804,7 +1804,7 @@ body {
   position: relative;
 }
 .posts-collapse .post-content .collection-year::before {
-  background: #bbb;
+  background: #cdb6bf;
   margin-left: -4px;
   margin-top: -4px;
   position: absolute;
@@ -1819,7 +1819,7 @@ body {
   margin-left: 20px;
 }
 .posts-collapse .post-content .collection-header small {
-  color: #bbb;
+  color: #cdb6bf;
   margin-left: 5px;
 }
 .posts-collapse .post-content .post-header {
@@ -1830,7 +1830,7 @@ body {
   transition: border 0.2s ease-in-out;
 }
 .posts-collapse .post-content .post-header::before {
-  background: #bbb;
+  background: #cdb6bf;
   border: 1px solid #fff;
   left: -6px;
   position: absolute;
@@ -1842,7 +1842,7 @@ body {
   width: 6px;
 }
 .posts-collapse .post-content .post-header:hover {
-  border-bottom-color: #666;
+  border-bottom-color: #f1e0e6;
 }
 .posts-collapse .post-content .post-header:hover::before {
   background: #ad7184;
@@ -1969,7 +1969,7 @@ body {
 }
 .post-body .image-caption,
 .post-body .figure .caption {
-  color: #999;
+  color: #cdb6bf;
   font-size: 0.875em;
   font-weight: bold;
   line-height: 1;
@@ -2066,7 +2066,7 @@ body {
   transform: rotate(30deg);
 }
 .posts-expand .post-meta-container {
-  color: #999;
+  color: #cdb6bf;
   font-family: Noto Serif SC, "Noto Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 0.75em;
   margin-top: 3px;
@@ -2076,7 +2076,7 @@ body {
   margin-top: 2px;
 }
 .posts-expand .post-meta-container time {
-  border-bottom: 1px dashed #999;
+  border-bottom: 1px dashed #cdb6bf;
   cursor: pointer;
 }
 .post-meta {
@@ -2259,7 +2259,7 @@ body {
   margin: 5px 10px;
 }
 .category-all-page .category-list-count {
-  color: #bbb;
+  color: #cdb6bf;
 }
 .category-all-page .category-list-count::before {
   content: ' (';
@@ -2284,7 +2284,7 @@ body {
 }
 .event-list .event {
   --event-background: #ad7184;
-  --event-foreground: #bbb;
+  --event-foreground: #cdb6bf;
   --event-title: #fff;
   background: var(--event-background);
   padding: 15px;
@@ -2346,7 +2346,7 @@ body {
 }
 .event-list .event-past {
   --event-background: #f5f5f5;
-  --event-foreground: #999;
+  --event-foreground: #cdb6bf;
   --event-title: #ad7184;
 }
 @-moz-keyframes dot-flash {
@@ -2522,7 +2522,7 @@ ul.breadcrumb li:last-child {
   }
 }
 .site-brand-container {
-  background: #fce4ef;
+  background: #7f2e50;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
@@ -2587,7 +2587,7 @@ ul.breadcrumb li:last-child {
   text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
 }
 .main-menu .menu-item-active::after {
-  background: #bbb;
+  background: #cdb6bf;
   border-radius: 50%;
   content: ' ';
   height: 6px;
