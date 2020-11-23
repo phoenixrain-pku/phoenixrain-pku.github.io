@@ -1,6 +1,6 @@
 :root {
   --body-bg-color: #fae5ef;
-  --content-bg-color: #edcad6;
+  --content-bg-color: #fce4ef;
   --card-bg-color: #f5f5f5;
   --text-color: #430e2b;
   --blockquote-color: #666;
@@ -2522,12 +2522,15 @@ ul.breadcrumb li:last-child {
   }
 }
 .site-brand-container {
-  background: #ad7184;
+  background: #fce4ef;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
     box-shadow: 0 0 16px rgba(0,0,0,0.5);
   }
+}
+.header {
+  background: #8b2252;
 }
 .site-meta {
   padding: 20px 0;
