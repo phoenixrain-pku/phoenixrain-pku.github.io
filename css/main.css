@@ -1,8 +1,8 @@
 :root {
   --body-bg-color: #fae5ef;
-  --content-bg-color: #fff;
+  --content-bg-color: #edcad6;
   --card-bg-color: #f5f5f5;
-  --text-color: #22111a;
+  --text-color: #430e2b;
   --blockquote-color: #666;
   --link-color: #22111a;
   --link-hover-color: #ad7184;
@@ -12,8 +12,8 @@
   --table-row-hover-bg-color: #f5f5f5;
   --menu-item-bg-color: #f5f5f5;
   --btn-default-bg: #fff;
-  --btn-default-color: #22111a;
-  --btn-default-border-color: #22111a;
+  --btn-default-color: #430e2b;
+  --btn-default-border-color: #430e2b;
   --btn-default-hover-bg: #ad7184;
   --btn-default-hover-color: #fff;
   --btn-default-hover-border-color: #ad7184;
@@ -619,7 +619,7 @@ pre code {
   width: 100%;
 }
 .post-body .label {
-  color: #22111a;
+  color: #430e2b;
   padding: 0 2px;
 }
 .post-body .label.default {
