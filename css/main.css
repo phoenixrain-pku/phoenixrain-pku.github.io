@@ -1,5 +1,5 @@
 :root {
-  --body-bg-color: #fae5ef;
+  --body-bg-color: #dbecf0;
   --content-bg-color: #edf8fc;
   --card-bg-color: #f5f5f5;
   --text-color: #430e2b;
@@ -1679,9 +1679,6 @@ pre code {
   50%, 70% {
     transform: scale(1.1);
   }
-}
-body {
-  background: #79cdcd;
 }
 .back-to-top {
   font-size: 12px;
