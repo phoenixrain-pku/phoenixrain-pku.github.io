@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/lab报告.assets/image-20210117142634253.png">
 <meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/lab报告.assets/image-20210117142646590.png">
 <meta property="article:published_time" content="2021-01-13T05:37:14.000Z">
-<meta property="article:modified_time" content="2021-01-17T06:27:02.822Z">
+<meta property="article:modified_time" content="2021-01-17T06:29:15.370Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
@@ -293,7 +293,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-01-17 14:27:02" itemprop="dateModified" datetime="2021-01-17T14:27:02+08:00">2021-01-17</time>
+        <time title="Modified: 2021-01-17 14:29:15" itemprop="dateModified" datetime="2021-01-17T14:29:15+08:00">2021-01-17</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -324,7 +324,7 @@
     <div class="post-body" itemprop="articleBody">
         <h1 id="Dataflow模式对循环计算的加速效果研究"><a href="#Dataflow模式对循环计算的加速效果研究" class="headerlink" title="Dataflow模式对循环计算的加速效果研究"></a>Dataflow模式对循环计算的加速效果研究</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文是计算机组织与体系结构的作业报告。我把本报告放在这里，是为了展示，当代大学生对自己一个字都看不懂的东西，还能写出来自己一个字都看不懂的报告的能力。</p>
 <a id="more"></a>
-<p>本报告是基于论文Interstellar: Using Halide’s Scheduling Language to Analyze DNN Accelerators，对不同的dataflow模式对循环加速效果的探究。伴随着深度神经网络（DNN）正在包括自动驾驶、人脸识别、人脸检索和图像识别在内的各领域得到更加广泛地应用，业界对DNN加速器的需求也在不断增加。而DNN对算力的要求增长非常快，远超摩尔定律所预测的CPU集成度与性能的增长速度。因此，对DNN加速器的研究是非常重要的。</p>
+<p>本报告是基于论文Interstellar: Using Halide&#39;s Scheduling Language to Analyze DNN Accelerators，对不同的dataflow模式对循环加速效果的探究。伴随着深度神经网络（DNN）正在包括自动驾驶、人脸识别、人脸检索和图像识别在内的各领域得到更加广泛地应用，业界对DNN加速器的需求也在不断增加。而DNN对算力的要求增长非常快，远超摩尔定律所预测的CPU集成度与性能的增长速度。因此，对DNN加速器的研究是非常重要的。</p>
 <p>Interstellar对DNN加速空间分为3个维度。本报告只研究dataflow维度的加速效果。在dataflow维度，当将各类数据放到SRAM等片上global-buffer里面，如何将片上数据传输到并行的处理单元，以及如何在处理单元之间进行最大化的共享同样需要很多技巧和策略，实际上要探索的是将哪些数据放在PE上运算，及PE运算哪些数据的问题。本报告使用C++语言，实现了3种基于dataflow模式的循环处理方式的模拟器，并研究了不同模式下，各组件在计算时所需的周期数与能量消耗，即基本目标与额外目标1。</p>
 <h2 id="问题介绍"><a href="#问题介绍" class="headerlink" title="问题介绍"></a>问题介绍</h2><h3 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h3><p>近些年来机器学习已经渗透到社会的方方面面，对日常生活产生了广泛影响。为了使得机器学习模型达到足够高的精度，常用的方法是提高模型自身的复杂度以及采用更大规模的训练数据集。然而这使得模型训练成为一个非常耗时的工作。</p>
 <p>而根据摩尔定律对计算硬件算力增长的预测，集成电路上可容纳的元器件的数目，约每隔18-24个月便会增加一倍，性能也将提升一倍。但与此同时，机器学习的模型复杂度与数据规模的增长的速度远超过硬件的算力增长速度。</p>
@@ -347,7 +347,7 @@
 <li>MIT的Eyeriss架构所采用的unrolling simultaneously片上算法，即将weight按行放到PE里，output每一行按列放到PE的列里，input按照对角线的形式进行传输，从而避免PE分别从global-buffer获取数据，使得数据可以在PE之间传输，减少数据读出操作。</li>
 <li>Google TPU所采用的方式。利用fully connected layer，将input channel和output channel分别放到PE列和PE行里，input从上到下进入PE array，output从左到右走出PE array，将其划分成systolic array。</li>
 </ul>
-<p>总而言之，Dataflow解决的主要是将哪些数据放在PE上运算及PE运算哪些数据的问题。在本报告中，我实现了三种数据流传输方式，分别选择不同的循环节，将之放入PE进行并行操作。这三种分别为：$X|Y$，$F_Y|Y$与$C|K$。具体操作非常类似，我们以$X|Y$为例，实际上就是将图\ref{loop}中的for x = 0 until X与for y = 0 until Y两个语句所表示的循环放入PE进行并行执行。因此实际上循环变为for x = 0 until X / PE.size_X与for y = 0 until Y / PE.size_Y。</p>
+<p>总而言之，Dataflow解决的主要是将哪些数据放在PE上运算及PE运算哪些数据的问题。在本报告中，我实现了三种数据流传输方式，分别选择不同的循环节，将之放入PE进行并行操作。这三种分别为：$X|Y$，$F_Y|Y$与$C|K$。具体操作非常类似，我们以$X|Y$为例，实际上就是将图中的for x = 0 until X与for y = 0 until Y两个语句所表示的循环放入PE进行并行执行。因此实际上循环变为for x = 0 until X / PE.size_X与for y = 0 until Y / PE.size_Y。</p>
 <h3 id="基础假设"><a href="#基础假设" class="headerlink" title="基础假设"></a>基础假设</h3><p>片上的网络传输没有延迟，buffer可以瞬间提供想要的数据，因此计算周期数的时候只需考虑访存数量。</p>
 <p>硬件假设为systolic array（脉动阵列），即数据流同步流过相邻的二维阵列单元的处理器结构，一般不同方向流过不同数据。二维不同数据在同一时钟下依次输入每个处理单元，而后完成乘法并存在其寄存器中。</p>
 <p>基本目标忽略访存的时间，在进行计算次数的计数时，只要把所有循环的轮数的乘积除以并行度（PE的数量）即可（忽略systolic array初始和结束时，可能有些PE是空的的情况）。</p>
@@ -411,8 +411,8 @@
 <p>即feature map的size为16*16，卷积的kernel size为3*3，batch size为3，输入与输出的channel number分别为64与128，PE的大小设为4*4。实际上，这些都可以根据实验需要进行修改。</p>
 <p>register file的size从16B到512B，对应的SRAM的size从32KB到512KB，并依此计算对应的能耗。</p>
 <h3 id="实验结果-1"><a href="#实验结果-1" class="headerlink" title="实验结果"></a>实验结果</h3><p>详细的实验结构展示在附件re.txt中。以使用Output Stationary data flow，RF size = 16 B，SRAM size = 32KB为例，实验结果的格式如下：</p>
-<p>—————-begin data flow mode:(X, Y)—————-</p>
-<p>—————-RF SIZE: 16B and SRAM SIZE: 32KB—————-</p>
+<p>-----------begin data flow mode:(X, Y)-----------</p>
+<p>-----------RF SIZE: 16B and SRAM SIZE: 32KB-----------</p>
 <p>Output Stationary: Cycle</p>
 <p>MAC: 4718592</p>
 <p>GLB read: 80478208</p>
@@ -433,7 +433,7 @@
 <p>register file write: 6.7987e+06</p>
 <p>scatter: 1.51257e+10</p>
 <p>broadcast: 2.64241e+06</p>
-<p>—————-end data flow mode:(X, Y)—————-</p>
+<p>-----------end data flow mode:(X, Y)-----------</p>
 <p>附件中给出了详细的涉及各个组件的周期数与能量消耗的实验结果。</p>
 <p>实验结果与理论分析保持一致。</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>在本次lab中，我主要实现了文献中所介绍的3种data flow模式对CNN的七层循环计算方式的影响，并自己实现了3种不同的循环展开撰写方式，体会了这些不同模式对计算组件的执行周期数与能量消耗的影响。</p>
