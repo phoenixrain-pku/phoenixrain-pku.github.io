@@ -31,16 +31,16 @@
 <meta property="og:site_name" content="Phoenix Rain">
 <meta property="og:description" content="Dataflow模式对循环计算的加速效果研究摘要本文是计算机组织与体系结构的作业报告。我把本报告放在这里，是为了展示，当代大学生对自己一个字都看不懂的东西，还能写出来自己一个字都看不懂的报告的能力。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/1.png">
-<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/2.png">
-<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/3.png">
-<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/4.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/1.jpg">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/2.jpg">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/3.jpg">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/4.jpg">
 <meta property="article:published_time" content="2021-01-13T05:37:14.000Z">
-<meta property="article:modified_time" content="2021-01-17T05:13:48.458Z">
+<meta property="article:modified_time" content="2021-01-17T05:17:56.995Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/1.png">
+<meta name="twitter:image" content="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/1.jpg">
 
 
 <link rel="canonical" href="https://phoenixrain-pku.github.io/2021/01/13/lab%E6%8A%A5%E5%91%8A/">
@@ -293,7 +293,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-01-17 13:13:48" itemprop="dateModified" datetime="2021-01-17T13:13:48+08:00">2021-01-17</time>
+        <time title="Modified: 2021-01-17 13:17:56" itemprop="dateModified" datetime="2021-01-17T13:17:56+08:00">2021-01-17</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -330,9 +330,9 @@
 <p>而根据摩尔定律对计算硬件算力增长的预测，集成电路上可容纳的元器件的数目，约每隔18-24个月便会增加一倍，性能也将提升一倍。但与此同时，机器学习的模型复杂度与数据规模的增长的速度远超过硬件的算力增长速度。</p>
 <p>因此，研究CNN、DNN等网络的加速算法是非常重要的。提升模型训练速度对科学技术的发展会有很大的促进。除去一些机器学习领域本身的算法优化方法外（如剪枝），体系结构领域更关注更低维的加速方式，如底层硬件架构的设计。而在关注底层硬件架构的基础上，也需要把目光聚焦在上层软件层面，探索如何调度以及更好地使用底层硬件，从而最大化算力的资源使用。</p>
 <p>目前上层软件主要根据CNN等卷积神经网络相关算法进行调度。CNN是由多个2D的input features maps（ifmaps）产生多个输出的output features maps(ofmaps)，在每一对ifmaps和ofmaps之间对应一对2D的filters，同时由于ifmaps和ofmaps是3D的，每一对均对应一对filters，所以filters实际上存在4D的张量结构，即除了每一个2D的filters之外，可以认为所有的ifmaps的一组和相同数量的filters产生一个ofmaps，而每一个ofmaps都对应一组filters。</p>
-<p><img src="1.png" alt="image-20210113132453924" style="zoom:50%;" /></p>
+<p><img src="1.jpg" alt="image-20210113132453924" style="zoom:50%;" /></p>
 <p>同时，在input和output之间均作一个Nb大小的batching，则input、output和filters三者均会形成一种4D结构（2维图像结构以及1维通道channel维度和1维batch维度），如果用循环的形式表示这种框架，则为七层循环架构。具体如下图：</p>
-<p><img src="2.png" alt="image-20210113132525662" style="zoom:50%;" /></p>
+<p><img src="2.jpg" alt="image-20210113132525662" style="zoom:50%;" /></p>
 <p>可以看到CNN的架构较为复杂，而所有neural network硬件的实现，均为针对这种七层循环结构进行的合理调度，使其最大化利用计算的便携性和硬件资源。</p>
 <p>可以进行优化的3个维度分别为：</p>
 <ul>
@@ -341,7 +341,7 @@
 <li>Blocking维度（Off-chip），将DRAM迁移到SRAM里，进行片上运算，我们称为Blocking，具体研究如何将大的数据集划分为小的数据块，然后将这些数据块分别放到片上进行计算。这其中就涉及如何将数据切分成小的数据块。</li>
 </ul>
 <h3 id="Dataflow模式"><a href="#Dataflow模式" class="headerlink" title="Dataflow模式"></a>Dataflow模式</h3><p>在dataflow维度，当将各类数据放到SRAM等片上global-buffer里面，如何将片上数据传输到并行的处理单元，以及如何在处理单元之间进行最大化的共享同样需要很多技巧和策略。下图展示了原文中提到的几种常用的数据流传输模式。</p>
-<p><img src="3.png" alt="image-20210113132631875"></p>
+<p><img src="3.jpg" alt="image-20210113132631875"></p>
 <ul>
 <li>最简单的adder tree结构，所有的PE在input和weight之间进行乘法运算，之后进行加和得到某一个输出结果。</li>
 <li>MIT的Eyeriss架构所采用的unrolling simultaneously片上算法，即将weight按行放到PE里，output每一行按列放到PE的列里，input按照对角线的形式进行传输，从而避免PE分别从global-buffer获取数据，使得数据可以在PE之间传输，减少数据读出操作。</li>
@@ -370,7 +370,7 @@
 <h2 id="理论分析"><a href="#理论分析" class="headerlink" title="理论分析"></a>理论分析</h2><p>基于上一节中对模拟器在执行过程中的基本假设，本节将对三种dataflow模式下，周期数与能量消耗进一步进行详细的分析。</p>
 <h3 id="周期与能耗数据"><a href="#周期与能耗数据" class="headerlink" title="周期与能耗数据"></a>周期与能耗数据</h3><p>由于我们假设了片上的网络传输没有延迟，因此直接将所有操作的单位执行周期设为1即可，那么每次指令执行时，只需要按照执行次数依次叠加就可以计算出总的周期数。</p>
 <p>单位能耗按照lab的要求中所给定的设置，见下图。</p>
-<p><img src="4.png" alt="image-20210113132905158" style="zoom:50%;" /></p>
+<p><img src="4.jpg" alt="image-20210113132905158" style="zoom:50%;" /></p>
 <p>下面具体分析三种dataflow的周期数与能量消耗计算方法。规定进行计算的真实代码为：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ix = ox_0 * PE.x + ox_1+wx;</span><br><span class="line">iy = oy_0 * PE.y + oy_1+wy;</span><br><span class="line">O[b][oc][ox][oy] = I[b][ic][ix][iy] * W[oc][ic][wx][wy];</span><br></pre></td></tr></table></figure>
 <p>我们将主要分析周期数，能耗与周期数类似，只不过周期数每次加1，能耗加的是该器件的单位能耗，因此只作简略叙述。在能耗分析上，我们仅当遇到并行的地方，能耗可能会与PE的SIZE有倍数关系时，再详细分析。</p>
