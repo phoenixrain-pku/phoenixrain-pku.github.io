@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/a.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/a.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/a.jpg">
+  <link rel="mask-icon" href="/images/a.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phoenixrain-pku.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="本文介绍了复旦大学研究团队在AAAI 2020上录用的一篇关于多模态文本生成工作：Storytelling from an Image Stream Using Scene Graphs，主要从作者信息、问题背景、解决方案、实验、结论等方面进行解读。 Paper Reading的slides与talk video可以在刘家瑛老师团队的主页上找到。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storytelling from an Image Stream Using Scene Graphs论文详解">
+<meta property="og:url" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/index.html">
+<meta property="og:site_name" content="Phoenix Rain">
+<meta property="og:description" content="本文介绍了复旦大学研究团队在AAAI 2020上录用的一篇关于多模态文本生成工作：Storytelling from an Image Stream Using Scene Graphs，主要从作者信息、问题背景、解决方案、实验、结论等方面进行解读。 Paper Reading的slides与talk video可以在刘家瑛老师团队的主页上找到。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201161017258.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201162826981.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201163038639.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201163245663.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201163609560.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201163644023.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201164224757.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201164251133.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201164410259.png">
+<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201164457819.png">
+<meta property="article:published_time" content="2021-02-01T05:37:14.000Z">
+<meta property="article:modified_time" content="2021-02-01T08:45:57.686Z">
+<meta property="article:author" content="Phoenix Rain">
+<meta property="article:tag" content="学术垃圾">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201161017258.png">
+
+
+<link rel="canonical" href="https://phoenixrain-pku.github.io/2021/02/01/storytelling/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Storytelling from an Image Stream Using Scene Graphs论文详解 | Phoenix Rain</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Phoenix Rain</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-blogs">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Blogs</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-thoughts">
+
+    <a href="/thoughts/" rel="section"><i class="fa fa-archive fa-fw"></i>Thoughts</a>
+
+  </li>
+        <li class="menu-item menu-item-friends">
+
+    <a href="/friends/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Friends</a>
+
+  </li>
+        <li class="menu-item menu-item-gallery">
+
+    <a href="/gallery/" rel="section"><i class="fa fa-camera-retro fa-fw"></i>Gallery</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E8%80%85%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">作者简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%87%B4%E6%80%9D%E8%B7%AF"><span class="nav-number">3.1.</span> <span class="nav-text">大致思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">详细模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.2.2.</span> <span class="nav-text">算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83"><span class="nav-number">3.2.3.</span> <span class="nav-text">训练</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.</span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">4.1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="nav-number">4.2.</span> <span class="nav-text">评价指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">4.3.</span> <span class="nav-text">实验结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Phoenix Rain</p>
+  <div class="site-description" itemprop="description">与所有摧毁艺术的事物保持抗衡</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://phoenixrain-pku.github.io/2021/02/01/storytelling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Phoenix Rain">
+      <meta itemprop="description" content="与所有摧毁艺术的事物保持抗衡">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Rain">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Storytelling from an Image Stream Using Scene Graphs论文详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-02-01 13:37:14 / Modified: 16:45:57" itemprop="dateCreated datePublished" datetime="2021-02-01T13:37:14+08:00">2021-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">学术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文介绍了复旦大学研究团队在AAAI 2020上录用的一篇关于多模态文本生成工作：Storytelling from an Image Stream Using Scene Graphs，主要从作者信息、问题背景、解决方案、实验、结论等方面进行解读。</p>
+<p>Paper Reading的slides与talk video可以在刘家瑛老师团队的<a href="http://39.96.165.147/Talks.html" target="_blank">主页</a>上找到。</p>
+<a id="more"></a>
+<h2 id="作者简介"><a href="#作者简介" class="headerlink" title="作者简介"></a>作者简介</h2><ul>
+<li><p>Ruize Wang (Master, Fudan University)</p>
+<p>复旦大学的master，个人信息不多。</p>
+</li>
+<li><p>Zhongyu Wei (Associate Professor, Fudan University)</p>
+<p>魏忠钰，复旦大学的Associate Professor，主要研究兴趣为NLP/generation cross vision and language。教育背景：港中文PHD，University of Texas博士后。</p>
+</li>
+<li><p>Piji Li (Senior Researcher, Tencent AI Lab)</p>
+<p>李丕绩，腾讯AI实验室的Senior Researcher，主要研究兴趣为NLP/CV/深度学习。教育背景：港中文PHD，山东大学bachelor&amp;master。</p>
+</li>
+<li><p>Qi Zhang (Professor, Fudan University)</p>
+<p>张奇，复旦大学的Professor，主要研究兴趣为NLP/information retrieval。教育背景：复旦大学PHD，山东大学bachelor。</p>
+</li>
+<li><p>Xuanjing Huang (Professor, Fudan University)</p>
+<p>黄萱菁，复旦大学的Professor，主要研究兴趣为NLP/information retrieval。教育背景：复旦大学PHD&amp;bachelor。</p>
+</li>
+</ul>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li><p>For most people, showing them images and ask them to compose a reasonable story about the images is not a difficult task. </p>
+<p>对大多数人而言，向他们展示图像并要求他们撰写有关图像的故事并不是一件困难的事。（回忆我们小学的看图写话任务）</p>
+</li>
+<li><p>It is still nontrivial for the machine to summarize the meanings from images and generate a narrative story.</p>
+<p>但是对于机器来说，目前并没有nontrivial的方法从图像中总结出含义并产生叙事故事。</p>
+</li>
+<li><p>Existing methods for visual storytelling employ encoder-decoder structure to translate images to sentences directly.</p>
+<p>现有的用于视觉叙事的方法采用编码器-解码器结构来将图像直接翻译成句子。</p>
+</li>
+</ul>
+<p>一个visual storytelling的例子：</p>
+<p><img src="storytelling.assets/image-20210201161017258.png" alt="image-20210201161017258" style="zoom:60%;" /></p>
+<p>现有的解决方案：</p>
+<ul>
+<li>seq2seq (Huang et al. 2016): Encodes an image sequence by running an RNN, and decodes sentences with a RNN decoder.</li>
+<li>BARNN (Liu et al. 2017): With attention on semmatic relation to enhance the textual coherence in story generation.</li>
+<li>h-attn-rank (Yu, Bansal, and Berg 2017): A hierarchically-attentive RNN based model consisting of three RNN stages, i.e., encoding photo stage, photo selection stage and generation stage.</li>
+<li>HPSR (Wang et al. 2019): HPSR is a model includes the hierarchical photo-scene encoder, decoder, and reconstructor.</li>
+<li>AREL (Wang et al. 2018b): Based on reinforcement learning. It takes a CNN-RNN architecture as the policy model for story generation.</li>
+<li>HSRL (Huang et al. 2019): A hierarchically structured reinforcement learning approach, which propose to generate a local semantic concept for each image in the sequence and generate a sentence for each image using a semantic compositional network.</li>
+</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="大致思路"><a href="#大致思路" class="headerlink" title="大致思路"></a>大致思路</h3><ul>
+<li><p>When we humans telling stories for an image sequence, we will recognize the objects in each image, reason about their visual relationships, and then abstract the content into a scene. Next, we will observe the images in order and reason the relationship among images.</p>
+<p>当人类为一个图像序列讲故事时，将识别每个图像中的对象，推理它们的视觉关系，然后将内容抽象到场景中。接下来，我们将按<strong>顺序</strong>观察图像并推理<strong>图像之间的关系</strong>。</p>
+</li>
+<li><p>We presents a novel graph-based architecture named SGVST for visual storytelling.</p>
+<p>基于这样的想法，本文提出了一种新颖的基于图形的架构，名为SGVST，用于视觉叙事。</p>
+</li>
+</ul>
+<h3 id="详细模型"><a href="#详细模型" class="headerlink" title="详细模型"></a>详细模型</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>Input: an image stream $I = {I_1,I_2,\cdots,I_n}$</p>
+<p>Output: a story $y={y_1,y_2,\cdots,y_n}$, where $n$ is the number of images in the image stream, and sentence $y_i={w_1,w_2,\cdots,w_T}$.</p>
+<p>输入为一组图像（$n$ 张），输出为一个故事，由$n$个子句组成，每句对应一张图片，是词汇表vocabulary上单词的序列。</p>
+<h4 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h4><ol>
+<li><p>Use a scene graph parser to translates each image into a scene graph, and then models the relationship on within-image level and cross-images level.</p>
+<p><em>What is “scene graph”?</em><br>Vertexes represent different regions and directed edges denote relationships between them, using tuples $\langle subject-predicate-object\rangle$.</p>
+<p><img src="storytelling.assets/image-20210201162826981.png" alt="image-20210201162826981" style="zoom:50%;" /></p>
+<p>A pre-trained scene graph parser gives scene graphs $G={G_1,\cdots,G_n}$.<br>where $G_i = \langle V_i, E_i \rangle $.</p>
+<p>Each graph includes a set of detected objects, and vertex (object) represents each region and the edge denotes the visual relationship between them.</p>
+<p>场景图就是对图片的抽象，用“图”结构来表示，定点为图像中的物体，边为物体之间的关系。</p>
+<p>如：$\langle$小女孩-抱着-玩具$\rangle$。</p>
+<p>因此分为两个阶段：1. 物体检测 2. 关系检测</p>
+<ul>
+<li><p>Object Detector: Use pre-trained Faster-RCNN</p>
+</li>
+<li><p>Relationship Detector: Use the LSTM-based model (Zellers et al. 2018),  train on Visual Genome dataset</p>
+<p>LSTM（Long Short-Term Memory）是一种时间循环神经网络（RNN），能够学习长的依赖关系。所有循环神经网络都具有神经网络的重复模块链的形式。 在标准的RNN中，该重复模块将具有非常简单的结构。</p>
+<p>一个大概的示意图如下：<img src="storytelling.assets/image-20210201163038639.png" alt="image-20210201163038639" style="zoom:57%;" /></p>
+</li>
+</ul>
+</li>
+<li><p>Processing the scene graphs to enrich region representations. Use Graph Convolution Network (GCN) which passes the information along graph edges.</p>
+<p>Given an input graph with vectors of each node and edge, it computes new vectors for each node and edge. Each graph convolution layer propagates information along edges of the graph.</p>
+<p>把生成的场景图扔进GCN，进行进一步的增强。GCN是图神经网络，可以使用图的特征去对图数据进行节点分类（node classification）、图分类（graph classification）、边预测（link prediction）。这一步是继续增强已有的场景图中的关系。</p>
+</li>
+<li><p>Use Temporal Convolution Network (TCN) to process the region representations along the temporal dimension, which models relationships on cross-images level.</p>
+<p>TCN是关注时序关系的网络。时序问题的建模大家一般习惯性的采用循环神经网络（RNN）来建模，这是因为RNN天生的循环自回归的结构是对时间序列的很好的表示。传统的卷积神经网络一般认为不太适合时序问题的建模，这主要由于其卷积核大小的限制，不能很好的抓取长时的依赖信息。</p>
+<p>TCN的主要思路：Causal Convolution + Dilated Convolution + Residual Connections</p>
+<p>单纯的因果卷积还是存在传统卷积神经网络的问题，即对时间的建模长度受限于卷积核大小的，如果要想抓去更长的依赖关系，就需要线性的堆叠很多的层。为了解决这个问题，又加入了膨胀卷积。</p>
+<p>残差链接被证明是训练深层网络的有效方法，它使得网络可以以跨层的方式传递信息。本文构建了一个残差块来代替一层的卷积。如图所示，一个残差块包含两层的卷积和非线性映射，在每层中还加入了WeightNorm和Dropout来正则化网络。</p>
+<p><img src="storytelling.assets/image-20210201163245663.png" alt="image-20210201163245663"></p>
+</li>
+</ol>
+<p>After 2 and 3,  we get the relation-aware representations on both within-image and cross-images levels.</p>
+<p>2和3步骤最大的作用就是让我们拿到了既有图像内部层面、又有图像之间层面关系的场景图。</p>
+<ol>
+<li><p>Use a bidirectional-GRU to encode the feature maps obtained from Faster R-CNN as high-level visual features.</p>
+<p>GRU对于RNN中的梯度消失有很大帮助。为了克服RNN无法很好处理远距离依赖而提出了LSTM，而GRU则是LSTM的一个变体，当然LSTM还有有很多其他的变体。GRU保持了LSTM的效果同时又使结构更加简单。</p>
+</li>
+<li><p>Injecting all of the relation-aware representations into a two-layer GRU with attention mechanism.</p>
+<p><img src="storytelling.assets/image-20210201163609560.png" alt="image-20210201163609560" style="zoom:50%;" /></p>
+</li>
+</ol>
+<p>总的结构如下图所示：</p>
+<p><img src="storytelling.assets/image-20210201163644023.png" alt="image-20210201163644023"></p>
+<h4 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h4><p>In the training stage, we fix the parameters of our pre-trained scene graph parser, and other components of our model are trained and evaluated on VIST dataset for visual storytelling task. </p>
+<p>Define cross-entropy (MLE) loss for the training process.</p>
+<script type="math/tex; mode=display">
+L(\theta)=-\sum_{t=1}^T \log (p_\theta(y_t^* | y_1^*,\cdots,y_{t-1}^*))</script><p>Here $y$ is the ground truth.</p>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><ol>
+<li><p>Visual Storytelling (VIST)<br>Includes 10,117 Flicker albums with 210,819 images.<br>40,098 for training, 4,988 for validation and 5,050 for testing, respectively. Each sample (album) contains five images and a story with five sentences.<br>Huang et al. 2016. Visual storytelling. In NAACL (Microsoft, CMU &amp; JHU)<br>The first sequential vision-to-language dataset.</p>
+</li>
+<li><p>Visual Genome (VG)<br>108,077 images annotated with scene graphs, containing 150 object classes and 50 relation classes.<br>Only used to train the relationship detector in our scene graph parser.<br>Krishna, R. et al. 2017. Visual genome: Connecting language and vision using crowdsourced dense image annotations. In IJCV (Stanford)</p>
+</li>
+</ol>
+<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><ul>
+<li><p>Seven automatic evaluation metrics</p>
+<ul>
+<li><p>BLEU (Papineni et al. 2002)</p>
+<p>Calculate scores on 1-gram, 2-gram, 3-gram and 4-gram.</p>
+</li>
+<li><p>ROUGE-L (Lin and Och 2004)</p>
+<p>Uses the length of LCS (longest common subsequence)</p>
+</li>
+<li><p>METEOR (Banerjee and Lavie 2005)</p>
+<p>Considers stemming and synonymy matching, along with the standard exact word matching.</p>
+</li>
+<li><p>CIDEr-D (Vedantam, Lawrence Zitnick, and Parikh 2015)</p>
+<p>Also n-gram, but decreases the weight of less informative ones.<br>Considers stemming and synonymy matching.</p>
+</li>
+</ul>
+</li>
+<li><p>Human Evaluation</p>
+<ul>
+<li>Pairwise Comparison</li>
+<li>Human Rating</li>
+</ul>
+</li>
+</ul>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><ol>
+<li><p>与现有算法的比较<img src="storytelling.assets/image-20210201164224757.png" alt="image-20210201164224757"></p>
+<p>结果显示作者提出的SGVST模型几乎在所有指标上都优于其他用MLE和RL优化的模型具有更好的性能，SGVST的BLEU-1、BLEU-4和METEOR得分比其他基于MLE优化的最佳方法分别提高了3.2%、2.5%和1.4%，这被认为是在VIST数据集上的显著进步。这直接说明将图像转换为基于图的语义表示（如场景图），有利于图像的表示和高质量的故事生成。</p>
+</li>
+<li><p>消融实验，和提出模型的5个变种模型进行了比较</p>
+<p><img src="storytelling.assets/image-20210201164251133.png" alt="image-20210201164251133"></p>
+<p>在不使用GCN和TCN的时候，模型性能有一个很大的下降。这说明图网络在该模型中是最为重要的，因为它可以给模型带来了推理视觉关系的能力。</p>
+</li>
+<li><p>人工评价</p>
+<p><img src="storytelling.assets/image-20210201164410259.png" alt="image-20210201164410259"></p>
+<p>人工评估结果。在AMT上的评估人员根据对每个问题的同意程度来评价故事的质量，评分范围为1-5。</p>
+<p><img src="storytelling.assets/image-20210201164457819.png" alt="image-20210201164457819" style="zoom:67%;" /></p>
+<p>每种颜色代表了相对应模型产生的故事，被评价人员认为更加像人写的、更有表现力所占的比例。灰色的“Tie”代表了无法区分。</p>
+<p>总而言之，通过Amazon Mechanical Turk（AMT）进行了两种人工评价。在6个指标上进行的人工评估实验结果。可以看出本文提出的模型和其他模型相比有着巨大的优势，而且和人类相比，也取得了有竞争力的表现。</p>
+</li>
+</ol>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
+<li>Translate images into graph-based semantic representations called the scene graphs.</li>
+<li>Realize enriching fine-grained representations both on the within-image level and the cross-images level.</li>
+<li>Extensive experiments demonstrate that SGVST achieves state-of-the-art, and the stories generated are more informative and fluent.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E6%9C%AF%E5%9E%83%E5%9C%BE/" rel="tag"># 学术垃圾</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/30/%E4%B8%8A%E5%8D%88/" rel="prev" title="上午——现代诗">
+                  <i class="fa fa-chevron-left"></i> 上午——现代诗
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Phoenix Rain</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
