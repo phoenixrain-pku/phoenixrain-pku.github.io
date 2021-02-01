@@ -31,10 +31,10 @@
 <meta property="og:site_name" content="Phoenix Rain">
 <meta property="og:description" content="本文介绍了复旦大学研究团队在AAAI 2020上录用的一篇关于多模态文本生成工作：Storytelling from an Image Stream Using Scene Graphs，主要从作者信息、问题背景、解决方案、实验、结论等方面进行解读。 Paper Reading的slides与talk video可以在刘家瑛老师团队的主页上找到。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZXSmQ.md.png">
-<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201162826981.png">
-<meta property="og:image" content="https://phoenixrain-pku.github.io/2021/02/01/storytelling/storytelling.assets/image-20210201163038639.png">
-<meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZOXSf.md.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZXSmQ.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZOjl8.md.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZOLfP.md.png">
+<meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZOXSf.png">
 <meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZOxOg.png">
 <meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZXPkn.png">
 <meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZXpwj.md.png">
@@ -42,11 +42,11 @@
 <meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZXiYq.md.png">
 <meta property="og:image" content="https://s3.ax1x.com/2021/02/01/yZXFf0.md.png">
 <meta property="article:published_time" content="2021-02-01T05:37:14.000Z">
-<meta property="article:modified_time" content="2021-02-01T09:02:35.406Z">
+<meta property="article:modified_time" content="2021-02-01T09:11:37.180Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/01/yZXSmQ.md.png">
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/01/yZXSmQ.png">
 
 
 <link rel="canonical" href="https://phoenixrain-pku.github.io/2021/02/01/storytelling/">
@@ -293,7 +293,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-02-01 13:37:14 / Modified: 17:02:35" itemprop="dateCreated datePublished" datetime="2021-02-01T13:37:14+08:00">2021-02-01</time>
+      <time title="Created: 2021-02-01 13:37:14 / Modified: 17:11:37" itemprop="dateCreated datePublished" datetime="2021-02-01T13:37:14+08:00">2021-02-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -354,7 +354,7 @@
 </li>
 </ul>
 <p>一个visual storytelling的例子：</p>
-<p><img src="https://s3.ax1x.com/2021/02/01/yZXSmQ.md.png" alt="yZXSmQ.png" border="0" /></p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZXSmQ.png" alt="yZXSmQ.png" border="0" width="70%"/></p>
 <p>现有的解决方案：</p>
 <ul>
 <li>seq2seq (Huang et al. 2016): Encodes an image sequence by running an RNN, and decodes sentences with a RNN decoder.</li>
@@ -372,14 +372,14 @@
 <p>基于这样的想法，本文提出了一种新颖的基于图形的架构，名为SGVST，用于视觉叙事。</p>
 </li>
 </ul>
-<h3 id="详细模型"><a href="#详细模型" class="headerlink" title="详细模型"></a>详细模型</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>Input: an image stream $I = \left{I_1,I_2,\cdots,I_n\right}$</p>
-<p>Output: a story $y=\left{y_1,y_2,\cdots,y_n\right}$, where $n$ is the number of images in the image stream, and sentence $y_i=\left{w_1,w_2,\cdots,w_T\right}$.</p>
+<h3 id="详细模型"><a href="#详细模型" class="headerlink" title="详细模型"></a>详细模型</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>Input: an image stream $I = {I_1,I_2,\cdots,I_n}$</p>
+<p>Output: a story $y={y_1,y_2,\cdots,y_n}$, where $n$ is the number of images in the image stream, and sentence $y_i={w_1,w_2,\cdots,w_T}$.</p>
 <p>输入为一组图像（$n$ 张），输出为一个故事，由$n$个子句组成，每句对应一张图片，是词汇表vocabulary上单词的序列。</p>
 <h4 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h4><ol>
 <li><p>Use a scene graph parser to translates each image into a scene graph, and then models the relationship on within-image level and cross-images level.</p>
 <p><em>What is “scene graph”?</em><br>Vertexes represent different regions and directed edges denote relationships between them, using tuples $\langle subject-predicate-object\rangle$.</p>
-<p><img src="storytelling.assets/image-20210201162826981.png" alt="image-20210201162826981" style="zoom:50%;" /></p>
-<p>A pre-trained scene graph parser gives scene graphs $G=\left{G_1,\cdots,G_n\right}$.<br>where $G_i = \langle V_i, E_i \rangle $.</p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZOjl8.md.png" alt="yZOjl8.png" border="0" width="50%"/></p>
+<p>A pre-trained scene graph parser gives scene graphs $G={ G_1,\cdots,G_n }$.<br>where $G_i = \langle V_i, E_i \rangle $.</p>
 <p>Each graph includes a set of detected objects, and vertex (object) represents each region and the edge denotes the visual relationship between them.</p>
 <p>场景图就是对图片的抽象，用“图”结构来表示，定点为图像中的物体，边为物体之间的关系。</p>
 <p>如：$\langle$小女孩-抱着-玩具$\rangle$。</p>
@@ -389,7 +389,8 @@
 </li>
 <li><p>Relationship Detector: Use the LSTM-based model (Zellers et al. 2018),  train on Visual Genome dataset</p>
 <p>LSTM（Long Short-Term Memory）是一种时间循环神经网络（RNN），能够学习长的依赖关系。所有循环神经网络都具有神经网络的重复模块链的形式。 在标准的RNN中，该重复模块将具有非常简单的结构。</p>
-<p>一个大概的示意图如下：<img src="storytelling.assets/image-20210201163038639.png" alt="image-20210201163038639" style="zoom:57%;" /></p>
+<p>一个大概的示意图如下：</p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZOLfP.md.png" alt="yZOLfP.png" border="0" width="60%"/></p>
 </li>
 </ul>
 </li>
@@ -402,7 +403,7 @@
 <p>TCN的主要思路：Causal Convolution + Dilated Convolution + Residual Connections</p>
 <p>单纯的因果卷积还是存在传统卷积神经网络的问题，即对时间的建模长度受限于卷积核大小的，如果要想抓去更长的依赖关系，就需要线性的堆叠很多的层。为了解决这个问题，又加入了膨胀卷积。</p>
 <p>残差链接被证明是训练深层网络的有效方法，它使得网络可以以跨层的方式传递信息。本文构建了一个残差块来代替一层的卷积。如图所示，一个残差块包含两层的卷积和非线性映射，在每层中还加入了WeightNorm和Dropout来正则化网络。</p>
-<p><img src="https://s3.ax1x.com/2021/02/01/yZOXSf.md.png" alt="yZOXSf.png" border="0" /></p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZOXSf.png" alt="yZOXSf.png" border="0" /></p>
 </li>
 </ol>
 <p>After 2 and 3,  we get the relation-aware representations on both within-image and cross-images levels.</p>
@@ -412,7 +413,7 @@
 <p>GRU对于RNN中的梯度消失有很大帮助。为了克服RNN无法很好处理远距离依赖而提出了LSTM，而GRU则是LSTM的一个变体，当然LSTM还有有很多其他的变体。GRU保持了LSTM的效果同时又使结构更加简单。</p>
 </li>
 <li><p>Injecting all of the relation-aware representations into a two-layer GRU with attention mechanism.</p>
-<p><img src="https://s3.ax1x.com/2021/02/01/yZOxOg.png" alt="yZOxOg.png" border="0" width="60%"/></p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZOxOg.png" alt="yZOxOg.png" border="0" width="50%"/></p>
 </li>
 </ol>
 <p>总的结构如下图所示：</p>
@@ -453,17 +454,17 @@ L(\theta)=-\sum_{t=1}^{T} \log (p_\theta(y_t^{*} | y_1^{*},\cdots,y_{t-1}^{*}))<
 </ul>
 <h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><ol>
 <li><p>与现有算法的比较</p>
-<p><img src="https://s3.ax1x.com/2021/02/01/yZXpwj.md.png" alt="yZXpwj.png" border="0" /></p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZXpwj.md.png" alt="yZXpwj.png" border="0" width="60%"/></p>
 <p>结果显示SGVST模型几乎在所有指标上都优于其他用MLE和RL优化的模型具有更好的性能，SGVST的BLEU-1、BLEU-4和METEOR得分比其他基于MLE优化的最佳方法分别提高了3.2%、2.5%和1.4%，这被认为是在VIST数据集上的显著进步。这直接说明将图像转换为基于图的语义表示（如场景图），有利于图像的表示和高质量的故事生成。</p>
 </li>
 <li><p>消融实验，和提出模型的5个变种模型进行了比较</p>
-<p><img src="https://s3.ax1x.com/2021/02/01/yZX9Ts.md.png" alt="yZX9Ts.png" border="0" /></p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZX9Ts.md.png" alt="yZX9Ts.png" border="0" width="60%"/></p>
 <p>在不使用GCN和TCN的时候，模型性能有一个很大的下降。这说明图网络在该模型中是最为重要的，因为它可以给模型带来了推理视觉关系的能力。</p>
 </li>
 <li><p>人工评价</p>
-<p><img src="https://s3.ax1x.com/2021/02/01/yZXiYq.md.png" alt="yZXiYq.png" border="0" /></p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZXiYq.md.png" alt="yZXiYq.png" border="0" width="60%"/></p>
 <p>在AMT上的评估人员根据对每个问题的同意程度来评价故事的质量，评分范围为1-5。</p>
-<p><img src="https://s3.ax1x.com/2021/02/01/yZXFf0.md.png" alt="yZXFf0.png" border="0" /></p>
+<p><img src="https://s3.ax1x.com/2021/02/01/yZXFf0.md.png" alt="yZXFf0.png" border="0" width="50%"/></p>
 <p>每种颜色代表了相对应模型产生的故事，被评价人员认为更加像人写的、更有表现力所占的比例。灰色的“Tie”代表了无法区分。</p>
 <p>总而言之，通过Amazon Mechanical Turk（AMT）进行了两种人工评价。在6个指标上进行的人工评估实验结果。可以看出本文提出的模型和其他模型相比有着巨大的优势，而且和人类相比，也取得了有竞争力的表现。</p>
 </li>
