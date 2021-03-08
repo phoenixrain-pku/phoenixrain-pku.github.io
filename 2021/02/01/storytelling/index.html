@@ -367,14 +367,14 @@
 <p>基于这样的想法，本文提出了一种新颖的基于图形的架构，名为SGVST，用于视觉叙事。</p>
 </li>
 </ul>
-<h3 id="详细模型"><a href="#详细模型" class="headerlink" title="详细模型"></a>详细模型</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>Input: an image stream $I = {I_1,I_2,\cdots,I_n}$</p>
-<p>Output: a story $y={y_1,y_2,\cdots,y_n}$, where $n$ is the number of images in the image stream, and sentence $y_i={w_1,w_2,\cdots,w_T}$.</p>
+<h3 id="详细模型"><a href="#详细模型" class="headerlink" title="详细模型"></a>详细模型</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>Input: an image stream $I = \{I_1,I_2,\cdots,I_n\}$</p>
+<p>Output: a story $y=\{y_1,y_2,\cdots,y_n\}$, where $n$ is the number of images in the image stream, and sentence $y_i=\{w_1,w_2,\cdots,w_T\}$.</p>
 <p>输入为一组图像（$n$ 张），输出为一个故事，由$n$个子句组成，每句对应一张图片，是词汇表vocabulary上单词的序列。</p>
 <h4 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h4><ol>
 <li><p>Use a scene graph parser to translates each image into a scene graph, and then models the relationship on within-image level and cross-images level.</p>
 <p><em>What is “scene graph”?</em><br>Vertexes represent different regions and directed edges denote relationships between them, using tuples $\langle subject-predicate-object\rangle$.</p>
 <p><img src="https://s3.ax1x.com/2021/02/01/yZOjl8.md.png" alt="yZOjl8.png" border="0" width="50%"/></p>
-<p>A pre-trained scene graph parser gives scene graphs $G={ G_1,\cdots,G_n }$.<br>where $G_i = \langle V_i, E_i \rangle $.</p>
+<p>A pre-trained scene graph parser gives scene graphs $G=\{ G_1,\cdots,G_n \}$.<br>where $G_i = \langle V_i, E_i \rangle $.</p>
 <p>Each graph includes a set of detected objects, and vertex (object) represents each region and the edge denotes the visual relationship between them.</p>
 <p>场景图就是对图片的抽象，用“图”结构来表示，定点为图像中的物体，边为物体之间的关系。</p>
 <p>如：$\langle$小女孩-抱着-玩具$\rangle$。</p>
