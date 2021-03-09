@@ -32,7 +32,7 @@
 <meta property="og:description" content="对于一个作用在有限集合$X$上的二元运算$\circ$，检验它是否满足结合律。 即：对于$\forall r,s,t\in X$，是否总有$(r\circ s)\circ t &#x3D; r\circ(s\cdot t)$？">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-08T12:10:34.000Z">
-<meta property="article:modified_time" content="2021-03-08T12:34:59.378Z">
+<meta property="article:modified_time" content="2021-03-09T05:22:13.805Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
@@ -275,10 +275,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-03-08 20:10:34 / Modified: 20:34:59" itemprop="dateCreated datePublished" datetime="2021-03-08T20:10:34+08:00">2021-03-08</time>
+      <time title="Created: 2021-03-08 20:10:34" itemprop="dateCreated datePublished" datetime="2021-03-08T20:10:34+08:00">2021-03-08</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-09 13:22:13" itemprop="dateModified" datetime="2021-03-09T13:22:13+08:00">2021-03-09</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -315,7 +321,7 @@
 <p>类似的，一个随机算法即为随机选择三元组$(r,s,t)\in X$。最坏情况下只有一组$(r^{w},s^{w},t^{w})$使得结合律不成立，那么仅有$1/n^3$的概率选到witness。</p>
 <h2 id="非平凡的解法"><a href="#非平凡的解法" class="headerlink" title="非平凡的解法"></a>非平凡的解法</h2><p>首先断言：存在一个复杂度仅为$O(n^2)$的单边错误随机算法。</p>
 <p><strong>算法的大致思路：重新设计一个集合，在新的集合中尝试寻找witness，并将error bound由之前降到与$n$无关的常数。</strong></p>
-<h3 id="新集合的设计"><a href="#新集合的设计" class="headerlink" title="新集合的设计"></a>新集合的设计</h3><p>新的集合$Y$为$X$的子集的集合，即$Y=2^X$。或将$i,j,k$视作一个线性空间的一组基，新的集合中元素定义为：</p>
+<h3 id="新集合的设计"><a href="#新集合的设计" class="headerlink" title="新集合的设计"></a>新集合的设计</h3><p>新的集合$Y$为$X$的子集的集合（幂集），即$Y=2^X$。或将$i,j,k$视作一个线性空间的一组基，新的集合中元素定义为：</p>
 <script type="math/tex; mode=display">
 R=\sum_{i\in X}r_i\cdot i</script><p>其中$\alpha_i\in\{0,1\}$，0表示不选，1表示选。新的集合中共有$2^n$个元素。</p>
 <p>对新的集合定义各类运算：</p>
@@ -333,7 +339,7 @@ R=\sum_{i\in X}r_i\cdot i</script><p>其中$\alpha_i\in\{0,1\}$，0表示不选�
 <p>若新的集合$Y$中存在结合律，那么旧的集合$X$中也一定存在，这是由于$X$总为$Y$的一个特例。</p>
 <p>因此，$\circ$在$X$中存在结合律与在$Y$中存在结合律是等价的。</p>
 <h3 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h3><p>从集合$Y$中随机选择三元组$R,S,T$，检查是否有$(R\circ S)\circ T - R\circ(S\circ T)=0$。若否，输出“No”；若是，输出“Yes”。</p>
-<p>该算法的复杂度为$O(n^2)$，这是由于计算$R\circ S$需要$O(n^2)$的运行时间，因此计算上式左边需要$4O(n^2)$的运行时间，总共仍为$O(n^2)$。下面证明该算法的常数单边错误的。</p>
+<p>该算法的复杂度为$O(n^2)$，这是由于计算$R\circ S$需要$O(n^2)$的运行时间，因此计算上式左边需要$4O(n^2)$的运行时间，总共仍为$O(n^2)$。下面证明该算法是常数单边错误的。</p>
 <h3 id="错误率分析"><a href="#错误率分析" class="headerlink" title="错误率分析"></a>错误率分析</h3><p>下面证明：如果$\circ$不满足结合律，那么三元组$R,S,T$为witness的概率为$1/8$，或：</p>
 <script type="math/tex; mode=display">
 \Pr[(R\circ S)\circ T =R\circ (S\circ T) ]\leq \frac{7}{8}</script><p><strong>证明：</strong></p>
