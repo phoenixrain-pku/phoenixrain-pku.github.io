@@ -32,7 +32,7 @@
 <meta property="og:description" content="对于一个作用在有限集合$X$上的二元运算$\circ$，检验它是否满足结合律。 即：对于$\forall r,s,t\in X$，是否总有$(r\circ s)\circ t &#x3D; r\circ(s\cdot t)$？">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-08T12:10:34.000Z">
-<meta property="article:modified_time" content="2021-03-09T05:22:13.805Z">
+<meta property="article:modified_time" content="2021-03-15T03:55:37.408Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
@@ -283,7 +283,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-09 13:22:13" itemprop="dateModified" datetime="2021-03-09T13:22:13+08:00">2021-03-09</time>
+        <time title="Modified: 2021-03-15 11:55:37" itemprop="dateModified" datetime="2021-03-15T11:55:37+08:00">2021-03-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -352,7 +352,10 @@ R=\sum_{i\in X}r_i\cdot i</script><p>其中$\alpha_i\in\{0,1\}$，0表示不选�
 f:X^3\rightarrow X, f(r,s,t)=(r\circ s)\circ t - r\circ(s\cdot t)</script><script type="math/tex; mode=display">
 f:Y^3\rightarrow Y,f(R,S,T) = \sum_{r\in R, s \in S,t\in T}f(r,s,t) =(R\circ S)\circ T -R\circ (S\circ T)</script><p>利用<strong>容斥原理</strong>，可以将$f(r^{w},s^{w},t^{w})$用上述8个三元组$(R_i,S_j,T_k),i,j,k\in\{0,1\}$表示：</p>
 <script type="math/tex; mode=display">
-f(r^{w},s^{w},t^{w})=f(R_1,S_1,T_1)-f(R_0,S_1,T_1)-f(R_1,S_0,T_1)-f(R_1,S_1,T_0)\\+f(R_0,S_0,T_1)+f(R_0,S_1,T_0)+f(R_1,S_0,T_0)-f(R_0,S_0,T_0)</script><p>由于$(r^{w}\circ s^{w})\circ t^{w}\neq r^{w}\circ(s^{w}\circ t^{w})$，那么$f(r^{w},s^{w},t^{w})\neq 0$，因此上式右边的8个式子中必然有至少一个非0（若全为0则与等式左边非0矛盾），因此按照上述的划分方式，$Y^3$中的任何一组8个三元组中必有一个非0。</p>
+f(r^{w},s^{w},t^{w})=f(R_1,S_1,T_1)</script><script type="math/tex; mode=display">
+-f(R_0,S_1,T_1)-f(R_1,S_0,T_1)-f(R_1,S_1,T_0)</script><script type="math/tex; mode=display">
++f(R_0,S_0,T_1)+f(R_0,S_1,T_0)+f(R_1,S_0,T_0)</script><script type="math/tex; mode=display">
+-f(R_0,S_0,T_0)</script><p>由于$(r^{w}\circ s^{w})\circ t^{w}\neq r^{w}\circ(s^{w}\circ t^{w})$，那么$f(r^{w},s^{w},t^{w})\neq 0$，因此上式右边的8个式子中必然有至少一个非0（若全为0则与等式左边非0矛盾），因此按照上述的划分方式，$Y^3$中的任何一组8个三元组中必有一个非0。</p>
 <p>因此选到witness的概率至少为$1/8$，即出错率至多为$7/8$。</p>
 <p>回顾——前面提到的算法中，三元组$r,s,t$为witness的概率为$1/n^3$（或出错概率为$1-1/n^3$）。而该算法直接将出错率降到了常数。</p>
 
