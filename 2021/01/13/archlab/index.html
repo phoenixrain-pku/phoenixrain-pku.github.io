@@ -319,7 +319,7 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文是计算机组织与体系结构的作业报告。我把本报告放在这里，是为了展示，当代大学生对自己一个字都看不懂的东西，还能写出来自己一个字都看不懂的报告的能力。</p>
 <a id="more"></a>
-<p>本报告是基于论文Interstellar: Using Halide’s Scheduling Language to Analyze DNN Accelerators，对不同的dataflow模式对循环加速效果的探究。伴随着深度神经网络（DNN）正在包括自动驾驶、人脸识别、人脸检索和图像识别在内的各领域得到更加广泛地应用，业界对DNN加速器的需求也在不断增加。而DNN对算力的要求增长非常快，远超摩尔定律所预测的CPU集成度与性能的增长速度。因此，对DNN加速器的研究是非常重要的。</p>
+<p>本报告是基于论文Interstellar: Using Halide&#39;s Scheduling Language to Analyze DNN Accelerators，对不同的dataflow模式对循环加速效果的探究。伴随着深度神经网络（DNN）正在包括自动驾驶、人脸识别、人脸检索和图像识别在内的各领域得到更加广泛地应用，业界对DNN加速器的需求也在不断增加。而DNN对算力的要求增长非常快，远超摩尔定律所预测的CPU集成度与性能的增长速度。因此，对DNN加速器的研究是非常重要的。</p>
 <p>Interstellar对DNN加速空间分为3个维度。本报告只研究dataflow维度的加速效果。在dataflow维度，当将各类数据放到SRAM等片上global-buffer里面，如何将片上数据传输到并行的处理单元，以及如何在处理单元之间进行最大化的共享同样需要很多技巧和策略，实际上要探索的是将哪些数据放在PE上运算，及PE运算哪些数据的问题。本报告使用C++语言，实现了3种基于dataflow模式的循环处理方式的模拟器，并研究了不同模式下，各组件在计算时所需的周期数与能量消耗，即基本目标与额外目标1。</p>
 <h2 id="问题介绍"><a href="#问题介绍" class="headerlink" title="问题介绍"></a>问题介绍</h2><h3 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h3><p>近些年来机器学习已经渗透到社会的方方面面，对日常生活产生了广泛影响。为了使得机器学习模型达到足够高的精度，常用的方法是提高模型自身的复杂度以及采用更大规模的训练数据集。然而这使得模型训练成为一个非常耗时的工作。</p>
 <p>而根据摩尔定律对计算硬件算力增长的预测，集成电路上可容纳的元器件的数目，约每隔18-24个月便会增加一倍，性能也将提升一倍。但与此同时，机器学习的模型复杂度与数据规模的增长的速度远超过硬件的算力增长速度。</p>
@@ -406,8 +406,8 @@
 <p>即feature map的size为16*16，卷积的kernel size为3*3，batch size为3，输入与输出的channel number分别为64与128，PE的大小设为4*4。实际上，这些都可以根据实验需要进行修改。</p>
 <p>register file的size从16B到512B，对应的SRAM的size从32KB到512KB，并依此计算对应的能耗。</p>
 <h3 id="实验结果-1"><a href="#实验结果-1" class="headerlink" title="实验结果"></a>实验结果</h3><p>详细的实验结构展示在附件re.txt中。以使用Output Stationary data flow，RF size = 16 B，SRAM size = 32KB为例，实验结果的格式如下：</p>
-<p>—————-begin data flow mode:(X, Y)—————-</p>
-<p>—————-RF SIZE: 16B and SRAM SIZE: 32KB—————-</p>
+<p>-----------begin data flow mode:(X, Y)-----------</p>
+<p>-----------RF SIZE: 16B and SRAM SIZE: 32KB-----------</p>
 <p>Output Stationary: Cycle</p>
 <p>MAC: 4718592</p>
 <p>GLB read: 80478208</p>
@@ -428,7 +428,7 @@
 <p>register file write: 6.7987e+06</p>
 <p>scatter: 1.51257e+10</p>
 <p>broadcast: 2.64241e+06</p>
-<p>—————-end data flow mode:(X, Y)—————-</p>
+<p>-----------end data flow mode:(X, Y)-----------</p>
 <p>附件中给出了详细的涉及各个组件的周期数与能量消耗的实验结果。</p>
 <p>实验结果与理论分析保持一致。</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>在本次lab中，我主要实现了文献中所介绍的3种data flow模式对CNN的七层循环计算方式的影响，并自己实现了3种不同的循环展开撰写方式，体会了这些不同模式对计算组件的执行周期数与能量消耗的影响。</p>

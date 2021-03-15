@@ -308,7 +308,7 @@
     <div class="post-body" itemprop="articleBody">
         <p>本文是对MIP*=RE<a href="#refer-anchor-1"><sup>1</sup></a>一文的初步梳理, 较少涉及详细的技术细节. 自从这篇文章于2020年初被发表后, 我一直非常想试图阅读, 但总无法提起勇气. 这次由于种种机缘巧合, 我简略阅读了此文, 并参考一些阅读笔记, 记录下文章思路脉络以及重要的结论.</p>
 <a id="more"></a>
-<h2 id="什么是MIP"><a href="#什么是MIP" class="headerlink" title="什么是MIP*"></a>什么是MIP*</h2><p>MIP*意为”多方量子交互式证明”, 其协议可以被称为non-local games, 或者entangled games. 这部分的详细介绍参见原文的第五章.</p>
+<h2 id="什么是MIP"><a href="#什么是MIP" class="headerlink" title="什么是MIP*"></a>什么是MIP*</h2><p>MIP*意为&quot;多方量子交互式证明&quot;, 其协议可以被称为non-local games, 或者entangled games. 这部分的详细介绍参见原文的第五章.</p>
 <h3 id="经典的Non-local-Game"><a href="#经典的Non-local-Game" class="headerlink" title="经典的Non-local Game"></a>经典的Non-local Game</h3><p>Non-local game $G$: 通常用一个裁判 (验证者) 和多个玩家 (证明者) 来描述. 不失一般性, 假设玩家数量为2.</p>
 <p>该问题的原始定义如下: $\mathcal G=(\mathcal X,\mathcal Y,\mathcal A,\mathcal B,\mu,D)$, 其中:</p>
 <ul>
@@ -340,7 +340,7 @@ A=\{X_s^a\}_{a\in \mathcal A, s\in \mathcal S}, B=\{Y_t^b\}_{b\in \mathcal B, t\
 w_\mathcal{G}^q = \sum_{s,t}\pi(s,t)\sum_{a,b}\langle\psi|X_s^a\otimes Y_t^b|\psi\rangle V(a,b|s,t)</script><p>一个结论:</p>
 <script type="math/tex; mode=display">
 w_{\mathcal G} = \frac{3}{4}<\frac{2+\sqrt{2}}{4} = w_{\mathcal {G}}^q</script><p>即纠缠的游戏中, 玩家的获胜率约为0.85, 高于经典的游戏.</p>
-<h3 id="由Non-local-Game引申的定义"><a href="#由Non-local-Game引申的定义" class="headerlink" title="由Non-local Game引申的定义"></a>由Non-local Game引申的定义</h3><p>上面介绍了最基本的两种Non-local Game. 下面类比在经典计算理论中的一系列”复杂性类”的定义, 定义出该问题的一系列复杂性类. 以下的”量子关联集合”, 全部定义为满足特定结构的$(|\psi\rangle, \{X_s^a\},\{Y_t^b\})$.</p>
+<h3 id="由Non-local-Game引申的定义"><a href="#由Non-local-Game引申的定义" class="headerlink" title="由Non-local Game引申的定义"></a>由Non-local Game引申的定义</h3><p>上面介绍了最基本的两种Non-local Game. 下面类比在经典计算理论中的一系列&quot;复杂性类&quot;的定义, 定义出该问题的一系列复杂性类. 以下的&quot;量子关联集合&quot;, 全部定义为满足特定结构的$(|\psi\rangle, \{X_s^a\},\{Y_t^b\})$.</p>
 <ul>
 <li><p>$\mathcal H_A, \mathcal H_B$ 都是有限维度的希尔伯特空间, 两个玩家共享纠缠态 $|\psi\rangle \in \mathcal H_A\otimes \mathcal H_B$, 两个玩家的策略 $\{X_s^a\}$ 与 $\{Y_t^b\}$ 分别定义在 $\mathcal H_A$ 与 $\mathcal H_B$ 上. 这样的量子关联集合记为 $C_q$.</p>
 </li>
@@ -373,8 +373,8 @@ C_q\subsetneq C_{qs}\subsetneq C_{qa}\subseteq C_{qc}</script><p>Tsirelson问题
 <li>MIP*: 当证明者之间共享任意的纠缠时, 判定 $C_{qs} \cup C_{qa} \cup C_{qc}$量子交互式证明系统的最大获胜概率对应的复杂性类称作MIP*.</li>
 </ul>
 <h2 id="什么是RE"><a href="#什么是RE" class="headerlink" title="什么是RE"></a>什么是RE</h2><h3 id="图灵机"><a href="#图灵机" class="headerlink" title="图灵机"></a>图灵机</h3><p>图灵机是一种计算模型, 其定义省略. </p>
-<p>邱奇－图灵论题 (Church–Turing Thesis) 给出了一个重要的假说: 任何在算法上可计算的问题同样可由图灵机计算, 即任何的算法可以用一台图灵机模拟. 这个论题虽仍不能用公式证明, 但已接近完全, 可被认为是”可计算”的一个公理.</p>
-<h3 id="图灵可识别"><a href="#图灵可识别" class="headerlink" title="图灵可识别"></a>图灵可识别</h3><p>而何为”递归”? 任何算法都可以被一个图灵机 $M$ 所描述. 判断图灵机是否停机的办法为: 运行一步看是否停机, 若不停机再运行一步, 若不停机再运行一步, 以此类推. 若图灵机能停机, 就总有一步会停, 但也有可能永远不停. 这样的尝试过程就是递归, 其复杂性类即为RE.</p>
+<p>邱奇－图灵论题 (Church–Turing Thesis) 给出了一个重要的假说: 任何在算法上可计算的问题同样可由图灵机计算, 即任何的算法可以用一台图灵机模拟. 这个论题虽仍不能用公式证明, 但已接近完全, 可被认为是&quot;可计算&quot;的一个公理.</p>
+<h3 id="图灵可识别"><a href="#图灵可识别" class="headerlink" title="图灵可识别"></a>图灵可识别</h3><p>而何为&quot;递归&quot;? 任何算法都可以被一个图灵机 $M$ 所描述. 判断图灵机是否停机的办法为: 运行一步看是否停机, 若不停机再运行一步, 若不停机再运行一步, 以此类推. 若图灵机能停机, 就总有一步会停, 但也有可能永远不停. 这样的尝试过程就是递归, 其复杂性类即为RE.</p>
 <p>RE是递归可枚举 (Recursively Enumerate), 递归可枚举是等价于图灵可识别的.</p>
 <p>对于集合 $X$, 若 $X$ 是递归可枚举集,  那么存在一台图灵机 $M$, 对于 $\forall x\in X$, 若在 $ x$ 上运行 $M$, $M$ 一定在有限步内停机并接受. 对于 $\forall x \notin X$, 若在 $x$ 上运行 $M$, $M$要么在有限步内停机并拒绝, 要么不停机.</p>
 <p>更详细的定义或性质可以任意参考关于经典计算复杂性理论的文章中找到.</p>
