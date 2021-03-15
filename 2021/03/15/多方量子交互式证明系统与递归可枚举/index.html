@@ -24,15 +24,15 @@
     var CONFIG = {"hostname":"phoenixrain-pku.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="本文是对MIP*&#x3D;RE1一文的初步梳理, 较少涉及详细的技术细节. 自从这篇文章于2020年初被发表后, 我一直非常想试图阅读, 但总无法提起勇气. 这次由于种种机缘巧合, 我简略阅读了此文, 并参考一些阅读笔记, 记录下文章思路脉络以及重要的结论. 什么是MIP*MIP*意为”多方量子交互式证明”, 其协议可以被称为non-local games, 或者entangled games. 这部分的">
+  <meta name="description" content="本文是对MIP*&#x3D;RE1一文的初步梳理, 较少涉及详细的技术细节. 自从这篇文章于2020年初被发表后, 我一直非常想试图阅读, 但总无法提起勇气. 这次由于种种机缘巧合, 我简略阅读了此文, 并参考一些阅读笔记, 记录下文章思路脉络以及重要的结论.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多方量子交互式证明系统与递归可枚举">
+<meta property="og:title" content="MIP\*与RE (多方量子交互式证明系统与递归可枚举)">
 <meta property="og:url" content="https://phoenixrain-pku.github.io/2021/03/15/%E5%A4%9A%E6%96%B9%E9%87%8F%E5%AD%90%E4%BA%A4%E4%BA%92%E5%BC%8F%E8%AF%81%E6%98%8E%E7%B3%BB%E7%BB%9F%E4%B8%8E%E9%80%92%E5%BD%92%E5%8F%AF%E6%9E%9A%E4%B8%BE/index.html">
 <meta property="og:site_name" content="Phoenix Rain">
-<meta property="og:description" content="本文是对MIP*&#x3D;RE1一文的初步梳理, 较少涉及详细的技术细节. 自从这篇文章于2020年初被发表后, 我一直非常想试图阅读, 但总无法提起勇气. 这次由于种种机缘巧合, 我简略阅读了此文, 并参考一些阅读笔记, 记录下文章思路脉络以及重要的结论. 什么是MIP*MIP*意为”多方量子交互式证明”, 其协议可以被称为non-local games, 或者entangled games. 这部分的">
+<meta property="og:description" content="本文是对MIP*&#x3D;RE1一文的初步梳理, 较少涉及详细的技术细节. 自从这篇文章于2020年初被发表后, 我一直非常想试图阅读, 但总无法提起勇气. 这次由于种种机缘巧合, 我简略阅读了此文, 并参考一些阅读笔记, 记录下文章思路脉络以及重要的结论.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-15T07:03:07.000Z">
-<meta property="article:modified_time" content="2021-03-15T11:00:22.496Z">
+<meta property="article:modified_time" content="2021-03-15T11:03:36.250Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>多方量子交互式证明系统与递归可枚举 | Phoenix Rain</title>
+  <title>MIP\*与RE (多方量子交互式证明系统与递归可枚举) | Phoenix Rain</title>
   
 
 
@@ -265,7 +265,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          多方量子交互式证明系统与递归可枚举
+          MIP\*与RE (多方量子交互式证明系统与递归可枚举)
         </h1>
 
         <div class="post-meta-container">
@@ -277,7 +277,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-03-15 15:03:07 / Modified: 19:00:22" itemprop="dateCreated datePublished" datetime="2021-03-15T15:03:07+08:00">2021-03-15</time>
+      <time title="Created: 2021-03-15 15:03:07 / Modified: 19:03:36" itemprop="dateCreated datePublished" datetime="2021-03-15T15:03:07+08:00">2021-03-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,6 +307,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>本文是对MIP*=RE<a href="#refer-anchor-1"><sup>1</sup></a>一文的初步梳理, 较少涉及详细的技术细节. 自从这篇文章于2020年初被发表后, 我一直非常想试图阅读, 但总无法提起勇气. 这次由于种种机缘巧合, 我简略阅读了此文, 并参考一些阅读笔记, 记录下文章思路脉络以及重要的结论.</p>
+<a id="more"></a>
 <h2 id="什么是MIP"><a href="#什么是MIP" class="headerlink" title="什么是MIP*"></a>什么是MIP*</h2><p>MIP*意为”多方量子交互式证明”, 其协议可以被称为non-local games, 或者entangled games. 这部分的详细介绍参见原文的第五章.</p>
 <h3 id="经典的Non-local-Game"><a href="#经典的Non-local-Game" class="headerlink" title="经典的Non-local Game"></a>经典的Non-local Game</h3><p>Non-local game $G$: 通常用一个裁判 (验证者) 和多个玩家 (证明者) 来描述. 不失一般性, 假设玩家数量为2.</p>
 <p>该问题的原始定义如下: $\mathcal G=(\mathcal X,\mathcal Y,\mathcal A,\mathcal B,\mu,D)$, 其中:</p>
