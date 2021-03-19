@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://s4.ax1x.com/2021/03/19/6WqiKe.png">
 <meta property="og:image" content="https://s4.ax1x.com/2021/03/19/6WLiWV.png">
 <meta property="article:published_time" content="2021-03-19T10:18:36.000Z">
-<meta property="article:modified_time" content="2021-03-19T10:19:54.428Z">
+<meta property="article:modified_time" content="2021-03-19T10:24:09.168Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
@@ -284,7 +284,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-03-19 18:18:36 / Modified: 18:19:54" itemprop="dateCreated datePublished" datetime="2021-03-19T18:18:36+08:00">2021-03-19</time>
+      <time title="Created: 2021-03-19 18:18:36 / Modified: 18:24:09" itemprop="dateCreated datePublished" datetime="2021-03-19T18:18:36+08:00">2021-03-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -322,7 +322,7 @@
 <p><img src="https://s4.ax1x.com/2021/03/19/6WamLR.png" alt="6WamLR.png" style="zoom: 50%;" /></p>
 <p>如果说一个人满足了&quot;友谊悖论&quot;, 当且仅当在图 $G$ 中, 他所对应的顶点 $v$ 满足</p>
 <script type="math/tex; mode=display">
-d(v)<\frac{\sum_{u\in V} d(u)\mathbf{1}_E((u,v))}{d(v)}</script><p>这里 $\mathbf{1}_A(x)$ 为指示函数, $\mathbf{1}_A(x)=\left\{<br>             \begin{array}{<strong>lr</strong>}<br>            1&amp;  x\in A\\<br>             0 &amp; x\notin A\end{array}<br>\right.  $.</p>
+d(v)<\frac{\sum_{u\in V} d(u)\mathbf{1}_E((u,v))}{d(v)}</script><p>这里 $\mathbf{1}_A(x)$ 为指示函数, $\mathbf{1}_A(x)=\left\{\begin{array}{<strong>lr</strong>}  1&amp;  x\in A\\ 0 &amp; x\notin A\end{array}\right.  $.</p>
 <p>那么对于社交网络中的所有人, 其平均朋友个数即为图 $G$ 所有点的平均度数, 应当为</p>
 <script type="math/tex; mode=display">
 \overline n=\frac{\sum_{v\in V}d(v)}{|V|} = 2\frac{|V|}{|E|}</script><p>下面随机选择一个人 $v$, 然后估算他朋友的平均朋友数量.</p>
@@ -347,9 +347,11 @@ d(v)<\frac{\sum_{u\in V} d(u)\mathbf{1}_E((u,v))}{d(v)}</script><p>这里 $\math
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX_N; ++i)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= INI_N; ++j)</span><br><span class="line">    &#123;</span><br><span class="line">        m[i][(i + j)%MAX_N] = <span class="number">1</span>;</span><br><span class="line">        m[(i + j)%MAX_N][i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 按设定的规律添加边</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">changeEdge</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> total = MAX_N * INI_N * CHANGE_R;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; total; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">		&#123;	<span class="keyword">int</span> changeI = rand() % MAX_N;</span><br><span class="line">			<span class="keyword">int</span> changeJ = rand() % MAX_N;</span><br><span class="line">			<span class="keyword">if</span> (m[changeI][changeJ])</span><br><span class="line">			&#123;</span><br><span class="line">				cutEdge(changeI, changeJ); <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> changeI = rand() % MAX_N;</span><br><span class="line">			<span class="keyword">int</span> changeJ = rand() % MAX_N;</span><br><span class="line">			<span class="keyword">if</span> (!m[changeI][changeJ])</span><br><span class="line">			&#123;</span><br><span class="line">				addEdge(changeI, changeJ); <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 随机删除旧边并添加新边</span></span><br></pre></td></tr></table></figure>
 <p>下面的两张图展示了调整前与调整后的网络. 为了方便绘图, 我们将节点数设置较少. 这里 $(n,p,r)=(15,4,0.35)$. </p>
 <p><img src="https://s4.ax1x.com/2021/03/19/6WfvND.jpg" alt="6WfvND.jpg" style="zoom:50%;" /></p>
-<p><center>调整前</p>
+<center>调整前</center>
+
 <p><img src="C:\Users\lenovo\Desktop\notesSpring\通过模拟社会网络验证友谊悖论.assets\6WhzZV.jpg" alt="6WhzZV.jpg" style="zoom:50%;" /></p>
-<p><center> 调整后</p>
+<center> 调整后</center>
+
 <p>可以看出, 调整前网络整体非常均匀, 每个节点的度数都相等, 且关系特征明显; 调整后则不均匀度显著增大.</p>
 <h4 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h4><p>该网络中共有三个参数: 节点数量 (总人数) $n$, 每个节点的初始度数 (每个人的初始朋友数量) $d = 2r$, 调整边占比 $p$. </p>
 <p>注意这里 $d$ 和 $r$ 的区别. 每个节点&quot;主动&quot;与 $r$ 个节点连边, 又会&quot;被动&quot;与 $r$ 个节点连边, 因此每个节点的度数实际为 $2r$. </p>
