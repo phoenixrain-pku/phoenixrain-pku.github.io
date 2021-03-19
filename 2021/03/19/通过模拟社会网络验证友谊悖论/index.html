@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"phoenixrain-pku.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="友谊悖论简介友谊悖论是一种社会现象, 指大多数人认为, 自己的朋友比自己拥有更多的朋友. 该社会现象由社会学家斯科特·L·菲尔德 (Scott L. Feld) 于1991年首次观察到。">
+  <meta name="description" content="为什么你的朋友总看起来比你更受欢迎?">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过模拟社会网络验证友谊悖论">
 <meta property="og:url" content="https://phoenixrain-pku.github.io/2021/03/19/%E9%80%9A%E8%BF%87%E6%A8%A1%E6%8B%9F%E7%A4%BE%E4%BC%9A%E7%BD%91%E7%BB%9C%E9%AA%8C%E8%AF%81%E5%8F%8B%E8%B0%8A%E6%82%96%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Phoenix Rain">
-<meta property="og:description" content="友谊悖论简介友谊悖论是一种社会现象, 指大多数人认为, 自己的朋友比自己拥有更多的朋友. 该社会现象由社会学家斯科特·L·菲尔德 (Scott L. Feld) 于1991年首次观察到。">
+<meta property="og:description" content="为什么你的朋友总看起来比你更受欢迎?">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s4.ax1x.com/2021/03/19/6WamLR.png">
 <meta property="og:image" content="https://s4.ax1x.com/2021/03/19/6WfvND.jpg">
@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://s4.ax1x.com/2021/03/19/6fFWbq.png">
 <meta property="og:image" content="https://s4.ax1x.com/2021/03/19/6fksdx.png">
 <meta property="article:published_time" content="2021-03-19T10:18:36.000Z">
-<meta property="article:modified_time" content="2021-03-19T12:11:24.727Z">
+<meta property="article:modified_time" content="2021-03-19T12:20:20.031Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
@@ -287,7 +287,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-03-19 18:18:36 / Modified: 20:11:24" itemprop="dateCreated datePublished" datetime="2021-03-19T18:18:36+08:00">2021-03-19</time>
+      <time title="Created: 2021-03-19 18:18:36 / Modified: 20:20:20" itemprop="dateCreated datePublished" datetime="2021-03-19T18:18:36+08:00">2021-03-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -316,8 +316,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="友谊悖论简介"><a href="#友谊悖论简介" class="headerlink" title="友谊悖论简介"></a>友谊悖论简介</h2><p>友谊悖论是一种社会现象, 指大多数人认为, 自己的朋友比自己拥有更多的朋友. 该社会现象由社会学家斯科特·L·菲尔德 (Scott L. Feld) 于1991年首次观察到。</p>
+        <p>为什么你的朋友总看起来比你更受欢迎?</p>
 <a id="more"></a>
+<h2 id="友谊悖论简介"><a href="#友谊悖论简介" class="headerlink" title="友谊悖论简介"></a>友谊悖论简介</h2><p>友谊悖论是一种社会现象, 指大多数人认为, 自己的朋友比自己拥有更多的朋友. 该社会现象由社会学家斯科特·L·菲尔德 (Scott L. Feld) 于1991年首次观察到。</p>
 <p>这一现象可以直观上解释为抽样偏差的一种表现形式, 即一个人如果本身拥有较多朋友, 那么这个人更有可能同时也是自己的朋友; 而一个人如果本身朋友就很少, 那么这个人和自己成为朋友的可能也会较小.</p>
 <p>这样的社会现象也常常出现在其他场合, 如学术圈内, 大多数人认为, 自己的合作者比自己发表了更多的论文; 再如社交媒体上, 大多数人认为, 自己关注的人比自己拥有更多的粉丝.</p>
 <h2 id="理论分析"><a href="#理论分析" class="headerlink" title="理论分析"></a>理论分析</h2><p>我们用图论的方法来对这一现象进行分析. 将社交网络用一张无向图 $G=(V,E)$ 来表示, 其中 $V$ 为图中的节点集, 表示社交网络中的人; $E$ 为图中的边集, 表示社交网络中的人际关系. 两个人 $i$ 与 $j$ 是朋友当且仅当 $i,j\in V$ 且 $(i,j)\in E$, 即在图 $G$ 中节点 $i$ 和节点 $j$ 之间存在边. 定义 $d(v)$ 为节点的度, 即与它相连的节点个数, 对应着表示一个人的朋友个数. </p>
@@ -411,11 +412,14 @@ R =
 <p>在该网络模型中, 满足&quot;友谊悖论&quot;的人数占比较高于前一种模型, 是因为该网络的随机性更大, 并没有像上一种网络, 最开始就给大家分配好 $2\cdot r$ 个朋友, 再让整个网络进行演化, 而是只给每个人 $r$ 此交友机会, 因此朋友数量的方差较上一种网络会更大.</p>
 <h3 id="总结与思考"><a href="#总结与思考" class="headerlink" title="总结与思考"></a>总结与思考</h3><p>不论是从理论分析还是从模拟实验, 我们都会看到, &quot;友谊悖论&quot;的现象是存在的, 虽然整体上占比并不大 (大概在 $60\%$ 左右), 但也已经符合&quot;大多数&quot;人的定义. 因此, 感到自己的朋友似乎更受欢迎, 或有更会交友, 是很正常的一个现象. 因此与其为这种抽样偏差的结果所沮丧, 不如做好自己, 或者鼓起勇气, 多多主动结交有趣的人.</p>
 <p>而在模拟实验中, 我所构造的社会网络也是最简单的两种形式, 一种是从确定的状态出发进行演化, 一种是从互不认识的状态开始随机交友, 这都是非常简单的模型. 实际上的社交网络模型会比这更复杂得多: 如我所采用的第二种模型, 不同性格的人也许交友意愿完全不同, 有的人愿意更多发出交友请求, 有的人则更内向与被动. 且交友往往也不是纯随机的过程: 如三元闭包原理告诉我们, 拥有共同朋友的人也往往会成为朋友. 因此, 本研究还有更多值得探索的方向, 可以尝试构造更复杂的社交网络. 目前的几个设想如下:</p>
-<ol>
-<li>在随机型网络的基础上加入更多参数, 如每个人的主动交友数量的概率分布;</li>
-<li>随机生成特定的网络后, 利用一系列增强手段添加或减少边 (甚至可以考虑图神经网络来完成增强), 而非只是随机删减边;</li>
-<li>采用全新的网络生成思路, 如为每个节点构造各个属性值 (兴趣爱好, 居住地, 教育背景等), 使用聚类的方法生成网络.</li>
-</ol>
+<ul>
+<li><p>在随机型网络的基础上加入更多参数, 如每个人的主动交友数量的概率分布;</p>
+</li>
+<li><p>随机生成特定的网络后, 利用一系列增强手段添加或减少边 (甚至可以考虑图神经网络来完成增强), 而非只是随机删减边;</p>
+</li>
+<li><p>采用全新的网络生成思路, 如为每个节点构造各个属性值 (兴趣爱好, 居住地, 教育背景等), 使用聚类的方法生成网络.</p>
+</li>
+</ul>
 <p>因此, 友谊悖论的验证问题还有很多可以深入探讨.</p>
 
     </div>
