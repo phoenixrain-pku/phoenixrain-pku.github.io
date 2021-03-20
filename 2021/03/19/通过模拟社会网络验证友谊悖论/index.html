@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://s4.ax1x.com/2021/03/19/6fFWbq.png">
 <meta property="og:image" content="https://s4.ax1x.com/2021/03/19/6fksdx.png">
 <meta property="article:published_time" content="2021-03-19T10:18:36.000Z">
-<meta property="article:modified_time" content="2021-03-19T12:20:20.031Z">
+<meta property="article:modified_time" content="2021-03-20T03:44:33.257Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
@@ -285,10 +285,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-03-19 18:18:36 / Modified: 20:20:20" itemprop="dateCreated datePublished" datetime="2021-03-19T18:18:36+08:00">2021-03-19</time>
+      <time title="Created: 2021-03-19 18:18:36" itemprop="dateCreated datePublished" datetime="2021-03-19T18:18:36+08:00">2021-03-19</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-20 11:44:33" itemprop="dateModified" datetime="2021-03-20T11:44:33+08:00">2021-03-20</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -346,11 +352,11 @@ d(v)<\frac{\sum_{u\in V} d(u)\mathbf{1}_E((u,v))}{d(v)}</script><p>这里 $\math
 <p>这里我们使用了两种网络模型. 第一种是初始规则度数 $r$, 随机删除占比 $p$ 的边, 再随机添加占比 $p$ 的边. 我们称之为调整型网络. 第二种是直接让每个人随机选择一部分人成为自己的朋友. 我们称之为纯随机型网络. </p>
 <p>我们使用 C++ 完成网络构造与友谊悖论的验证过程, 用 python 绘制直观的社交网络图.</p>
 <h3 id="调整型网络"><a href="#调整型网络" class="headerlink" title="调整型网络"></a>调整型网络</h3><h4 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h4><p>在该模型中, 社会网络的生成共分为三步.</p>
-<ol>
+<ul>
 <li>生成 $n$ 个节点.</li>
 <li>按指定的规律, 让每个节点和一部分节点连上边 (即每个人和一部分人成为朋友). 第 $i$ 个节点和第 $i+1,i+2,\cdots, i+r$个节点连边, 其中加法都在模 $n$ 的意义下进行.</li>
 <li>在总共 $n\cdot r$ 条边随机选择占比为 $p$ 的边删除, 并将每条删掉的边, 随机选则新的边替代. 最终总边数仍为 $n\cdot r$.</li>
-</ol>
+</ul>
 <p>这样的社交网络可以设想为这样的社会场景: 初始状态下每个人有一部分自己的朋友, 且大家的朋友分布有一定的规律性, 非常均匀. 而在网络随着时间演化的过程中, 人们随机结交新的朋友, 与过去的部分朋友逐渐断开联系, 这使得网络逐渐趋于不均匀.</p>
 <p>该网络的两个主要函数如下:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX_N; ++i)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= INI_N; ++j)</span><br><span class="line">    &#123;</span><br><span class="line">        m[i][(i + j)%MAX_N] = <span class="number">1</span>;</span><br><span class="line">        m[(i + j)%MAX_N][i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 按设定的规律添加边</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">changeEdge</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> total = MAX_N * INI_N * CHANGE_R;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; total; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">		&#123;	<span class="keyword">int</span> changeI = rand() % MAX_N;</span><br><span class="line">			<span class="keyword">int</span> changeJ = rand() % MAX_N;</span><br><span class="line">			<span class="keyword">if</span> (m[changeI][changeJ])</span><br><span class="line">			&#123;</span><br><span class="line">				cutEdge(changeI, changeJ); <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> changeI = rand() % MAX_N;</span><br><span class="line">			<span class="keyword">int</span> changeJ = rand() % MAX_N;</span><br><span class="line">			<span class="keyword">if</span> (!m[changeI][changeJ])</span><br><span class="line">			&#123;</span><br><span class="line">				addEdge(changeI, changeJ); <span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 随机删除旧边并添加新边</span></span><br></pre></td></tr></table></figure>
@@ -380,10 +386,10 @@ R =
 <p><img src="https://s4.ax1x.com/2021/03/19/6WLiWV.png" alt="6WLiWV.png" style="zoom:67%;" /></p>
 <p>可以看到, 满足&quot;友谊悖论&quot;的人数占比呈现出递增趋势, 从最开始的不高于 $0.5$, 最终上升到 $0.65$. 这是因为随着调整的占比增大, 图的随机性越来越强.</p>
 <h3 id="随机型网络"><a href="#随机型网络" class="headerlink" title="随机型网络"></a>随机型网络</h3><h4 id="网络模型-1"><a href="#网络模型-1" class="headerlink" title="网络模型"></a>网络模型</h4><p>在该模型中, 社会网络的生成共分为两步.</p>
-<ol>
+<ul>
 <li>生成 $n$ 个节点.</li>
 <li>每个节点和随机选择 $r$ 个节点 ( $r$ 是固定的), 并与之连上边 (即每个人和随机和一定数量的人成为朋友). </li>
-</ol>
+</ul>
 <p>这样的社交网络可以设想为这样的社会场景: 初始状态下所有人互不认识, 每个人随机地选择和一些人成为朋友. 注意这样的交友活动是一方发出与另一方接受, 且我们假设只要发出交友请求, 就一定会被接受. 这使得每个人发出一次请求, 就可以获得一个朋友关系. 每个人发出的请求数量是固定的, 即每个人都可以主动交固定数量的朋友. </p>
 <p>注意, 朋友关系的形成有可能为一方主动一方接受, 也有可能为两方都主动都接受, 即 $i$ 向 $j$ 发出了朋友请求, $j$ 也向 $i$ 发出了朋友请求. 这种情况是被允许的.</p>
 <p>直觉与经验告诉我们, 这样的社交网络中, 所有人的朋友数量应当是符合正态分布的: 即必定有少部分人&quot;受欢迎&quot;, 最终的朋友数量很多; 而也有少部分人&quot;被冷落&quot;, 最终的朋友数量很少; 但大多数人的朋友数量不多不少, 接近平均水平. 这个模型与现实更为接近. 下面对该现象进行数学分析.</p>
