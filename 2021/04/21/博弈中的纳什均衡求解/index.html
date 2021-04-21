@@ -32,7 +32,7 @@
 <meta property="og:description" content="纳什均衡简介纳什均衡指在一个博弈过程中的策略组合, 满足这样的性质: 对任意一位参与者而言, 在其他所有参与者的策略确定的情况下, 该参与者选择的策略是最优的. 纳什均衡还可以被理解为: 在该策略组合上, 任何参与人单独改变策略都不会得到好处. 如果在一个策略组合上, 当所有其他人都不改变策略时, 没有人会主动改变自己的策略, 这个策略组合即为纳什均衡. 本文接下来会从数学角度对此问题进行分析,">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-21T03:06:52.000Z">
-<meta property="article:modified_time" content="2021-04-21T03:17:29.324Z">
+<meta property="article:modified_time" content="2021-04-21T03:22:18.233Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
@@ -277,7 +277,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-21 11:06:52 / Modified: 11:17:29" itemprop="dateCreated datePublished" datetime="2021-04-21T11:06:52+08:00">2021-04-21</time>
+      <time title="Created: 2021-04-21 11:06:52 / Modified: 11:22:18" itemprop="dateCreated datePublished" datetime="2021-04-21T11:06:52+08:00">2021-04-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -322,11 +322,11 @@
 <p>$R$ 与 $C$ 的收益期望分别为: $p^TAq$ 与 $p^TBq$.</p>
 <h4 id="纳什均衡-Nash-39-s-Equilibrium"><a href="#纳什均衡-Nash-39-s-Equilibrium" class="headerlink" title="纳什均衡 (Nash&#39;s Equilibrium)"></a>纳什均衡 (Nash&#39;s Equilibrium)</h4><p>对于纯策略矩阵博弈和混合策略矩阵博弈, 都存在纳什均衡 (Nash&#39;s equilibrium) 的概念.</p>
 <p>对于纯策略矩阵博弈而言, 对于某个策略组合, 如果其他人不改变策略, 任何一个人单独改变自己的策略都不会得到任何好处, 那么也不会改变策略. 那么称这个组合为纳什均衡.</p>
-<p>对于混合策略矩阵博弈而言, 如果存在 $R$ 与 $C$ 的混合策略 $p^{<em>}$ 和 $q^{</em>}$, 满足如下条件:</p>
+<p>对于混合策略矩阵博弈而言, 如果存在 $R$ 与 $C$ 的混合策略 $p^{0}$ 和 $q^{0}$, 满足如下条件:</p>
 <script type="math/tex; mode=display">
-\forall p,p^TAq^*\leq p^{*T}Aq^*,</script><p>且</p>
+\forall p,p^TAq^*\leq p^{0T}Aq^*,</script><p>且</p>
 <script type="math/tex; mode=display">
-\forall q,p^{*T}Aq\leq p^{*T}Aq^*.</script><p>那么称这个策略的组合为纳什均衡.</p>
+\forall q,p^{0T}Aq\leq p^{0T}Aq^*.</script><p>那么称这个策略的组合为纳什均衡.</p>
 <h3 id="纳什均衡存在性"><a href="#纳什均衡存在性" class="headerlink" title="纳什均衡存在性"></a>纳什均衡存在性</h3><p>对于任何一个矩阵博弈, 有可能存在纯策略的纳什均衡点, 一定存在混合策略的纳什均衡点.</p>
 <p>下面给出几个例子说明纯策略纳什均衡点的存在情况.</p>
 <p>情况1: 有且仅有一个纳什均衡点. </p>
@@ -420,18 +420,18 @@
 p'_i=\frac{p_i+c_i(p,q)}{1+\sum_{j=0}^{n-1}c_j(p,q)},\quad q'_i=\frac{q_i+d_i(p,q)}{1+\sum_{j=0}^{m-1}d_j(p,q)}.</script><p>那么 $f$ 实际上是 $S^m\times S^n\rightarrow S^m\times S^n$ 的映射. 注意, 此处 $S^m\times S^n$ 是一个凸集且是一个紧集. 因此可以使用引理<strong>不动点定理</strong>.</p>
 <h4 id="不动点定理-Brouwer-39-s-Fixed-point-Theorem"><a href="#不动点定理-Brouwer-39-s-Fixed-point-Theorem" class="headerlink" title="不动点定理 (Brouwer&#39;s Fixed-point Theorem)"></a>不动点定理 (Brouwer&#39;s Fixed-point Theorem)</h4><p>现有一个集合 $B\subset R^d$, 它是一个凸集且是一个紧集. 对于一个连续的映射: $f:B\rightarrow B$, 一定存在 $x\in B$ 满足 $x=f(x)$.</p>
 <p>证明略去.</p>
-<p>那么根据不动点定理, 对于上述的映射 $f$, 一定存在一个不动点 $(p^{<em>},q^{</em>})$, 满足 $f(p^{<em>},q^{</em>})=(p^{<em>},q^{</em>})$. 下面证明这个不动点即是该矩阵博弈的纳什均衡点.</p>
-<h4 id="不动点与纳什均衡点"><a href="#不动点与纳什均衡点" class="headerlink" title="不动点与纳什均衡点"></a>不动点与纳什均衡点</h4><p>下面证明不动点 $(p^{<em>},q^{</em>})$ 就是纳什均衡点.</p>
+<p>那么根据不动点定理, 对于上述的映射 $f$, 一定存在一个不动点 $(p^{0},q^{0})$, 满足 $f(p^{0},q^{0})=(p^{0},q^{0})$. 下面证明这个不动点即是该矩阵博弈的纳什均衡点.</p>
+<h4 id="不动点与纳什均衡点"><a href="#不动点与纳什均衡点" class="headerlink" title="不动点与纳什均衡点"></a>不动点与纳什均衡点</h4><p>下面证明不动点 $(p^{0},q^{0})$ 就是纳什均衡点.</p>
 <p>如果某个点是纳什均衡点, 那么所有的 $c_i$ 与 $d_i$ 都应当是0. </p>
-<p>由 $f(p^{<em>},q^{</em>})=(p^{<em>},q^{</em>})$ 可以推出:</p>
+<p>由 $f(p^{0},q^{0})=(p^{0},q^{0})$ 可以推出:</p>
 <script type="math/tex; mode=display">
-p_i^*\sum_{j=1}^{n-1}c_j(p^*,q^*)=c_i(p^*,q^*).</script><p>如果有 $c_i(p^{<em>},q^{</em>})&gt;0$, 那么 $p_i^{<em>}&gt;0$ 且 $e_i^TAq^{</em>}&gt;p^{<em>T}Aq^{</em>}$, 定义集合 $I=\{i\mid c_i(p^{<em>},q^{</em>})&gt;0\}$.</p>
+p_i^*\sum_{j=1}^{n-1}c_j(p^*,q^*)=c_i(p^*,q^*).</script><p>如果有 $c_i(p^{0},q^{0})&gt;0$, 那么 $p_i^{0}&gt;0$ 且 $e_i^TAq^{0}&gt;p^{0T}Aq^{0}$, 定义集合 $I=\{i\mid c_i(p^{0},q^{0})&gt;0\}$.</p>
 <p>那么有:</p>
 <script type="math/tex; mode=display">
-p^{*T}Aq^{*}=\sum_{i\in I}p^{*}e_i^TAq^{*}>(\sum_{i\in I}p_i^{*})p^{*T}Aq^{*}=p^{*T}Aq^{*}.</script><p>即推出矛盾. 因此有 $c_i(p^{<em>},q^{</em>})=0$, 亦即 $e_i^TAq^{<em>}\leq p^{</em>T}Aq^{*}$.</p>
-<p>对于 $\forall p \in S^m$, 当 $q^{*}$ 不变, 就有:</p>
+p^{0T}Aq^{0}=\sum_{i\in I}p^{0}e_i^TAq^{0}>(\sum_{i\in I}p_i^{0})p^{0T}Aq^{0}=p^{0T}Aq^{0}.</script><p>即推出矛盾. 因此有 $c_i(p^{0},q^{0})=0$, 亦即 $e_i^TAq^{0}\leq p^{0T}Aq^{0}$.</p>
+<p>对于 $\forall p \in S^m$, 当 $q^{0}$ 不变, 就有:</p>
 <script type="math/tex; mode=display">
-p^TAq^{*}=\sum_{i=0}^{n-1}p_ie_i^TAq^{*}\leq(\sum_{i=1}^{n-1}p_i)p^{*T}Aq^{*}=p^{*T}Aq^{*}.</script><p>对于 $d_i(p,q)$ 与 $q^{<em>}\in S^n$, 证明过程类似. 这就说明了 $(p^{</em>},q^{*})$ 为纳什均衡点.</p>
+p^TAq^{0}=\sum_{i=0}^{n-1}p_ie_i^TAq^{0}\leq(\sum_{i=1}^{n-1}p_i)p^{0T}Aq^{0}=p^{0T}Aq^{0}.</script><p>对于 $d_i(p,q)$ 与 $q^{0}\in S^n$, 证明过程类似. 这就说明了 $(p^{0},q^{0})$ 为纳什均衡点.</p>
 <h2 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h2><p>本节将给出进行纳什均衡点寻找的算法, 对于纯策略与混合策略分别给出相应的方案, 进行正确性分析, 空间与时间复杂度分析, 并给出一些实验结果.</p>
 <p>不失一般性地, 假设我们的问题中行选择者和列选择者的可用策略数量相同. 将 $R$ 与 $C$ 的收益矩阵分别用二维数组 $A[n][n]$ 与 $B[n][n]$ 来表示. 其中, $n$为行选择者和列选择者的策略空间维度.</p>
 <h3 id="纯策略纳什均衡"><a href="#纯策略纳什均衡" class="headerlink" title="纯策略纳什均衡"></a>纯策略纳什均衡</h3><p>对于纯策略纳什均衡, 我们给出一个基础算法和一个优化后的算法. </p>
