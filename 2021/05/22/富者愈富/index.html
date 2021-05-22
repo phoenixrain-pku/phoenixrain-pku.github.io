@@ -24,22 +24,22 @@
     var CONFIG = {"hostname":"phoenixrain-pku.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="简介马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步. 反应这一模型的分布为幂律分布. 本文接下来会从数学角度对此问题进行分析, 对上述问题建立严格的数学模型, 进行一系列性质与定理的证明, 并给出该模型的模拟程序, 并">
+  <meta name="description" content="简介马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="马太效应与幂律分布">
 <meta property="og:url" content="https://phoenixrain-pku.github.io/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/index.html">
 <meta property="og:site_name" content="Phoenix Rain">
-<meta property="og:description" content="简介马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步. 反应这一模型的分布为幂律分布. 本文接下来会从数学角度对此问题进行分析, 对上述问题建立严格的数学模型, 进行一系列性质与定理的证明, 并给出该模型的模拟程序, 并">
+<meta property="og:description" content="简介马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:/Users/lenovo/Desktop/notesSpring/富者愈富.assets/n=1000,p=0.60,k=3.jpg">
-<meta property="og:image" content="c:/Users/lenovo/Desktop/notesSpring/富者愈富.assets/image-20210522150220793.png">
-<meta property="og:image" content="c:/Users/lenovo/Desktop/notesSpring/富者愈富.assets/image-20210522150209027.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOSMYF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOS1SJ.png">
 <meta property="article:published_time" content="2021-05-22T15:57:14.000Z">
-<meta property="article:modified_time" content="2021-05-22T15:03:03.599Z">
+<meta property="article:modified_time" content="2021-05-22T15:11:54.495Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/lenovo/Desktop/notesSpring/富者愈富.assets/n=1000,p=0.60,k=3.jpg">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg">
 
 
 <link rel="canonical" href="https://phoenixrain-pku.github.io/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/">
@@ -281,7 +281,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-05-22 23:57:14 / Modified: 23:03:03" itemprop="dateCreated datePublished" datetime="2021-05-22T23:57:14+08:00">2021-05-22</time>
+      <time title="Created: 2021-05-22 23:57:14 / Modified: 23:11:54" itemprop="dateCreated datePublished" datetime="2021-05-22T23:57:14+08:00">2021-05-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -311,6 +311,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.</p>
+<a id="more"></a>
 <p>反应这一模型的分布为幂律分布.</p>
 <p>本文接下来会从数学角度对此问题进行分析, 对上述问题建立严格的数学模型, 进行一系列性质与定理的证明, 并给出该模型的模拟程序, 并研究其与幂律分布的吻合程度.</p>
 <h2 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h2><p>考虑这样的建图算法:</p>
@@ -344,11 +345,11 @@ N(x)=\int_{x}^{x+1} p(x){\rm d}x = P(x+1)-P(x).</script><p>其中 $P(x)$ 是上�
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x=np.linspace(<span class="number">0</span>,np.<span class="built_in">max</span>(D),np.<span class="built_in">max</span>(D))</span><br><span class="line">power_func = ((<span class="number">1</span>-((<span class="number">1</span>-p)/p*(x+<span class="number">1</span>)+<span class="number">1</span>)**(<span class="number">-1</span>/((<span class="number">1</span>-p)*k)))*n-(<span class="number">1</span>-((<span class="number">1</span>-p)/p*x+<span class="number">1</span>)**(<span class="number">-1</span>/((<span class="number">1</span>-p)*k)))*n)</span><br><span class="line">plt.plot(x, power_func,label = <span class="string">&#x27;Power Law Result&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>使用控制变量法进行实验, $n,p,k$的默认值分别为 $500, 0.6, 3$. </p>
 <p>对于不同的 $n,p,k$, 模拟的结果与幂律分布的图像如下:</p>
-<h3 id="改变-n-的实验"><a href="#改变-n-的实验" class="headerlink" title="改变 $n$ 的实验"></a>改变 $n$ 的实验</h3><p><img src="C:\Users\lenovo\Desktop\notesSpring\富者愈富.assets\n=1000,p=0.60,k=3.jpg" alt="n=1000,p=0.60,k=3"></p>
+<h3 id="改变-n-的实验"><a href="#改变-n-的实验" class="headerlink" title="改变 $n$ 的实验"></a>改变 $n$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg" alt="gOSKFU.jpg"></p>
 <p>可以看到, $n$ 越大, 实验结果越接近真实的幂律分布.</p>
-<h3 id="改变-p-的实验"><a href="#改变-p-的实验" class="headerlink" title="改变 $p$ 的实验"></a>改变 $p$ 的实验</h3><p><img src="C:\Users\lenovo\Desktop\notesSpring\富者愈富.assets\image-20210522150220793.png" alt="image-20210522150220793"></p>
+<h3 id="改变-p-的实验"><a href="#改变-p-的实验" class="headerlink" title="改变 $p$ 的实验"></a>改变 $p$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOSMYF.png" alt="gOSMYF.png"></p>
 <p>可以看到, 结果与幂律分布始终很吻合, 且 $p$ 越小, 分布越极端.</p>
-<h3 id="改变-k-的实验"><a href="#改变-k-的实验" class="headerlink" title="改变 $k$ 的实验"></a>改变 $k$ 的实验</h3><p><img src="C:\Users\lenovo\Desktop\notesSpring\富者愈富.assets\image-20210522150209027.png" alt="image-20210522150209027"></p>
+<h3 id="改变-k-的实验"><a href="#改变-k-的实验" class="headerlink" title="改变 $k$ 的实验"></a>改变 $k$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOS1SJ.png" alt="gOS1SJ.png"></p>
 <p>可以看到, 结果与幂律分布始终很吻合.</p>
 
     </div>

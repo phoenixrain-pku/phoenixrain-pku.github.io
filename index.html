@@ -273,7 +273,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-05-22 23:57:14 / Modified: 23:03:03" itemprop="dateCreated datePublished" datetime="2021-05-22T23:57:14+08:00">2021-05-22</time>
+      <time title="Created: 2021-05-22 23:57:14 / Modified: 23:11:54" itemprop="dateCreated datePublished" datetime="2021-05-22T23:57:14+08:00">2021-05-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -296,46 +296,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.</p>
-<p>反应这一模型的分布为幂律分布.</p>
-<p>本文接下来会从数学角度对此问题进行分析, 对上述问题建立严格的数学模型, 进行一系列性质与定理的证明, 并给出该模型的模拟程序, 并研究其与幂律分布的吻合程度.</p>
-<h2 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h2><p>考虑这样的建图算法:</p>
-<p>共有 $n$ 个节点, 按照 $0,1,2,\cdots,n-1$ 的顺序依次创建.</p>
-<p>首先创建节点 $0$.</p>
-<p>当创建节点 $j(j\geq 1)$ 时, 以概率 $p$ 选择 (a) 执行, 以概率 $1-p$ 选择 (b) 执行:<br>(a) 在已有的 $j-1$ 个节点中均匀地, 随机地选择一个早先创建的网页 $i$, 建立一个从 $j$ 到 $i$ 的链接. 选中每一个节点的概率为 $1/(j-1)$.<br>(b) 按照与已有入度成比例的概率, 选择一个早先创建的网页 $i$，建立一个从 $j$ 到 $i$ 的链接. 选中每一个节点的概率与该节点的现有入度成正比.</p>
-<p>该算法的代码实现如下 (使用 python 撰写):</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">M = np.zeros((n,n))</span><br><span class="line"><span class="comment"># 邻接矩阵，初始化全0</span></span><br><span class="line">D = np.zeros(n)</span><br><span class="line"><span class="comment"># 每个节点的当前入度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uniform_addedge</span>(<span class="params">i</span>):</span></span><br><span class="line">	x = random.randint(<span class="number">0</span>,i)</span><br><span class="line">	M[i][x] = <span class="number">1</span></span><br><span class="line">	D[x] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">addedge</span>(<span class="params">i</span>):</span></span><br><span class="line">	<span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	tmp_sum = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">		tmp_sum += D[x]</span><br><span class="line">	weight_D = np.zeros(n)</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">		weight_D[x] = <span class="built_in">float</span>(D[x]/tmp_sum)</span><br><span class="line">		weight_D[x] = weight_D[x] + weight_D[x<span class="number">-1</span>]</span><br><span class="line">	q = random.uniform(<span class="number">0</span>, weight_D[i<span class="number">-1</span>])</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">		<span class="keyword">if</span> q &gt;= weight_D[x<span class="number">-1</span>] <span class="keyword">and</span> q &lt;= weight_D[x]:</span><br><span class="line">			M[i][x] = <span class="number">1</span></span><br><span class="line">			D[x] += <span class="number">1</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">		q = random.uniform(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">if</span> q &lt;= p:</span><br><span class="line">			uniform_addedge(i)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			addedge(i)</span><br><span class="line">            </span><br><span class="line">max_D = <span class="built_in">int</span>(np.<span class="built_in">max</span>(D))</span><br><span class="line">plt.hist(D,bins = max_D,label = <span class="string">&#x27;Simulation Result&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="理论推导"><a href="#理论推导" class="headerlink" title="理论推导"></a>理论推导</h2><p>我们考虑节点入度的概率分布函数.</p>
-<p>假设共有 $n$ 个节点, 初始选择时以 $p$ 的概率做均匀随机选择, 以 $q=1-p$ 的概率做加权随机选择, 每个节点的出度为 $k$.</p>
-<p>仿照 $k=1$ 时的概率分布函数推导, 考虑 $k\neq 1$ 时的一般情况计算节点入度的概率分布函数:</p>
-<p>对于时间 $t$, 节点 $j$ 的入度期望表示为 $X_j(t)$. 当 $t\leq j$ 时, 显然有 $X_j(t)=0$. </p>
-<p>在时间 $t+1$ 时, 节点 $t+1$ 给 $j$ 一次链接的概率为:</p>
-<script type="math/tex; mode=display">
-p_{t+1}(j) = p\cdot\frac{1}{t}+(1-p)\frac{X_j(t)}{t}.</script><p>由于节点 $t+1$ 总共可以连 $k$ 条边, 因此节点 $t+1$ 给 $j$ 链接数量的期望为:</p>
-<script type="math/tex; mode=display">
-\Delta X_{t+1}(j) = k\left(p\cdot\frac{1}{t}+(1-p)\frac{X_j(t)}{t}\right).</script><p>因此 $X_j(t)$ 满足微分方程: </p>
-<script type="math/tex; mode=display">
-\frac{ {\rm d}X_j(t)}{ {\rm d}t} =k\left(p\cdot\frac{1}{t}+(1-p)\frac{X_j(t)}{t}\right)</script><script type="math/tex; mode=display">
-\Rightarrow \frac{1}{pk+qkX_j(t)}{\rm d}X_j(t)=\frac{1}{t}{\rm d}t</script><script type="math/tex; mode=display">
-\Rightarrow X_j(t)=\frac{1}{qk}\left(\frac{pk}{j^{qk}}\cdot t^{qk}-pk\right)</script><script type="math/tex; mode=display">
-\Rightarrow X_j(t)=\frac{p}{q}\left(\left(\frac{t}{j}\right)^{qk}-1\right).</script><p>考虑 $t$ 时刻入度至少为 $x$ 的节点个数:</p>
-<script type="math/tex; mode=display">
-X_j(t)=\frac{p}{q}\left(\left(\frac{t}{j}\right)^{qk}-1\right)\geq x</script><script type="math/tex; mode=display">
-\Rightarrow j\leq t\cdot\left(\frac{q}{p}\cdot x+1\right)^{-\frac{1}{qk}}</script><script type="math/tex; mode=display">
-\Rightarrow P(x)=p(X\leq x)=1- t\cdot\left(\frac{q}{p}\cdot x+1\right)^{-\frac{1}{qk}}</script><p>这是满足幂律分布的.</p>
-<p>现考虑其离散化的情况. 记 $N(x)$ 为入度为 $x$ 的节点的数量. 在绘制真正的幂律分布函数图像时, 我们直接令:</p>
-<script type="math/tex; mode=display">
-N(x)=\int_{x}^{x+1} p(x){\rm d}x = P(x+1)-P(x).</script><p>其中 $P(x)$ 是上面已经计算出的 $\rm CDF$, $p(x)=P&#39;(x)$ 是 $\rm PDF$.</p>
-<p>这一部分的代码如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x=np.linspace(<span class="number">0</span>,np.<span class="built_in">max</span>(D),np.<span class="built_in">max</span>(D))</span><br><span class="line">power_func = ((<span class="number">1</span>-((<span class="number">1</span>-p)/p*(x+<span class="number">1</span>)+<span class="number">1</span>)**(<span class="number">-1</span>/((<span class="number">1</span>-p)*k)))*n-(<span class="number">1</span>-((<span class="number">1</span>-p)/p*x+<span class="number">1</span>)**(<span class="number">-1</span>/((<span class="number">1</span>-p)*k)))*n)</span><br><span class="line">plt.plot(x, power_func,label = <span class="string">&#x27;Power Law Result&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>使用控制变量法进行实验, $n,p,k$的默认值分别为 $500, 0.6, 3$. </p>
-<p>对于不同的 $n,p,k$, 模拟的结果与幂律分布的图像如下:</p>
-<h3 id="改变-n-的实验"><a href="#改变-n-的实验" class="headerlink" title="改变 $n$ 的实验"></a>改变 $n$ 的实验</h3><p><img src="C:\Users\lenovo\Desktop\notesSpring\富者愈富.assets\n=1000,p=0.60,k=3.jpg" alt="n=1000,p=0.60,k=3"></p>
-<p>可以看到, $n$ 越大, 实验结果越接近真实的幂律分布.</p>
-<h3 id="改变-p-的实验"><a href="#改变-p-的实验" class="headerlink" title="改变 $p$ 的实验"></a>改变 $p$ 的实验</h3><p><img src="C:\Users\lenovo\Desktop\notesSpring\富者愈富.assets\image-20210522150220793.png" alt="image-20210522150220793"></p>
-<p>可以看到, 结果与幂律分布始终很吻合, 且 $p$ 越小, 分布越极端.</p>
-<h3 id="改变-k-的实验"><a href="#改变-k-的实验" class="headerlink" title="改变 $k$ 的实验"></a>改变 $k$ 的实验</h3><p><img src="C:\Users\lenovo\Desktop\notesSpring\富者愈富.assets\image-20210522150209027.png" alt="image-20210522150209027"></p>
-<p>可以看到, 结果与幂律分布始终很吻合.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
