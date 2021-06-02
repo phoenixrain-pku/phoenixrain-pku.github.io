@@ -8,12 +8,18 @@ var context = canvas.getContext("2d");
 var backgroundimg = new Image();
 var Ldoodle = new Image();
 var Rdoodle = new Image();
+var Lfrog = new Image();
+var Rfrog = new Image();
 var Mouse = new Image();
 var Title = new Image();
+var Select = new Image();
 Ldoodle.src = "img/Ldoodle.png";
 Rdoodle.src = "img/Rdoodle.png";
+Lfrog.src = "img/Lfrog.png";
+Rfrog.src = "img/Rfrog.png";
 Mouse.src = "img/mouse.png";
 Title.src = "img/title.png";
+Select.src = "img/select.png";
 backgroundimg.src = "img/bg.jpg";
 backgroundimg.onload = function (ev) {
     var pattern = context.createPattern(backgroundimg, "repeat");
@@ -25,7 +31,7 @@ backgroundimg.onload = function (ev) {
     context.lineWidth = 10;
     context.strokeStyle = "green";
     context.lineCap = "round";
-    context.stroke();
+
     panelgroup.push({
         x: canvas.width / 2,
         y: canvas.height - 60,
@@ -35,8 +41,10 @@ backgroundimg.onload = function (ev) {
     });
     Player.x = canvas.width / 2 - 30;
     Player.y = canvas.height - 125;
-    context.drawImage(Rdoodle, Player.x, Player.y);
+    context.drawImage(Rdoodle, canvas.width / 2 - 30, canvas.height-290);
+    context.drawImage(Rfrog, canvas.width / 2 - 30,canvas.height-170);
     context.drawImage(Title, Player.x + 30 - 150, Player.y - 400);
+    context.drawImage(Select, Player.x + 30 - 100, Player.y+60);
 
     function startanimation() {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -48,7 +56,7 @@ backgroundimg.onload = function (ev) {
         context.textAlign = "left";
         context.fillStyle = "#a0522d";
         context.fillText("Score: " + parseInt(GameData.score), 20, 30);
-        animation(context);
+        // animation(context);
         jump();
         collide();
         gamescroll();
@@ -57,12 +65,11 @@ backgroundimg.onload = function (ev) {
         if (Player.y > canvas.height) {
             window.cancelAnimationFrame(startanimation);
             var userName = prompt("Game Over!\nYour score is: " + parseInt(GameData.score) + "\n请留下尊姓大名!", "Anyomous User");
-
-
             alert(userName+", 你的得分是: " + parseInt(GameData.score)+"\n太棒了! 再来一局吧?");
             location.reload();
         } else {
             requestAnimationFrame(startanimation);
+            changeposition();
         }
 
     }

@@ -3,7 +3,7 @@ var GameData = {
     jumpheight: 15,
     level: 30,
     speed: 0,
-    probability: 10
+    probability: 0
 };
 var Player = {
     x:0,
