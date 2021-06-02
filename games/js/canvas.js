@@ -3,7 +3,7 @@ var Height = window.screen.height * 0.8;
 canvas.height = Height;
 
 var Width = Height * 0.6;
-canvas.width = Width;
+canvas.width = Math.min(Width,window.screen.width);
 
 var context = canvas.getContext("2d");
 var backgroundimg = new Image();
