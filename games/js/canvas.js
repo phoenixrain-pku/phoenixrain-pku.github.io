@@ -42,7 +42,7 @@ backgroundimg.onload = function (ev) {
     Player.x = canvas.width / 2 - 30;
     Player.y = canvas.height - 125;
     context.drawImage(Rdoodle, canvas.width / 2 - 30, canvas.height-290);
-    context.drawImage(Rfrog, canvas.width / 2 - 30,canvas.height-170);
+    context.drawImage(Rfrog, canvas.width / 2 - 30,canvas.height-125);
     context.drawImage(Title, Player.x + 30 - 150, Player.y - 400);
     context.drawImage(Select, Player.x + 30 - 100, Player.y+60);
 
