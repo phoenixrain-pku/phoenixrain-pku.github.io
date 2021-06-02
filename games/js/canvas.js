@@ -1,9 +1,8 @@
 var canvas = document.getElementById("canvas");
 var Height = window.screen.height * 0.8;
+var Width = Math.min(window.screen.height * 0.6,window.screen.width)*0.8;
 canvas.height = Height;
-
-var Width = Height * 0.6;
-canvas.width = Math.min(Width,window.screen.width);
+canvas.width = Width;
 
 var context = canvas.getContext("2d");
 var backgroundimg = new Image();
@@ -19,23 +18,23 @@ backgroundimg.src = "img/bg.jpg";
 backgroundimg.onload = function (ev) {
     var pattern = context.createPattern(backgroundimg, "repeat");
     context.fillStyle = pattern;
-    context.fillRect(0, 0, Width, Height);
+    context.fillRect(0, 0, canvas.width, canvas.height);
     context.beginPath();
-    context.moveTo(canvas.width/2-30, Height - 60);
-    context.lineTo(canvas.width/2+30, Height - 60);
+    context.moveTo(canvas.width/2-30, canvas.height - 60);
+    context.lineTo(canvas.width/2+30, canvas.height - 60);
     context.lineWidth = 10;
     context.strokeStyle = "green";
     context.lineCap = "round";
     context.stroke();
     panelgroup.push({
         x: canvas.width/2,
-        y: Height - 60,
+        y: canvas.height - 60,
         status: 1,
         pcolor: "green",
         plength: 60
     });
     Player.x = canvas.width/2-30;
-    Player.y = Height - 125;
+    Player.y = canvas.height - 125;
     context.drawImage(Rdoodle, Player.x, Player.y);
     context.drawImage(Title, Player.x+30-150, Player.y-400);
 
@@ -55,7 +54,7 @@ backgroundimg.onload = function (ev) {
         gamescroll();
         move(context);
 
-        if (Player.y > Height) {
+        if (Player.y > canvas.height) {
             window.cancelAnimationFrame(startanimation);
             alert("Game Over!\nYour score is: "+parseInt(GameData.score));
                 location.reload();
