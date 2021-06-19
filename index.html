@@ -278,7 +278,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-06-19 16:49:36 / Modified: 17:47:09" itemprop="dateCreated datePublished" datetime="2021-06-19T16:49:36+08:00">2021-06-19</time>
+      <time title="Created: 2021-06-19 16:49:36 / Modified: 17:51:55" itemprop="dateCreated datePublished" datetime="2021-06-19T16:49:36+08:00">2021-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -301,30 +301,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>如何在保研面试中选出最喜欢的导师, 并在情场中选出最心仪的对象, 成为人生赢家?</p>
-<p>今天我遇到了一个困境: 我在参加保研面试. 面试之前我与这些老师互不了解, 聊完之后我对他们有了自己的评价; 但出乎意料的是, 每个老师在面试结束时都表达出对我的满意, 当即给出 offer, 并要求我现场决定是否接受. 我只有一次选择机会, Offer 接受后不能再反悔拒绝, 拒绝后也不能再反悔接受. 在这样的困境下, 我该如何在他们中选出我的评价最高 (即我最喜欢) 的一位呢? </p>
-<p>其实我还有一个朋友遇到了一个困境: 她在举办恋爱面试. 面试之前她并不了解这些追求者, 聊完之后她对他们有了自己的评价; 每个追求者在面试结束时都表达出对她赤诚的爱, 当即给出相守一生的山盟海誓, 并要求她现场决定是否接受. 她虽然海, 但不渣, 因此只有一次选择机会, 接受后不能再反悔拒绝, 拒绝后也不能再反悔接受. 在这样的困境下, 她该如何在他们中选出她的评价最高 (即她最喜欢) 的一位呢? </p>
-<p>上述的困境其实是我在做梦, 因为目前我一封 offer 都没有. 我那个朋友也是不存在的, 因为没人谈恋爱之前先面试别人. 但我还是思考了这个问题, 并给出一个解决方案:</p>
-<p>我们将这个问题形式化定义如下: 考虑一个数据流, 我们预先知道它的规模为 $n$. 现在每一个元素按时间顺序依次到来, 分别为 $a_0,a_1,\cdots,a_{n-1}$, 它们的大小各不相同. 对于每个元素, 我们有&quot;保留&quot;或&quot;丢弃&quot;的两种备选方案. 我们只有一次&quot;保留&quot;的机会, 那么该如何制定策略, 使得我们以最大的概率, 保留下来最大的元素?</p>
-<p>实际上, 不论我们制定怎样的策略, 都可以等价为这样的策略: 对前 $m$ 个元素, 我们一定不选; 对后 $n-m$ 个元素, 只要出现一个比前 $m$ 个元素都大的元素, 我们立刻选它. 这是一种先观望, 后选择的策略. 将该策略称为 $m$ 策略.</p>
-<p>现在讨论该如何设定这个 $m$.</p>
-<p>当 $m$ 确定时, 如果 $n$ 个数中的最大值出现在第 $i(i&gt;m)$ 个位置, 我们的策略选到它的概率为:</p>
-<script type="math/tex; mode=display">
-P(m,i)=\frac{m}{i-1}.</script><p>注意, 这里 $i&gt;m$ 的原因是, 如果最优选择出现在前 $m$ 个位置, 我们一定不会选它, 概率显然是 $0$. 而如果最优选择在第 $i$ 个位置, 我们想通过 $m$ 策略选到它, 当且仅当前 $i-1$ 个位置中的最大值出现在前 $m$ 个位置中. 这个概率就是 $m/(i-1)$.</p>
-<p>而对于任意的 $i$, 最优选择出现在第 $i$ 个位置的概率都为 $1/n$.</p>
-<p>那么我们采用 $m$ 策略, 成功选到最大值的概率为:</p>
-<script type="math/tex; mode=display">
-P(m)=\sum_{i=m+1}^n \frac{1}{n}\cdot P_m(i)</script><script type="math/tex; mode=display">
-=\frac{m}{n}\sum_{i=m+1}^n\frac{1}{i-1}.</script><p>当 $n$ 和 $m$ 较大时, 令 $r=m/n$, 将上式右侧的调和级数近似化处理, 可得:</p>
-<script type="math/tex; mode=display">
-P(m)\approx\frac{m}{n}\ln\frac{n}{m}</script><script type="math/tex; mode=display">
-\Rightarrow P(r)=-r\ln r.</script><p>求导得: </p>
-<script type="math/tex; mode=display">
-P'(r) =-1-\ln r.</script><p>当 $r=1/e$ 时, $P&#39;(r)=0$, $P(r)$ 达到最大.</p>
-<p>因此, 对于在夏令营中选导师的事情, 我的最优策略为: 如果我报了 $n$ 场面试, 对前 $n/e$ 个面试中的老师, 我拒绝所有人的 offer, 但在心中评判出最好的那一位; 对于剩下的 $n-n/e$ 个老师, 只要遇到比刚才那位好的, 我立刻接受他的 offer.</p>
-<p>我真希望我能有实践这个方法的场景, 这意味着我最起码不会失学了.</p>
-<p>谈恋爱也是如此.</p>
-<p>希望所有看到这篇文章的人都不失学, 而且能找到对象.</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/19/%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BF%83%E4%BB%AA%E5%AF%B9%E8%B1%A1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
