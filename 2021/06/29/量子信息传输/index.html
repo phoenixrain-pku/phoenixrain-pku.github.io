@@ -31,16 +31,16 @@
 <meta property="og:site_name" content="Phoenix Rain">
 <meta property="og:description" content="Superdense Coding 与 Quantum Teleportation 是两种基础的量子通信方式. 本文将会用通俗易懂的方式简要介绍 Superdense Coding 与 Quantum Teleportation, 比较二者的异同, 并论述这两种通信方式与经典通信的关系.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://z3.ax1x.com/2021/06/29/Ra8nP0.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/06/29/Ra8Zan.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/06/29/Ra8VVs.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/06/29/Ra8e5q.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/06/29/Ra85LQ.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/06/29/Ra87on.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/06/29/Ra8vyF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/06/29/RaGSeJ.png">
 <meta property="article:published_time" content="2021-06-29T04:12:36.000Z">
-<meta property="article:modified_time" content="2021-06-29T04:23:11.926Z">
+<meta property="article:modified_time" content="2021-06-29T04:31:57.037Z">
 <meta property="article:author" content="Phoenix Rain">
 <meta property="article:tag" content="学术垃圾">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://z3.ax1x.com/2021/06/29/Ra8nP0.png">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/06/29/Ra85LQ.png">
 
 
 <link rel="canonical" href="https://phoenixrain-pku.github.io/2021/06/29/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93/">
@@ -287,7 +287,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-06-29 12:12:36 / Modified: 12:23:11" itemprop="dateCreated datePublished" datetime="2021-06-29T12:12:36+08:00">2021-06-29</time>
+      <time title="Created: 2021-06-29 12:12:36 / Modified: 12:31:57" itemprop="dateCreated datePublished" datetime="2021-06-29T12:12:36+08:00">2021-06-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -323,14 +323,14 @@
 <li><p>产生一个纠缠态 $|\psi\rangle=(|00\rangle+|11\rangle)/\sqrt 2$, 将第一个 qubit 给 Alice, 记为 $|q_A\rangle$; 第二个 qubit 给 B, 记为 $|q_B\rangle$. $|\psi\rangle$ 也可被写作$|q_Aq_B\rangle=(|00\rangle+|11\rangle)/\sqrt 2$.</p>
 </li>
 <li><p>假设 Alice 现在想要传输的信息为 $xy\in \{0,1\}^2$. Alice 根据自己想要传输的内容将相应的量子逻辑门作用在自己的 qubit 上. 对应的量子逻辑门与作用的结果如下:</p>
-<p><img src="https://z3.ax1x.com/2021/06/29/Ra8nP0.png" alt="Ra8nP0.png"></p>
+<p><img src="https://z3.ax1x.com/2021/06/29/Ra85LQ.png" alt="Ra85LQ.png"></p>
 </li>
 </ol>
 <ol>
 <li><p>Alice 将自己的 qubit 传输给 Bob, Bob 得到新的 $|q_Aq_B\rangle$ 后将一个量子逻辑门作用在其上, 进行解码:</p>
 <script type="math/tex; mode=display">
 H_B=CNOT(H\otimes I)=\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0\end{pmatrix}\cdot\frac{1}{\sqrt 2}\begin{pmatrix}1&1&0&0\\1&-1&0&0\\0&0&1&1\\0&0&1&-1\end{pmatrix}.</script><p>对应的结果为:</p>
-<p><img src="https://z3.ax1x.com/2021/06/29/Ra8Zan.png" alt="Ra8Zan.png"></p>
+<p><img src="https://z3.ax1x.com/2021/06/29/Ra87on.png" alt="Ra87on.png"></p>
 <p>上述过程其实是 Bob 对当前的纠缠态进行的一种测量, 得到的确定的结果与 Alice 想要传输的 2 比特内容相一致.</p>
 </li>
 </ol>
@@ -354,10 +354,10 @@ H= \frac{1}{\sqrt 2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.</script><p>那么三�
 \frac{1}{2}\left(|00\rangle(\alpha|0\rangle+\beta|1\rangle)+|10\rangle(\alpha|0\rangle-\beta|1\rangle)+|01\rangle(\alpha|1\rangle+\beta|0\rangle)+|11\rangle(\alpha|1\rangle-\beta|0\rangle)\right).</script><p>注意, 此时含有 $\alpha$ 和 $\beta$ 的信息已经转移到了第三个 qubit 上. Alice 手上的 $2$ 个 qubit 只有 $4$ 种情况, 一旦确定, 就能知道第三个 qubit 具体为上述的哪一种. </p>
 </li>
 <li><p>Alice 测量她的两个 Qubit, 得到 $4$ 种可能性中的一种 $xy\in\{0,1\}^2$, 通过经典的传输发给 Bob. Alice 的测量结果 $|q_A\rangle$ 与 Bob 手上所得到的态 $|q_{B_1}q_{B_2}\rangle$的对应关系如下:</p>
-<p><img src="https://z3.ax1x.com/2021/06/29/Ra8VVs.png" alt="Ra8VVs.png"></p>
+<p><img src="https://z3.ax1x.com/2021/06/29/Ra8vyF.png" alt="Ra8vyF.png"></p>
 </li>
 <li><p>Bob 根据 Alice 发来的结果, 相应地去复原他手上的 qubit. 复原的方式为将相应的量子逻辑门作用在其上.  对应的量子逻辑门与作用的结果如下:</p>
-<p><img src="https://z3.ax1x.com/2021/06/29/Ra8e5q.png" alt="Ra8e5q.png"></p>
+<p><img src="https://z3.ax1x.com/2021/06/29/RaGSeJ.png" alt="RaGSeJ.png"></p>
 </li>
 </ol>
 <p>上述是纯态, 单 qubit, 最大纠缠之下的量子传态. 实际上, 混态与多 qubit 的传态也是可以完成的, 这里不再赘述.</p>
