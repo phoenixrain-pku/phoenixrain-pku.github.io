@@ -267,7 +267,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/09/%E4%B8%A4%E8%AE%BA%E5%85%B6%E4%B8%80/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2022/04/09/%E4%B8%A4%E8%AE%BA%E5%85%B6%E4%B8%80/" class="post-title-link" itemprop="url">精读《实践论》，并从量子力学角度解释中国新民主主义革命</a>
         </h2>
 
         <div class="post-meta-container">
@@ -279,7 +279,16 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-04-09 10:55:21 / Modified: 10:58:03" itemprop="dateCreated datePublished" datetime="2022-04-09T10:55:21+08:00">2022-04-09</time>
+      <time title="Created: 2022-04-09 10:52:36 / Modified: 11:03:29" itemprop="dateCreated datePublished" datetime="2022-04-09T10:52:36+08:00">2022-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">学术</span></a>
+        </span>
     </span>
 
   
@@ -292,8 +301,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>title: 精读《实践论》，并从量子力学角度解释中国新民主主义革命<br>date: 2022-04-09 10:52:36<br>tags: 学术垃圾<br>categories: 学术<br>mathjax: true</p>
-<p>“毛泽东思想和中国特色社会主义理论体系概论”课程论文第一篇。</p>
+          <p>“毛泽东思想和中国特色社会主义理论体系概论”课程论文第一篇。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/04/09/%E4%B8%A4%E8%AE%BA%E5%85%B6%E4%B8%80/#more" rel="contents">
@@ -1198,6 +1206,50 @@
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
