@@ -1,22 +1,22 @@
 :root {
   --body-bg-color: #dbecf0;
-  --content-bg-color: #edf8fc;
+  --content-bg-color: #e0e6f9;
   --card-bg-color: #f5f5f5;
-  --text-color: #430e2b;
+  --text-color: #0e0e43;
   --blockquote-color: #e0e7f1;
   --link-color: #141833;
-  --link-hover-color: #93b3c8;
+  --link-hover-color: #5178fa;
   --brand-color: #fff;
   --brand-hover-color: #fff;
   --table-row-odd-bg-color: #f9f9f9;
   --table-row-hover-bg-color: #f5f5f5;
   --menu-item-bg-color: #f5f5f5;
   --btn-default-bg: #fff;
-  --btn-default-color: #430e2b;
-  --btn-default-border-color: #430e2b;
-  --btn-default-hover-bg: #93b3c8;
+  --btn-default-color: #0e0e43;
+  --btn-default-border-color: #0e0e43;
+  --btn-default-hover-bg: #5178fa;
   --btn-default-hover-color: #fff;
-  --btn-default-hover-border-color: #93b3c8;
+  --btn-default-hover-border-color: #5178fa;
   --highlight-background: #f0f0f0;
   --highlight-foreground: #444;
   --highlight-gutter-background: #dedede;
@@ -619,7 +619,7 @@ pre code {
   width: 100%;
 }
 .post-body .label {
-  color: #430e2b;
+  color: #0e0e43;
   padding: 0 2px;
 }
 .post-body .label.default {
@@ -1137,7 +1137,7 @@ pre code {
   padding-top: 0;
 }
 .headband {
-  background: #93b3c8;
+  background: #5178fa;
   height: 3px;
 }
 @media (max-width: 991px) {
@@ -1457,7 +1457,7 @@ pre code {
   height: 12px;
   padding: 6px 5px;
   width: 14px;
-  background: #93b3c8;
+  background: #5178fa;
   cursor: pointer;
   opacity: 0.6;
   position: fixed;
@@ -1692,7 +1692,7 @@ pre code {
   color: #fff;
   padding: 0 6px;
   transition: bottom 0.2s ease-in-out;
-  background: #93b3c8;
+  background: #5178fa;
   cursor: pointer;
   opacity: 0.6;
   position: fixed;
@@ -1842,7 +1842,7 @@ pre code {
   border-bottom-color: #e0e7f1;
 }
 .posts-collapse .post-content .post-header:hover::before {
-  background: #93b3c8;
+  background: #5178fa;
 }
 .posts-collapse .post-content .post-meta-container {
   display: inline;
@@ -2301,11 +2301,11 @@ pre code {
   padding-left: 10px;
 }
 .event-list hr {
-  background: #93b3c8;
+  background: #5178fa;
   margin: 20px 0 45px 0;
 }
 .event-list hr::after {
-  background: #93b3c8;
+  background: #5178fa;
   color: #fff;
   content: 'NOW';
   display: inline-block;
@@ -2313,7 +2313,7 @@ pre code {
   padding: 0 5px;
 }
 .event-list .event {
-  --event-background: #93b3c8;
+  --event-background: #5178fa;
   --event-foreground: #b6bacd;
   --event-title: #fff;
   background: var(--event-background);
@@ -2377,7 +2377,7 @@ pre code {
 .event-list .event-past {
   --event-background: #f5f5f5;
   --event-foreground: #b6bacd;
-  --event-title: #93b3c8;
+  --event-title: #5178fa;
 }
 @-moz-keyframes dot-flash {
   from {
