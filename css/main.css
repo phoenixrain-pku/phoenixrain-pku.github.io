@@ -1,11 +1,11 @@
 :root {
-  --body-bg-color: #77a1e9;
+  --body-bg-color: #7997cd;
   --content-bg-color: #e9f0ff;
   --card-bg-color: #f5f5f5;
   --text-color: #0e0e43;
   --blockquote-color: #e0e7f1;
-  --link-color: #141833;
-  --link-hover-color: #5178fa;
+  --link-color: #0a0e28;
+  --link-hover-color: #5d71b0;
   --brand-color: #fff;
   --brand-hover-color: #fff;
   --table-row-odd-bg-color: #f9f9f9;
@@ -14,9 +14,9 @@
   --btn-default-bg: #fff;
   --btn-default-color: #0e0e43;
   --btn-default-border-color: #0e0e43;
-  --btn-default-hover-bg: #5178fa;
+  --btn-default-hover-bg: #5d71b0;
   --btn-default-hover-color: #fff;
-  --btn-default-hover-border-color: #5178fa;
+  --btn-default-hover-border-color: #5d71b0;
   --highlight-background: #f0f0f0;
   --highlight-foreground: #444;
   --highlight-gutter-background: #dedede;
@@ -1137,7 +1137,7 @@ pre code {
   padding-top: 0;
 }
 .headband {
-  background: #5178fa;
+  background: #5d71b0;
   height: 3px;
 }
 @media (max-width: 991px) {
@@ -1457,7 +1457,7 @@ pre code {
   height: 12px;
   padding: 6px 5px;
   width: 14px;
-  background: #5178fa;
+  background: #5d71b0;
   cursor: pointer;
   opacity: 0.6;
   position: fixed;
@@ -1692,7 +1692,7 @@ pre code {
   color: #fff;
   padding: 0 6px;
   transition: bottom 0.2s ease-in-out;
-  background: #5178fa;
+  background: #5d71b0;
   cursor: pointer;
   opacity: 0.6;
   position: fixed;
@@ -1842,7 +1842,7 @@ pre code {
   border-bottom-color: #e0e7f1;
 }
 .posts-collapse .post-content .post-header:hover::before {
-  background: #5178fa;
+  background: #5d71b0;
 }
 .posts-collapse .post-content .post-meta-container {
   display: inline;
@@ -2301,11 +2301,11 @@ pre code {
   padding-left: 10px;
 }
 .event-list hr {
-  background: #5178fa;
+  background: #5d71b0;
   margin: 20px 0 45px 0;
 }
 .event-list hr::after {
-  background: #5178fa;
+  background: #5d71b0;
   color: #fff;
   content: 'NOW';
   display: inline-block;
@@ -2313,7 +2313,7 @@ pre code {
   padding: 0 5px;
 }
 .event-list .event {
-  --event-background: #5178fa;
+  --event-background: #5d71b0;
   --event-foreground: #838797;
   --event-title: #fff;
   background: var(--event-background);
@@ -2377,7 +2377,7 @@ pre code {
 .event-list .event-past {
   --event-background: #f5f5f5;
   --event-foreground: #838797;
-  --event-title: #5178fa;
+  --event-title: #5d71b0;
 }
 @-moz-keyframes dot-flash {
   from {
@@ -2559,7 +2559,7 @@ mjx-container[display="true"] + br {
   }
 }
 .site-brand-container {
-  background: #3958bc;
+  background: #3d56a9;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
