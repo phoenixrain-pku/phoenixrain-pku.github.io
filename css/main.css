@@ -171,7 +171,7 @@ template {
   display: none;
 }
 ::selection {
-  background: #47738b;
+  background: #5fa6d0;
   color: #eee;
 }
 html,
@@ -2559,7 +2559,7 @@ mjx-container[display="true"] + br {
   }
 }
 .site-brand-container {
-  background: #008b8b;
+  background: #2052f3;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
