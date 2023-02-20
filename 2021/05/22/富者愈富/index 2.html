@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/a.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/a.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/a.jpg">
+  <link rel="mask-icon" href="/images/a.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phoenixrain-pku.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="简介马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="马太效应与幂律分布">
+<meta property="og:url" content="https://phoenixrain-pku.github.io/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/index.html">
+<meta property="og:site_name" content="Phoenix Rain">
+<meta property="og:description" content="简介马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOSMYF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOS1SJ.png">
+<meta property="article:published_time" content="2021-05-22T15:57:14.000Z">
+<meta property="article:modified_time" content="2021-05-22T15:11:56.000Z">
+<meta property="article:author" content="Phoenix Rain">
+<meta property="article:tag" content="学术垃圾">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg">
+
+
+<link rel="canonical" href="https://phoenixrain-pku.github.io/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>马太效应与幂律分布 | Phoenix Rain</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Phoenix Rain" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Phoenix Rain</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-blogs">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Blogs</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-archive fa-fw"></i>Comments</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">数学模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC"><span class="nav-number">3.</span> <span class="nav-text">理论推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">实验结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98-n-%E7%9A%84%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.1.</span> <span class="nav-text">改变 $n$ 的实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98-p-%E7%9A%84%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.2.</span> <span class="nav-text">改变 $p$ 的实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98-k-%E7%9A%84%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.3.</span> <span class="nav-text">改变 $k$ 的实验</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Phoenix Rain</p>
+  <div class="site-description" itemprop="description">与所有摧毁艺术的事物保持抗衡</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://phoenixrain-pku.github.io/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Phoenix Rain">
+      <meta itemprop="description" content="与所有摧毁艺术的事物保持抗衡">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Rain">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          马太效应与幂律分布
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-05-22 23:57:14 / Modified: 23:11:56" itemprop="dateCreated datePublished" datetime="2021-05-22T23:57:14+08:00">2021-05-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">学术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.</p>
+<a id="more"></a>
+<p>反应这一模型的分布为幂律分布.</p>
+<p>本文接下来会从数学角度对此问题进行分析, 对上述问题建立严格的数学模型, 进行一系列性质与定理的证明, 并给出该模型的模拟程序, 并研究其与幂律分布的吻合程度.</p>
+<h2 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h2><p>考虑这样的建图算法:</p>
+<p>共有 $n$ 个节点, 按照 $0,1,2,\cdots,n-1$ 的顺序依次创建.</p>
+<p>首先创建节点 $0$.</p>
+<p>当创建节点 $j(j\geq 1)$ 时, 以概率 $p$ 选择 (a) 执行, 以概率 $1-p$ 选择 (b) 执行:<br>(a) 在已有的 $j-1$ 个节点中均匀地, 随机地选择一个早先创建的网页 $i$, 建立一个从 $j$ 到 $i$ 的链接. 选中每一个节点的概率为 $1/(j-1)$.<br>(b) 按照与已有入度成比例的概率, 选择一个早先创建的网页 $i$，建立一个从 $j$ 到 $i$ 的链接. 选中每一个节点的概率与该节点的现有入度成正比.</p>
+<p>该算法的代码实现如下 (使用 python 撰写):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">M = np.zeros((n,n))</span><br><span class="line"><span class="comment"># 邻接矩阵，初始化全0</span></span><br><span class="line">D = np.zeros(n)</span><br><span class="line"><span class="comment"># 每个节点的当前入度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uniform_addedge</span>(<span class="params">i</span>):</span></span><br><span class="line">	x = random.randint(<span class="number">0</span>,i)</span><br><span class="line">	M[i][x] = <span class="number">1</span></span><br><span class="line">	D[x] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">addedge</span>(<span class="params">i</span>):</span></span><br><span class="line">	<span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	tmp_sum = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">		tmp_sum += D[x]</span><br><span class="line">	weight_D = np.zeros(n)</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">		weight_D[x] = <span class="built_in">float</span>(D[x]/tmp_sum)</span><br><span class="line">		weight_D[x] = weight_D[x] + weight_D[x-<span class="number">1</span>]</span><br><span class="line">	q = random.uniform(<span class="number">0</span>, weight_D[i-<span class="number">1</span>])</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">		<span class="keyword">if</span> q &gt;= weight_D[x-<span class="number">1</span>] <span class="keyword">and</span> q &lt;= weight_D[x]:</span><br><span class="line">			M[i][x] = <span class="number">1</span></span><br><span class="line">			D[x] += <span class="number">1</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">		q = random.uniform(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">if</span> q &lt;= p:</span><br><span class="line">			uniform_addedge(i)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			addedge(i)</span><br><span class="line">            </span><br><span class="line">max_D = <span class="built_in">int</span>(np.<span class="built_in">max</span>(D))</span><br><span class="line">plt.hist(D,bins = max_D,label = <span class="string">&#x27;Simulation Result&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="理论推导"><a href="#理论推导" class="headerlink" title="理论推导"></a>理论推导</h2><p>我们考虑节点入度的概率分布函数.</p>
+<p>假设共有 $n$ 个节点, 初始选择时以 $p$ 的概率做均匀随机选择, 以 $q=1-p$ 的概率做加权随机选择, 每个节点的出度为 $k$.</p>
+<p>仿照 $k=1$ 时的概率分布函数推导, 考虑 $k\neq 1$ 时的一般情况计算节点入度的概率分布函数:</p>
+<p>对于时间 $t$, 节点 $j$ 的入度期望表示为 $X_j(t)$. 当 $t\leq j$ 时, 显然有 $X_j(t)=0$. </p>
+<p>在时间 $t+1$ 时, 节点 $t+1$ 给 $j$ 一次链接的概率为:</p>
+<script type="math/tex; mode=display">
+p_{t+1}(j) = p\cdot\frac{1}{t}+(1-p)\frac{X_j(t)}{t}.</script><p>由于节点 $t+1$ 总共可以连 $k$ 条边, 因此节点 $t+1$ 给 $j$ 链接数量的期望为:</p>
+<script type="math/tex; mode=display">
+\Delta X_{t+1}(j) = k\left(p\cdot\frac{1}{t}+(1-p)\frac{X_j(t)}{t}\right).</script><p>因此 $X_j(t)$ 满足微分方程: </p>
+<script type="math/tex; mode=display">
+\frac{ {\rm d}X_j(t)}{ {\rm d}t} =k\left(p\cdot\frac{1}{t}+(1-p)\frac{X_j(t)}{t}\right)</script><script type="math/tex; mode=display">
+\Rightarrow \frac{1}{pk+qkX_j(t)}{\rm d}X_j(t)=\frac{1}{t}{\rm d}t</script><script type="math/tex; mode=display">
+\Rightarrow X_j(t)=\frac{1}{qk}\left(\frac{pk}{j^{qk}}\cdot t^{qk}-pk\right)</script><script type="math/tex; mode=display">
+\Rightarrow X_j(t)=\frac{p}{q}\left(\left(\frac{t}{j}\right)^{qk}-1\right).</script><p>考虑 $t$ 时刻入度至少为 $x$ 的节点个数:</p>
+<script type="math/tex; mode=display">
+X_j(t)=\frac{p}{q}\left(\left(\frac{t}{j}\right)^{qk}-1\right)\geq x</script><script type="math/tex; mode=display">
+\Rightarrow j\leq t\cdot\left(\frac{q}{p}\cdot x+1\right)^{-\frac{1}{qk}}</script><script type="math/tex; mode=display">
+\Rightarrow P(x)=p(X\leq x)=1- t\cdot\left(\frac{q}{p}\cdot x+1\right)^{-\frac{1}{qk}}</script><p>这是满足幂律分布的.</p>
+<p>现考虑其离散化的情况. 记 $N(x)$ 为入度为 $x$ 的节点的数量. 在绘制真正的幂律分布函数图像时, 我们直接令:</p>
+<script type="math/tex; mode=display">
+N(x)=\int_{x}^{x+1} p(x){\rm d}x = P(x+1)-P(x).</script><p>其中 $P(x)$ 是上面已经计算出的 $\rm CDF$, $p(x)=P&#39;(x)$ 是 $\rm PDF$.</p>
+<p>这一部分的代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x=np.linspace(<span class="number">0</span>,np.<span class="built_in">max</span>(D),np.<span class="built_in">max</span>(D))</span><br><span class="line">power_func = ((<span class="number">1</span>-((<span class="number">1</span>-p)/p*(x+<span class="number">1</span>)+<span class="number">1</span>)**(-<span class="number">1</span>/((<span class="number">1</span>-p)*k)))*n-(<span class="number">1</span>-((<span class="number">1</span>-p)/p*x+<span class="number">1</span>)**(-<span class="number">1</span>/((<span class="number">1</span>-p)*k)))*n)</span><br><span class="line">plt.plot(x, power_func,label = <span class="string">&#x27;Power Law Result&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>使用控制变量法进行实验, $n,p,k$的默认值分别为 $500, 0.6, 3$. </p>
+<p>对于不同的 $n,p,k$, 模拟的结果与幂律分布的图像如下:</p>
+<h3 id="改变-n-的实验"><a href="#改变-n-的实验" class="headerlink" title="改变 $n$ 的实验"></a>改变 $n$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg" alt="gOSKFU.jpg"></p>
+<p>可以看到, $n$ 越大, 实验结果越接近真实的幂律分布.</p>
+<h3 id="改变-p-的实验"><a href="#改变-p-的实验" class="headerlink" title="改变 $p$ 的实验"></a>改变 $p$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOSMYF.png" alt="gOSMYF.png"></p>
+<p>可以看到, 结果与幂律分布始终很吻合, 且 $p$ 越小, 分布越极端.</p>
+<h3 id="改变-k-的实验"><a href="#改变-k-的实验" class="headerlink" title="改变 $k$ 的实验"></a>改变 $k$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOS1SJ.png" alt="gOS1SJ.png"></p>
+<p>可以看到, 结果与幂律分布始终很吻合.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+  <div class="followme">
+    <span>Welcome to my other publishing channels</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E6%9C%AF%E5%9E%83%E5%9C%BE/" rel="tag"># 学术垃圾</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/12/%E8%BF%B7%E9%9B%A8/" rel="prev" title="迷雨">
+                  <i class="fa fa-chevron-left"></i> 迷雨
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/27/%E6%99%9A%E6%98%A5/" rel="next" title="晚春">
+                  晚春 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Phoenix Rain</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
