@@ -1,7 +1,7 @@
 :root {
   --body-bg-color: #142c52;
   --content-bg-color: #e9f0ff;
-  --card-bg-color: #f5f5f5;
+  --card-bg-color: #c2d2e8;
   --text-color: #0e0e43;
   --blockquote-color: #e0e7f1;
   --link-color: #0a0e28;
@@ -9,8 +9,8 @@
   --brand-color: #fff;
   --brand-hover-color: #fff;
   --table-row-odd-bg-color: #f9f9f9;
-  --table-row-hover-bg-color: #f5f5f5;
-  --menu-item-bg-color: #f5f5f5;
+  --table-row-hover-bg-color: #c2d2e8;
+  --menu-item-bg-color: #c2d2e8;
   --btn-default-bg: #fff;
   --btn-default-color: #0e0e43;
   --btn-default-border-color: #0e0e43;
@@ -1862,7 +1862,7 @@ pre code {
   margin-left: 5px;
 }
 .posts-collapse .post-content::before {
-  background: #f5f5f5;
+  background: #c2d2e8;
   content: ' ';
   height: 100%;
   margin-left: -2px;
@@ -2375,7 +2375,7 @@ pre code {
   content: '\f024';
 }
 .event-list .event-past {
-  --event-background: #f5f5f5;
+  --event-background: #c2d2e8;
   --event-foreground: #838797;
   --event-title: #5d71b0;
 }
