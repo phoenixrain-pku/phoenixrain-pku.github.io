@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/a.jpg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/a.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/a.jpg">
@@ -13,14 +12,17 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.lhp-pku.top","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.lhp-pku.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
-
-    <meta name="description" content="本页面是我写的部分书的读后感，一般是看完了有感而发地写两句玩玩。 《修筑滇缅公路纪实》读完好久了今天才写点短评。万圣买的一本小书，原文后面的附录又附了其他亲历者的短文。虽然作者所讲的故事部分细节真实性被附录中一些文章质疑，但可以说是不同叙述者站在自己的角度，都以最真诚的态度讲了故事。 这本书讲的是38年到45年抗战时期的修路故事，作者虽身为官僚、叙事和观点也很官僚，但所有艰苦奋斗的细节都让人感动，">
+  <meta name="description" content="本页面是我写的部分书的读后感，一般是看完了有感而发地写两句玩玩。 《修筑滇缅公路纪实》读完好久了今天才写点短评。万圣买的一本小书，原文后面的附录又附了其他亲历者的短文。虽然作者所讲的故事部分细节真实性被附录中一些文章质疑，但可以说是不同叙述者站在自己的角度，都以最真诚的态度讲了故事。 这本书讲的是38年到45年抗战时期的修路故事，作者虽身为官僚、叙事和观点也很官僚，但所有艰苦奋斗的细节都让人感动，">
 <meta property="og:type" content="website">
 <meta property="og:title" content="文章评价">
 <meta property="og:url" content="https://blog.lhp-pku.top/comments/index.html">
@@ -36,10 +38,17 @@
 <link rel="canonical" href="https://blog.lhp-pku.top/comments/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"https://blog.lhp-pku.top/comments/index.html","path":"comments/index.html","title":"文章评价"}</script>
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>文章评价 | Phoenix Rain
+  <title>文章评价 | Phoenix Rain
 </title>
   
 
@@ -48,37 +57,41 @@
 
 
 
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
-<script src="/js/third-party/search/local-search.js" defer></script>
-
-
-
-
-
-
-
-  
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js" defer></script>
-
-
-
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
 <link rel="alternate" href="/atom.xml" title="Phoenix Rain" type="application/atom+xml">
 </head>
 
@@ -86,10 +99,10 @@
   <div class="headband"></div>
 
   <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="Toggle navigation bar">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -100,14 +113,13 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">Phoenix Rain</p>
+      <h1 class="site-title">Phoenix Rain</h1>
       <i class="logo-line"></i>
     </a>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+    <div class="toggle popup-trigger">
     </div>
   </div>
 </div>
@@ -115,42 +127,42 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-blogs"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Blogs</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-comments"><a href="/comments/" rel="section"><i class="fa fa-archive fa-fw"></i>Comments</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
-        </a>
-      </li>
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-blogs">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Blogs</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-archive fa-fw"></i>Comments</a>
+
+  </li>
   </ul>
 </nav>
 
 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-      <div class="search-header">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="search-input-container">
-          <input autocomplete="off" autocapitalize="off" maxlength="80"
-                placeholder="Searching..." spellcheck="false"
-                type="search" class="search-input">
-        </div>
-        <span class="popup-btn-close" role="button">
-          <i class="fa fa-times-circle"></i>
-        </span>
-      </div>
-      <div class="search-result-container">
-        <div class="search-result-icon">
-          <i class="fa fa-spinner fa-pulse fa-5x"></i>
-        </div>
-      </div>
-    </div>
-  </div>
 
-</header>
+</div>
         
   
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
   <aside class="sidebar">
 
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
@@ -163,61 +175,78 @@
         </li>
       </ul>
 
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%BF%AE%E7%AD%91%E6%BB%87%E7%BC%85%E5%85%AC%E8%B7%AF%E7%BA%AA%E5%AE%9E%E3%80%8B"><span class="nav-number">1.</span> <span class="nav-text">《修筑滇缅公路纪实》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%9C%88%E4%BA%AE%E4%B8%8E%E7%AF%9D%E7%81%AB%E3%80%8B"><span class="nav-number">2.</span> <span class="nav-text">《月亮与篝火》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E8%90%A8%E5%AE%81%E3%80%8B"><span class="nav-number">3.</span> <span class="nav-text">《萨宁》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A4%9C%E5%A3%B0%E3%80%8B"><span class="nav-number">4.</span> <span class="nav-text">《夜声》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%A9%AC%E6%88%8F%E5%9B%A2%E4%B9%8B%E5%A4%9C%E3%80%8B"><span class="nav-number">5.</span> <span class="nav-text">《马戏团之夜》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A4%A7%E9%9B%AA%E5%B0%86%E8%87%B3%E3%80%8B"><span class="nav-number">6.</span> <span class="nav-text">《大雪将至》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%96%BC%E7%97%9B%E9%83%A8%E3%80%8B"><span class="nav-number">7.</span> <span class="nav-text">《疼痛部》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%8F%AB%E9%AD%82%E3%80%8B"><span class="nav-number">8.</span> <span class="nav-text">《叫魂》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%9B%A8%E7%8E%8B%E4%BA%A8%E5%BE%B7%E6%A3%AE%E3%80%8B"><span class="nav-number">9.</span> <span class="nav-text">《雨王亨德森》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E8%8C%AB%E8%8C%AB%E9%BB%91%E5%A4%9C%E3%80%8B"><span class="nav-number">10.</span> <span class="nav-text">《茫茫黑夜》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%87%91%E5%B1%B1%E7%9A%84%E6%88%90%E8%89%B2%E3%80%8B"><span class="nav-number">11.</span> <span class="nav-text">《金山的成色》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%BA%8C%E6%89%8B%E6%97%B6%E9%97%B4%E3%80%8B"><span class="nav-number">12.</span> <span class="nav-text">《二手时间》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%BB%84%E6%B3%A5%E8%A1%97%E3%80%8B"><span class="nav-number">13.</span> <span class="nav-text">《黄泥街》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%B5%AA%E7%9A%84%E6%99%AF%E8%A7%82%E3%80%8B"><span class="nav-number">14.</span> <span class="nav-text">《浪的景观》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%B4%A0%E9%A3%9F%E8%80%85%E3%80%8B"><span class="nav-number">15.</span> <span class="nav-text">《素食者》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%B7%A8%E6%B5%81%E6%B2%B3%E3%80%8B"><span class="nav-number">16.</span> <span class="nav-text">《巨流河》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%BD%AA%E4%B8%8E%E7%BD%9A%E3%80%8B"><span class="nav-number">17.</span> <span class="nav-text">《罪与罚》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%BC%A4%E5%BF%83%E8%80%85%E3%80%8B%EF%BC%88%E4%BD%95%E5%A4%95%E7%9F%AD%E7%AF%87%E5%B0%8F%E8%AF%B4%E9%9B%86%EF%BC%89"><span class="nav-number">18.</span> <span class="nav-text">《伤心者》（何夕短篇小说集）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%81%B6%E6%97%B6%E8%BE%B0%E3%80%8B"><span class="nav-number">19.</span> <span class="nav-text">《恶时辰》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%B0%91%E4%B8%BB%E8%AF%BE%E3%80%8B"><span class="nav-number">20.</span> <span class="nav-text">《民主课》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%B4%A2%E6%8B%89%E9%87%8C%E6%96%AF%E6%98%9F%E3%80%8B"><span class="nav-number">21.</span> <span class="nav-text">《索拉里斯星》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A0%82%E5%90%89%E8%AF%83%E5%BE%B7%E3%80%8B"><span class="nav-number">22.</span> <span class="nav-text">《堂吉诃德》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%89%9B%E8%99%BB%E3%80%8B"><span class="nav-number">23.</span> <span class="nav-text">《牛虻》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A4%9C%E6%99%9A%E7%9A%84%E6%BD%9C%E6%B0%B4%E8%89%87%E3%80%8B"><span class="nav-number">24.</span> <span class="nav-text">《夜晚的潜水艇》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%81%93%E8%B7%AF%E4%BA%A4%E5%8F%89%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA%E4%B8%8E%E5%8A%9E%E6%B3%95%E3%80%8B"><span class="nav-number">25.</span> <span class="nav-text">《道路交叉设计理论与办法》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%BD%98%E8%BE%BE%E9%9B%B7%E6%98%82%E4%B8%8A%E5%B0%89%E5%92%8C%E5%8A%B3%E5%86%9B%E5%A5%B3%E9%83%8E%E3%80%8B"><span class="nav-number">26.</span> <span class="nav-text">《潘达雷昂上尉和劳军女郎》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%93%81%E7%9A%AE%E9%BC%93%E3%80%8B"><span class="nav-number">27.</span> <span class="nav-text">《铁皮鼓》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%B0%98%E5%9F%83%E8%90%BD%E5%AE%9A%E3%80%8B"><span class="nav-number">28.</span> <span class="nav-text">《尘埃落定》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%83%9B%E7%83%AC%E3%80%8B"><span class="nav-number">29.</span> <span class="nav-text">《烛烬》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%83%BD%E6%9F%8F%E6%9E%97%E4%BA%BA%E3%80%8B"><span class="nav-number">30.</span> <span class="nav-text">《都柏林人》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E8%B5%B7%E5%88%9D%E7%BA%AA%E5%B9%B4%E3%80%8B"><span class="nav-number">31.</span> <span class="nav-text">《起初纪年》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%91%BC%E5%85%B0%E6%B2%B3%E4%BC%A0%E3%80%8B"><span class="nav-number">32.</span> <span class="nav-text">《呼兰河传》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%9C%A3%E7%BB%8F%E3%80%8B"><span class="nav-number">33.</span> <span class="nav-text">《一个人的圣经》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%94%9F%E6%AD%BB%E7%96%B2%E5%8A%B3%E3%80%8B"><span class="nav-number">34.</span> <span class="nav-text">《生死疲劳》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%A3%8B%E7%8E%8B%E3%80%8B"><span class="nav-number">35.</span> <span class="nav-text">《棋王》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%B9%81%E8%8A%B1%E3%80%8B"><span class="nav-number">36.</span> <span class="nav-text">《繁花》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%B8%80%E5%8F%A5%E9%A1%B6%E4%B8%80%E4%B8%87%E5%8F%A5%E3%80%8B"><span class="nav-number">37.</span> <span class="nav-text">《一句顶一万句》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%B9%B3%E5%8E%9F%E4%B8%8A%E7%9A%84%E6%91%A9%E8%A5%BF%E3%80%8B"><span class="nav-number">38.</span> <span class="nav-text">《平原上的摩西》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%8D%A1%E6%8B%89%E9%A9%AC%E4%BD%90%E5%A4%AB%E5%85%84%E5%BC%9F%E3%80%8B"><span class="nav-number">39.</span> <span class="nav-text">《卡拉马佐夫兄弟》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%97%A5%E5%85%89%E6%B5%81%E5%B9%B4%E3%80%8B"><span class="nav-number">40.</span> <span class="nav-text">《日光流年》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%96%87%E5%9F%8E%E3%80%8B"><span class="nav-number">41.</span> <span class="nav-text">《文城》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%81%B5%E5%B1%B1%E3%80%8B"><span class="nav-number">42.</span> <span class="nav-text">《灵山》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%B1%9F%E5%9F%8E%E3%80%8B"><span class="nav-number">43.</span> <span class="nav-text">《江城》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E4%BD%9C%E3%80%8A%E6%99%9A%E6%98%A5%E3%80%8B"><span class="nav-number">44.</span> <span class="nav-text">创作《晚春》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%9C%A8%E8%B7%AF%E4%B8%8A%E3%80%8B"><span class="nav-number">45.</span> <span class="nav-text">《在路上》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%97%A0%E5%B0%BD%E4%B9%8B%E5%A4%8F%E3%80%8B"><span class="nav-number">46.</span> <span class="nav-text">《无尽之夏》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A4%A7%E5%B8%88%E5%92%8C%E7%8E%9B%E6%A0%BC%E4%B8%BD%E7%89%B9%E3%80%8B"><span class="nav-number">47.</span> <span class="nav-text">《大师和玛格丽特》</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%BF%AE%E7%AD%91%E6%BB%87%E7%BC%85%E5%85%AC%E8%B7%AF%E7%BA%AA%E5%AE%9E%E3%80%8B"><span class="nav-number">1.</span> <span class="nav-text">《修筑滇缅公路纪实》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%9C%88%E4%BA%AE%E4%B8%8E%E7%AF%9D%E7%81%AB%E3%80%8B"><span class="nav-number">2.</span> <span class="nav-text">《月亮与篝火》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E8%90%A8%E5%AE%81%E3%80%8B"><span class="nav-number">3.</span> <span class="nav-text">《萨宁》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A4%9C%E5%A3%B0%E3%80%8B"><span class="nav-number">4.</span> <span class="nav-text">《夜声》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%A9%AC%E6%88%8F%E5%9B%A2%E4%B9%8B%E5%A4%9C%E3%80%8B"><span class="nav-number">5.</span> <span class="nav-text">《马戏团之夜》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A4%A7%E9%9B%AA%E5%B0%86%E8%87%B3%E3%80%8B"><span class="nav-number">6.</span> <span class="nav-text">《大雪将至》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%96%BC%E7%97%9B%E9%83%A8%E3%80%8B"><span class="nav-number">7.</span> <span class="nav-text">《疼痛部》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%8F%AB%E9%AD%82%E3%80%8B"><span class="nav-number">8.</span> <span class="nav-text">《叫魂》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%9B%A8%E7%8E%8B%E4%BA%A8%E5%BE%B7%E6%A3%AE%E3%80%8B"><span class="nav-number">9.</span> <span class="nav-text">《雨王亨德森》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E8%8C%AB%E8%8C%AB%E9%BB%91%E5%A4%9C%E3%80%8B"><span class="nav-number">10.</span> <span class="nav-text">《茫茫黑夜》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%87%91%E5%B1%B1%E7%9A%84%E6%88%90%E8%89%B2%E3%80%8B"><span class="nav-number">11.</span> <span class="nav-text">《金山的成色》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%BA%8C%E6%89%8B%E6%97%B6%E9%97%B4%E3%80%8B"><span class="nav-number">12.</span> <span class="nav-text">《二手时间》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%BB%84%E6%B3%A5%E8%A1%97%E3%80%8B"><span class="nav-number">13.</span> <span class="nav-text">《黄泥街》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%B5%AA%E7%9A%84%E6%99%AF%E8%A7%82%E3%80%8B"><span class="nav-number">14.</span> <span class="nav-text">《浪的景观》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%B4%A0%E9%A3%9F%E8%80%85%E3%80%8B"><span class="nav-number">15.</span> <span class="nav-text">《素食者》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%B7%A8%E6%B5%81%E6%B2%B3%E3%80%8B"><span class="nav-number">16.</span> <span class="nav-text">《巨流河》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%BD%AA%E4%B8%8E%E7%BD%9A%E3%80%8B"><span class="nav-number">17.</span> <span class="nav-text">《罪与罚》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%BC%A4%E5%BF%83%E8%80%85%E3%80%8B%EF%BC%88%E4%BD%95%E5%A4%95%E7%9F%AD%E7%AF%87%E5%B0%8F%E8%AF%B4%E9%9B%86%EF%BC%89"><span class="nav-number">18.</span> <span class="nav-text">《伤心者》（何夕短篇小说集）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%81%B6%E6%97%B6%E8%BE%B0%E3%80%8B"><span class="nav-number">19.</span> <span class="nav-text">《恶时辰》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%B0%91%E4%B8%BB%E8%AF%BE%E3%80%8B"><span class="nav-number">20.</span> <span class="nav-text">《民主课》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%B4%A2%E6%8B%89%E9%87%8C%E6%96%AF%E6%98%9F%E3%80%8B"><span class="nav-number">21.</span> <span class="nav-text">《索拉里斯星》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A0%82%E5%90%89%E8%AF%83%E5%BE%B7%E3%80%8B"><span class="nav-number">22.</span> <span class="nav-text">《堂吉诃德》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%89%9B%E8%99%BB%E3%80%8B"><span class="nav-number">23.</span> <span class="nav-text">《牛虻》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A4%9C%E6%99%9A%E7%9A%84%E6%BD%9C%E6%B0%B4%E8%89%87%E3%80%8B"><span class="nav-number">24.</span> <span class="nav-text">《夜晚的潜水艇》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%81%93%E8%B7%AF%E4%BA%A4%E5%8F%89%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA%E4%B8%8E%E5%8A%9E%E6%B3%95%E3%80%8B"><span class="nav-number">25.</span> <span class="nav-text">《道路交叉设计理论与办法》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%BD%98%E8%BE%BE%E9%9B%B7%E6%98%82%E4%B8%8A%E5%B0%89%E5%92%8C%E5%8A%B3%E5%86%9B%E5%A5%B3%E9%83%8E%E3%80%8B"><span class="nav-number">26.</span> <span class="nav-text">《潘达雷昂上尉和劳军女郎》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%93%81%E7%9A%AE%E9%BC%93%E3%80%8B"><span class="nav-number">27.</span> <span class="nav-text">《铁皮鼓》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%B0%98%E5%9F%83%E8%90%BD%E5%AE%9A%E3%80%8B"><span class="nav-number">28.</span> <span class="nav-text">《尘埃落定》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%83%9B%E7%83%AC%E3%80%8B"><span class="nav-number">29.</span> <span class="nav-text">《烛烬》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E9%83%BD%E6%9F%8F%E6%9E%97%E4%BA%BA%E3%80%8B"><span class="nav-number">30.</span> <span class="nav-text">《都柏林人》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E8%B5%B7%E5%88%9D%E7%BA%AA%E5%B9%B4%E3%80%8B"><span class="nav-number">31.</span> <span class="nav-text">《起初纪年》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%91%BC%E5%85%B0%E6%B2%B3%E4%BC%A0%E3%80%8B"><span class="nav-number">32.</span> <span class="nav-text">《呼兰河传》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%9C%A3%E7%BB%8F%E3%80%8B"><span class="nav-number">33.</span> <span class="nav-text">《一个人的圣经》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%94%9F%E6%AD%BB%E7%96%B2%E5%8A%B3%E3%80%8B"><span class="nav-number">34.</span> <span class="nav-text">《生死疲劳》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%A3%8B%E7%8E%8B%E3%80%8B"><span class="nav-number">35.</span> <span class="nav-text">《棋王》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%B9%81%E8%8A%B1%E3%80%8B"><span class="nav-number">36.</span> <span class="nav-text">《繁花》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E4%B8%80%E5%8F%A5%E9%A1%B6%E4%B8%80%E4%B8%87%E5%8F%A5%E3%80%8B"><span class="nav-number">37.</span> <span class="nav-text">《一句顶一万句》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%B9%B3%E5%8E%9F%E4%B8%8A%E7%9A%84%E6%91%A9%E8%A5%BF%E3%80%8B"><span class="nav-number">38.</span> <span class="nav-text">《平原上的摩西》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%8D%A1%E6%8B%89%E9%A9%AC%E4%BD%90%E5%A4%AB%E5%85%84%E5%BC%9F%E3%80%8B"><span class="nav-number">39.</span> <span class="nav-text">《卡拉马佐夫兄弟》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%97%A5%E5%85%89%E6%B5%81%E5%B9%B4%E3%80%8B"><span class="nav-number">40.</span> <span class="nav-text">《日光流年》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%96%87%E5%9F%8E%E3%80%8B"><span class="nav-number">41.</span> <span class="nav-text">《文城》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E7%81%B5%E5%B1%B1%E3%80%8B"><span class="nav-number">42.</span> <span class="nav-text">《灵山》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%B1%9F%E5%9F%8E%E3%80%8B"><span class="nav-number">43.</span> <span class="nav-text">《江城》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E4%BD%9C%E3%80%8A%E6%99%9A%E6%98%A5%E3%80%8B"><span class="nav-number">44.</span> <span class="nav-text">创作《晚春》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%9C%A8%E8%B7%AF%E4%B8%8A%E3%80%8B"><span class="nav-number">45.</span> <span class="nav-text">《在路上》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E6%97%A0%E5%B0%BD%E4%B9%8B%E5%A4%8F%E3%80%8B"><span class="nav-number">46.</span> <span class="nav-text">《无尽之夏》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8A%E5%A4%A7%E5%B8%88%E5%92%8C%E7%8E%9B%E6%A0%BC%E4%B8%BD%E7%89%B9%E3%80%8B"><span class="nav-number">47.</span> <span class="nav-text">《大师和玛格丽特》</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
 
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Phoenix Rain</p>
   <div class="site-description" itemprop="description">与所有摧毁艺术的事物保持抗衡</div>
 </div>
-<div class="site-state-wrap animated">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+          <a href="/archives">
           <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
+            <a href="/categories/">
         <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
+            <a href="/tags/">
         <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
 
-        </div>
-      </div>
+
+
+      </section>
     </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
 
     
-  </aside>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    </div>
 
     <div class="main-inner page posts-expand">
+      
+  
+  
 
+      
 
     
     
     
-    <div class="post-block" lang="en"><header class="post-header">
+    <div class="post-block" lang="en">
+      <header class="post-header">
 
 <h1 class="post-title" itemprop="name headline">文章评价
 </h1>
 
 <div class="post-meta-container">
+  
+
 </div>
 
 </header>
@@ -352,27 +381,57 @@
       
       
     </div>
+    
 
     
     
+    
 
 
-</div>
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
+      
 
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2026</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">Phoenix Rain</span>
-  </div>
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Phoenix Rain</span>
+</div>
 <div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
@@ -380,7 +439,7 @@
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
@@ -394,20 +453,43 @@
   </footer>
 
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
 
 </body>
 </html>
