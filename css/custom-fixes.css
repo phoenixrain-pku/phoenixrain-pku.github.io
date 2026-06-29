@@ -1,0 +1,8 @@
+/* Layout fixes (loaded after main.css). Hand-maintained, not auto-generated. */
+
+/* Long Table of Contents: keep the sidebar TOC within the viewport so it
+   scrolls internally from the top instead of being clipped by the sticky
+   sidebar (happens when a page has many headings, e.g. 文章评价). */
+.sidebar-panel {
+  max-height: min(var(--sidebar-wrapper-height, 100vh), calc(100vh - 40px));
+}
