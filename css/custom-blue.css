@@ -1,0 +1,80 @@
+/* Auto-generated: restores the original blue color theme (overrides main.css) */
+:root { --body-bg-color: #142c52; --content-bg-color: #e9f0ff; --card-bg-color: #c2d2e8; --text-color: #0e0e43; --blockquote-color: #e0e7f1; --link-color: #0a0e28; --link-hover-color: #5d71b0; --table-row-hover-bg-color: #c2d2e8; --menu-item-bg-color: #c2d2e8; --btn-default-color: #0e0e43; --btn-default-border-color: #0e0e43; --btn-default-hover-bg: #5d71b0; --btn-default-hover-border-color: #5d71b0; --highlight-background: #f0f0f0; --highlight-gutter-background: #dedede; }
+::selection { background: #153979; }
+a,
+span.exturl { border-bottom: 1px solid #838797; }
+.hljs { background: #F0F0F0; }
+.hljs,
+.hljs-subst { color: #444; }
+.hljs-comment { color: #888888; }
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo { color: #BC6060; }
+.hljs-literal { color: #78A960; }
+.hljs-meta-string { color: #4d99bf; }
+kbd { border: 2px solid #476b8b; }
+.blockquote-center::before { border-top: 1px solid #476b8b; }
+.blockquote-center::after { border-bottom: 1px solid #476b8b; }
+.post-body .label { color: #0e0e43; }
+.post-body .tabs ul.nav-tabs li.tab.active,
+.tabs-comment ul.nav-tabs li.tab.active { border-top-color: #154598; }
+.pagination .page-number.current { background: #476b8b; border-color: #476b8b; }
+.headband { background: #5d71b0; }
+.site-brand-container { background: #0b183b; }
+.site-description { color: #838797; }
+.sidebar .sidebar-button a { color: #154598; }
+.sidebar .sidebar-button a:hover { color: #11377a; }
+.sidebar .sidebar-button a:hover .fa,
+.sidebar .sidebar-button a:hover .fab,
+.sidebar .sidebar-button a:hover .far,
+.sidebar .sidebar-button a:hover .fas { color: #11377a; }
+.sidebar-nav li:hover { color: #154598; }
+.sidebar-toc-active .sidebar-nav-toc,
+.sidebar-overview-active .sidebar-nav-overview { border-bottom-color: #154598; color: #154598; }
+.sidebar-toc-active .sidebar-nav-toc:hover,
+.sidebar-overview-active .sidebar-nav-overview:hover { color: #154598; }
+.sidebar-toggle { background: #5d71b0; }
+.sidebar-toggle:hover .toggle-line { background: #154598; }
+.post-toc .nav .active > a { border-bottom-color: #154598; color: #154598; }
+.post-toc .nav .active-current > a { color: #154598; }
+.post-toc .nav .active-current > a:hover { color: #154598; }
+.site-state-item-name { color: #838797; }
+.footer { color: #f7fbff; }
+.back-to-top { background: #5d71b0; }
+.back-to-top:hover { color: #154598; }
+.posts-collapse .post-content .collection-title::before { background: #838797; }
+.posts-collapse .post-content .collection-year::before { background: #838797; }
+.posts-collapse .post-content .collection-header small { color: #838797; }
+.posts-collapse .post-content .post-header { border-bottom: 1px dashed #476b8b; }
+.posts-collapse .post-content .post-header::before { background: #838797; }
+.posts-collapse .post-content .post-header:hover { border-bottom-color: #e0e7f1; }
+.posts-collapse .post-content .post-header:hover::before { background: #5d71b0; }
+.posts-collapse .post-content::before { background: #c2d2e8; }
+.post-body .image-caption,
+.post-body .figure .caption { color: #838797; }
+.posts-expand .post-meta-container { color: #838797; }
+.posts-expand .post-meta-container time { border-bottom: 1px dashed #838797; }
+.post-eof { background: #476b8b; }
+.reward-container button { border: 2px solid #154598; color: #154598; }
+.reward-container button:hover { background: #154598; }
+.followme { color: #838797; }
+.category-all-page .category-list-count { color: #838797; }
+.event-list hr { background: #5d71b0; }
+.event-list hr::after { background: #5d71b0; }
+.event-list .event { --event-background: #5d71b0; --event-foreground: #838797; }
+.event-list .event-past { --event-background: #c2d2e8; --event-foreground: #838797; --event-title: #5d71b0; }
+.menu .menu-item .badge { background: #476b8b; }
+.main-menu .menu-item-active::after { background: #838797; }
+.sub-menu .menu-item a:hover,
+.sub-menu .menu-item span.exturl:hover { color: #154598; }
+.sub-menu .menu-item-active { border-bottom-color: #154598; color: #154598; }
+.sub-menu .menu-item-active:hover { border-bottom-color: #154598; }
+.sidebar .sidebar-button { border-bottom: 1px dotted #476b8b; border-top: 1px dotted #476b8b; }
+@media (max-width: 413px) {
+  .post-body .tabs ul.nav-tabs li.tab.active,
+  .tabs-comment ul.nav-tabs li.tab.active { border-left-color: #154598; }
+}
