@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/a.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/a.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/a.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.lhp-pku.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="简介马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="马太效应与幂律分布">
+<meta property="og:url" content="https://blog.lhp-pku.top/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/index.html">
+<meta property="og:site_name" content="Phoenix Rain">
+<meta property="og:description" content="简介马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOSMYF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/05/22/gOS1SJ.png">
+<meta property="article:published_time" content="2021-05-22T15:57:14.000Z">
+<meta property="article:modified_time" content="2026-06-29T12:07:58.709Z">
+<meta property="article:author" content="Phoenix Rain">
+<meta property="article:tag" content="学术垃圾">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg">
+
+
+<link rel="canonical" href="https://blog.lhp-pku.top/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://blog.lhp-pku.top/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/","path":"/2021/05/22/富者愈富/","title":"马太效应与幂律分布"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>马太效应与幂律分布 | Phoenix Rain</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Phoenix Rain" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Phoenix Rain</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-blogs"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Blogs</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-comments"><a href="/comments/" rel="section"><i class="fa fa-archive fa-fw"></i>Comments</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">数学模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC"><span class="nav-number">3.</span> <span class="nav-text">理论推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">实验结果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98-n-%E7%9A%84%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.1.</span> <span class="nav-text">改变 $n$ 的实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98-p-%E7%9A%84%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.2.</span> <span class="nav-text">改变 $p$ 的实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98-k-%E7%9A%84%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.3.</span> <span class="nav-text">改变 $k$ 的实验</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Phoenix Rain</p>
+  <div class="site-description" itemprop="description">与所有摧毁艺术的事物保持抗衡</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.lhp-pku.top/2021/05/22/%E5%AF%8C%E8%80%85%E6%84%88%E5%AF%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Phoenix Rain">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Rain">
+      <meta itemprop="description" content="与所有摧毁艺术的事物保持抗衡">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="马太效应与幂律分布 | Phoenix Rain">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          马太效应与幂律分布
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-22 23:57:14" itemprop="dateCreated datePublished" datetime="2021-05-22T23:57:14+08:00">2021-05-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-06-29 20:07:58" itemprop="dateModified" datetime="2026-06-29T20:07:58+08:00">2026-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">学术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>马太效应是在描述一种强者愈强, 弱者愈弱的两极分化现象. 该现象可以被归纳为: 任何个体, 群体或地区, 在某一个方面 (如金钱, 名誉, 地位等) 获得成功和进步, 就会产生一种积累优势, 就会有更多的机会取得更大的成功和进步.</p>
+<span id="more"></span>
+
+
+<p>反应这一模型的分布为幂律分布.</p>
+<p>本文接下来会从数学角度对此问题进行分析, 对上述问题建立严格的数学模型, 进行一系列性质与定理的证明, 并给出该模型的模拟程序, 并研究其与幂律分布的吻合程度.</p>
+<h2 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h2><p>考虑这样的建图算法:</p>
+<p>共有 $n$ 个节点, 按照 $0,1,2,\cdots,n-1$ 的顺序依次创建.</p>
+<p>首先创建节点 $0$.</p>
+<p>当创建节点 $j(j\geq 1)$ 时, 以概率 $p$ 选择 (a) 执行, 以概率 $1-p$ 选择 (b) 执行:<br>(a) 在已有的 $j-1$ 个节点中均匀地, 随机地选择一个早先创建的网页 $i$, 建立一个从 $j$ 到 $i$ 的链接. 选中每一个节点的概率为 $1&#x2F;(j-1)$.<br>(b) 按照与已有入度成比例的概率, 选择一个早先创建的网页 $i$，建立一个从 $j$ 到 $i$ 的链接. 选中每一个节点的概率与该节点的现有入度成正比.</p>
+<p>该算法的代码实现如下 (使用 python 撰写):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37</code></td>
+<td><code>M = np.zeros((n,n)) # 邻接矩阵，初始化全0 D = np.zeros(n) # 每个节点的当前入度  def uniform_addedge(i): 	x = random.randint(0,i) 	M[i][x] = 1 	D[x] += 1  def addedge(i): 	if i == 0: 		return 	tmp_sum = 0 	for x in range(i): 		tmp_sum += D[x] 	weight_D = np.zeros(n) 	for x in range(i): 		weight_D[x] = float(D[x]/tmp_sum) 		weight_D[x] = weight_D[x] + weight_D[x-1] 	q = random.uniform(0, weight_D[i-1]) 	for x in range(i): 		if q &gt;= weight_D[x-1] and q &lt;= weight_D[x]: 			M[i][x] = 1 			D[x] += 1 			return  for i in range(n): 	for j in range(k): 		q = random.uniform(0, 1) 		if q &lt;= p: 			uniform_addedge(i) 		else: 			addedge(i)              max_D = int(np.max(D)) plt.hist(D,bins = max_D,label = &#39;Simulation Result&#39;)</code></td>
+</tr>
+</tbody></table>
+<h2 id="理论推导"><a href="#理论推导" class="headerlink" title="理论推导"></a>理论推导</h2><p>我们考虑节点入度的概率分布函数.</p>
+<p>假设共有 $n$ 个节点, 初始选择时以 $p$ 的概率做均匀随机选择, 以 $q&#x3D;1-p$ 的概率做加权随机选择, 每个节点的出度为 $k$.</p>
+<p>仿照 $k&#x3D;1$ 时的概率分布函数推导, 考虑 $k\neq 1$ 时的一般情况计算节点入度的概率分布函数:</p>
+<p>对于时间 $t$, 节点 $j$ 的入度期望表示为 $X_j(t)$. 当 $t\leq j$ 时, 显然有 $X_j(t)&#x3D;0$.</p>
+<p>在时间 $t+1$ 时, 节点 $t+1$ 给 $j$ 一次链接的概率为:</p>
+<p>由于节点 $t+1$ 总共可以连 $k$ 条边, 因此节点 $t+1$ 给 $j$ 链接数量的期望为:</p>
+<p>因此 $X_j(t)$ 满足微分方程:</p>
+<p>考虑 $t$ 时刻入度至少为 $x$ 的节点个数:</p>
+<p>这是满足幂律分布的.</p>
+<p>现考虑其离散化的情况. 记 $N(x)$ 为入度为 $x$ 的节点的数量. 在绘制真正的幂律分布函数图像时, 我们直接令:</p>
+<p>其中 $P(x)$ 是上面已经计算出的 $\rm CDF$, $p(x)&#x3D;P’(x)$ 是 $\rm PDF$.</p>
+<p>这一部分的代码如下:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>1 2 3</code></td>
+<td><code>x=np.linspace(0,np.max(D),np.max(D)) power_func = ((1-((1-p)/p*(x+1)+1)**(-1/((1-p)*k)))*n-(1-((1-p)/p*x+1)**(-1/((1-p)*k)))*n) plt.plot(x, power_func,label = &#39;Power Law Result&#39;)</code></td>
+</tr>
+</tbody></table>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>使用控制变量法进行实验, $n,p,k$的默认值分别为 $500, 0.6, 3$.</p>
+<p>对于不同的 $n,p,k$, 模拟的结果与幂律分布的图像如下:</p>
+<h3 id="改变-n-的实验"><a href="#改变-n-的实验" class="headerlink" title="改变 $n$ 的实验"></a>改变 $n$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOSKFU.jpg" alt="gOSKFU.jpg"></p>
+<p>可以看到, $n$ 越大, 实验结果越接近真实的幂律分布.</p>
+<h3 id="改变-p-的实验"><a href="#改变-p-的实验" class="headerlink" title="改变 $p$ 的实验"></a>改变 $p$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOSMYF.png" alt="gOSMYF.png"></p>
+<p>可以看到, 结果与幂律分布始终很吻合, 且 $p$ 越小, 分布越极端.</p>
+<h3 id="改变-k-的实验"><a href="#改变-k-的实验" class="headerlink" title="改变 $k$ 的实验"></a>改变 $k$ 的实验</h3><p><img src="https://z3.ax1x.com/2021/05/22/gOS1SJ.png" alt="gOS1SJ.png"></p>
+<p>可以看到, 结果与幂律分布始终很吻合.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E6%9C%AF%E5%9E%83%E5%9C%BE/" rel="tag"># 学术垃圾</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/12/%E8%BF%B7%E9%9B%A8/" rel="prev" title="迷雨">
+                  <i class="fa fa-angle-left"></i> 迷雨
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/05/27/%E6%99%9A%E6%98%A5/" rel="next" title="晚春">
+                  晚春 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Phoenix Rain</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/a.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/a.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/a.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.lhp-pku.top","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Superdense Coding 与 Quantum Teleportation 是两种基础的量子通信方式. 本文将会用通俗易懂的方式简要介绍 Superdense Coding 与 Quantum Teleportation, 比较二者的异同, 并论述这两种通信方式与经典通信的关系.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="量子信息传输简介">
+<meta property="og:url" content="https://blog.lhp-pku.top/2021/06/29/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93/index.html">
+<meta property="og:site_name" content="Phoenix Rain">
+<meta property="og:description" content="Superdense Coding 与 Quantum Teleportation 是两种基础的量子通信方式. 本文将会用通俗易懂的方式简要介绍 Superdense Coding 与 Quantum Teleportation, 比较二者的异同, 并论述这两种通信方式与经典通信的关系.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.lhp-pku.top/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/Ra85LQ.png">
+<meta property="og:image" content="https://blog.lhp-pku.top/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/Ra87on.png">
+<meta property="og:image" content="https://blog.lhp-pku.top/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/Ra8vyF.png">
+<meta property="og:image" content="https://blog.lhp-pku.top/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/RaGSeJ.png">
+<meta property="article:published_time" content="2021-06-29T04:12:36.000Z">
+<meta property="article:modified_time" content="2023-07-23T03:46:23.000Z">
+<meta property="article:author" content="Phoenix Rain">
+<meta property="article:tag" content="学术垃圾">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.lhp-pku.top/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/Ra85LQ.png">
+
+
+<link rel="canonical" href="https://blog.lhp-pku.top/2021/06/29/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://blog.lhp-pku.top/2021/06/29/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93/","path":"/2021/06/29/量子信息传输/","title":"量子信息传输简介"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>量子信息传输简介 | Phoenix Rain</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Phoenix Rain" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Phoenix Rain</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-blogs"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Blogs</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-comments"><a href="/comments/" rel="section"><i class="fa fa-archive fa-fw"></i>Comments</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Superdense-Coding"><span class="nav-number">1.</span> <span class="nav-text">Superdense Coding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quantum-Teleportation"><span class="nav-number">2.</span> <span class="nav-text">Quantum Teleportation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Superdense-Coding-%E4%B8%8E-Quantum-Teleportation-%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">3.</span> <span class="nav-text">Superdense Coding 与 Quantum Teleportation 的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BB%8F%E5%85%B8%E9%80%9A%E4%BF%A1"><span class="nav-number">4.</span> <span class="nav-text">量子通信与经典通信</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Phoenix Rain</p>
+  <div class="site-description" itemprop="description">与所有摧毁艺术的事物保持抗衡</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.lhp-pku.top/2021/06/29/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Phoenix Rain">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Phoenix Rain">
+      <meta itemprop="description" content="与所有摧毁艺术的事物保持抗衡">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="量子信息传输简介 | Phoenix Rain">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          量子信息传输简介
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-29 12:12:36" itemprop="dateCreated datePublished" datetime="2021-06-29T12:12:36+08:00">2021-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-07-23 11:46:23" itemprop="dateModified" datetime="2023-07-23T11:46:23+08:00">2023-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">学术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Superdense Coding 与 Quantum Teleportation 是两种基础的量子通信方式. 本文将会用通俗易懂的方式简要介绍 Superdense Coding 与 Quantum Teleportation, 比较二者的异同, 并论述这两种通信方式与经典通信的关系.</p>
+<span id="more"></span>
+
+
+<p>在介绍这两种量子通信方式之前, 我们先简介量子信息的表示方式. 在经典信息中, 任何数据的最底层逻辑表示都为二进制的比特, 每个比特可以是 0 或者 1. 如整数 17 的二进制逻辑表示就是10001, 字母 A 用其 ASCII 码值 65 的二进制来表示, 图像的表示则是记录下来每个像素上的 RGB 二进制整数值. 在经典计算中, 一个比特要么是 0 要么是 1, 不会处在一个模糊的“中间位置”. 然而, 引入量子力学性质之后, 量子比特会拥有两种额外的特殊性质: 叠加与纠缠.</p>
+<p>所谓叠加, 就是量子比特可能“同时”处于两种状态, 如 $|\psi\rangle&#x3D;\alpha|0\rangle+\beta|1\rangle$. 量子态经过测量后会坍缩, 如上述的 $|\psi\rangle$ 会以 $|\alpha|^2$与 $|\beta|^2$ 的概率坍缩至 $|0\rangle$ 或 $|1\rangle$, 而在测量操作发生之前, 它会始终处于$|0\rangle$ 和 $|1\rangle$ 的叠加状态. 所谓纠缠, 就是两个量子比特之间可能存在一种不受任何约束的相互影响, 如 $|\psi\rangle&#x3D;1&#x2F;\sqrt{2}(|00\rangle+|11\rangle)$. 那么这两个量子比特将一定同时处于 0 或同时处于 1, 不论它们隔得多远, 而测量其中任何一个量子比特, 都会导致另一个量子比特也很快 (远超过光速) 坍缩.</p>
+<p>量子计算与经典计算的不同本质就来自于这两种特殊性质. 有了这两种性质后, 数据的表示、计算与通信都会变得与经典迥然不同; 而两种最重要的基本通信协议为Superdense Coding (超密编码) 与 Quantum Teleportation (量子传态).</p>
+<h2 id="Superdense-Coding"><a href="#Superdense-Coding" class="headerlink" title="Superdense Coding"></a>Superdense Coding</h2><p>Superdense Coding 的目标是使用一个量子比特传递两个经典比特才能传递的信息. 假设 Alice 与 Bob 两人在传递信息, Alice 要给 Bob 传送两个经典比特. 使用 Superdense Coding 的协议过程如下:</p>
+<ol>
+<li><p>制备一个纠缠态 $|\psi\rangle&#x3D;(|00\rangle+|11\rangle)&#x2F;\sqrt 2$, 将第一个 qubit 给 Alice, 记为 $|q_A\rangle$; 第二个 qubit 给 B, 记为 $|q_B\rangle$. $|\psi\rangle$ 也可被写作$|q_Aq_B\rangle&#x3D;(|00\rangle+|11\rangle)&#x2F;\sqrt 2$.</p>
+</li>
+<li><p>假设 Alice 现在想要传输的信息为 $xy\in {0,1}^2$. Alice 根据自己想要传输的内容将相应的量子逻辑门作用在自己的量子比特上. 对应的量子逻辑门与作用的结果如下:</p>
+<p><img src="/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/Ra85LQ.png" alt="Ra85LQ.png"></p>
+</li>
+<li><p>Alice 将自己的量子比特传输给 Bob, Bob 得到新的 $|q_Aq_B\rangle$ 后将一个量子逻辑门作用在其上, 进行解码:</p>
+<p>其中 CNOT Gate 的定义如下:</p>
+<p>CNOT Gate 作用在两个量子比特上, 前者为控制位, 后者为受控位. 若控制位是 $|0\rangle$, 那么受控位不变; 若控制位是 $|1\rangle$, 那么受控位取反.</p>
+<p>对应的结果为:</p>
+<p><img src="/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/Ra87on.png" alt="Ra87on.png"></p>
+<p>上述过程其实是 Bob 对当前的纠缠态进行的一种测量, 得到的确定的结果与 Alice 想要传输的 2 比特内容相一致.</p>
+</li>
+</ol>
+<h2 id="Quantum-Teleportation"><a href="#Quantum-Teleportation" class="headerlink" title="Quantum Teleportation"></a>Quantum Teleportation</h2><p>量子传态是一个非常巧妙的量子态远距离传输技术, 也是量子信息、量子通讯中最重要的技术之一. 想象这样一个场景: Alice 手中有一个量子态 $|\psi\rangle &#x3D; \alpha|0\rangle+\beta|1\rangle$, 她想将这个态的传给 Bob, 该如何操作? 无论 Alice 是否确切地知道 $\alpha$ 与 $\beta$ 的数值, 运用经典的通讯方式 (如口头通知, 或写信, 或发邮件) 都是行不通的. 原因很简单, $\alpha$ 与 $\beta$ 可能是超出任何经典存储单元所能表示长度的无理数. 因此经典通讯是行不通的.</p>
+<p>量子传态使得上述传输的实现成为可能. 除去 Alice 希望传输的 $|\psi\rangle$ 外, Alice 和 Bob 还各持有一个量子比特, 而这两个量子比特是纠缠的, 如$|\psi\rangle&#x3D;(|00\rangle+|11\rangle)&#x2F;\sqrt 2$.</p>
+<p>那么现在这三个 qubit 的组合情况可以写为:</p>
+<p>其中前两个量子比特属于 Alice, 最后一个 qubit 属于 Bob.</p>
+<p>现在 Alice 可以将 $|\psi\rangle &#x3D; \alpha|0\rangle+\beta|1\rangle$ 通过这对纠缠的量子比特传给 Bob. 具体过程如下:</p>
+<ol>
+<li><p>Alice 将前两个量子比特用 CNOT Gate 作用.</p>
+<p>那么三个量子比特的组合变为:</p>
+</li>
+<li><p>Alice 将第一个量子比特用 Hamard Gate 作用. Hamard Gate 的定义如下:</p>
+<p>那么三个 Qubit 的组合变为:</p>
+<p>注意, 此时含有 $\alpha$ 和 $\beta$ 的信息已经转移到了第三个量子比特上. Alice 手上的 $2$ 个量子比特只有 $4$ 种情况, 一旦确定, 就能知道第三个量子比特具体为上述的哪一种.</p>
+</li>
+<li><p>Alice 测量她的两个量子比特, 得到 $4$ 种可能性中的一种 $xy\in{0,1}^2$, 通过经典的传输发给 Bob. Alice 的测量结果 $|q_A\rangle$ 与 Bob 手上所得到的态 $|q_{B_1}q_{B_2}\rangle$的对应关系如下:</p>
+<p><img src="/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/Ra8vyF.png" alt="Ra8vyF.png"></p>
+</li>
+<li><p>Bob 根据 Alice 发来的结果, 相应地去复原他手上的量子比特. 复原的方式为将相应的量子逻辑门作用在其上. 对应的量子逻辑门与作用的结果如下:</p>
+<p><img src="/%E9%87%8F%E5%AD%90%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93.assets/RaGSeJ.png" alt="RaGSeJ.png"></p>
+</li>
+</ol>
+<p>因此我们可以看到: 只要 Alice 和 Bob 共享了一对纠缠的量子比特, 无论他们距离有多远, 都可以通过这对纠缠, 将某个自己独有的量子比特的信息传给另一个人.</p>
+<h2 id="Superdense-Coding-与-Quantum-Teleportation-的比较"><a href="#Superdense-Coding-与-Quantum-Teleportation-的比较" class="headerlink" title="Superdense Coding 与 Quantum Teleportation 的比较"></a>Superdense Coding 与 Quantum Teleportation 的比较</h2><p>二者的本质区别为: Superdense Coding 通过量子机制传输经典信息, 而 Quantum Teleportation 通过经典通信方式传输量子信息.</p>
+<p>某种程度上, Superdense Coding 也是 Quantum Teleportation 的一个应用, 因为在 Alice 对自己的 qubit 进行酉变换后, 需要将这个 qubit 的信息发给 Bob. 这个过程可以通过直接发送该量子比特 (可能是一个光子) 来完成, 但更便捷的方法显然是通过 Teleportation 来实现.</p>
+<h2 id="量子通信与经典通信"><a href="#量子通信与经典通信" class="headerlink" title="量子通信与经典通信"></a>量子通信与经典通信</h2><p>看到这里, 你也许会问: 超密编码到底能有多“密”? 量子传态到底能不能突破光速?</p>
+<p>我们看到, 在超密编码中, 我们仅使用一个量子比特, 就传输了两个经典比特才能表示的信息. 量子的奇妙威力让人们不禁去想, 能不能将大量的经典信息——如一整本《红楼梦》——压缩、存储进一个量子比特中. 这似乎是可以的, 因为量子的叠加态 $|\psi\rangle&#x3D;\alpha|0\rangle+\beta|1\rangle$ 中, $\alpha$ 可以是任何模长不超过 1 的复数, 那么我们也许可以将红楼梦的每个字都编码为一个整数, 把它们全部拼在一起, 前面再加一个小数点, 然后将这个巨大的小数记作 $\alpha$, 再制备出这样的量子态, 不就成功了?</p>
+<p>这个方案看似可行, 但实际上在信息论的角度, 并无法真的承担如此庞大的信息量; 实际上, 任何信息, 使用量子比特所进行编码, 都不会比使用经典比特优越太多——这就是著名的 Holevo Bound. Holevo Bound 描述了量子系统包含信息的能力上限: 从本质上讲, 一个量子比特最多可以包含一个经典比特的信息.</p>
+<p>那么我们是如何用一个量子比特传输了两个经典比特的信息呢? 实际上, 我们让 Alice 和 Bob 预先共享了两个量子比特的纠缠态, 我们是在“传输”这一步骤才仅传输了一个量子比特, 而真正的编码则使用两个量子比特才完成的. 因此, 超密编码的优势其实仅仅是在传输中体现的: 我们可以通过“传输”一个量子比特来“传递”两个经典比特的信息, 但不能仅使用一个量子比特来“编码”两个经典比特的信息.</p>
+<p>那么量子传态可以超过光速吗? 前面我们提到, 对两个已经纠缠的量子比特, 不管它们距离有多远, 测量后导致的坍缩几乎是在瞬间完成的 (远超过光速). 然而, 我们也看到, 在量子传态中, Bob 需要得知 Alice 的测量结果, 才能通过一些本地操作复原出 Alice 所真正希望传输的态; 从量子信息学的角度, 如果 Bob 不知道 Alice 的测量结果, 他的量子比特会处在一个混态, 不包含任何与待传输态有关的信息. 因此, 量子传态是依赖于经典信息传输的, 也因此不会超过经典信息传输的速度. 目前经典信息传输尚未超过光速, 那么量子传态也不会超过光速.</p>
+<p>那么既然量子态不会容纳更多的信息, 量子传态也不会超过光速, 量子通信的优点到底在哪里呢? 一方面, 前面我们已经提到过, 经典信息根本无法表示某些量子态 (如系数是无理数的情况), 因此经典信息可以用量子态来传输, 但量子信息并不能仅通过经典比特来传输; 且相比于经典信息, 量子信息的一大优点是安全性. 与经典信息相比, 量子态天然具有不可克隆的特点, 因此从原理上就是安全的; 如果存在窃听者 Carol, 想要从 Alice 和 Bob 的通讯中窃取信息, 但由于没有 Bob 的量子比特，则无法从 Alice 发送的量子比特中得到任何信息; 并且即使 Carol 拦截了 Alice 或 Bob 的量子比特, 除非进行测量, 否则不会得到与待传输态有关的任何信息, 而测量会破坏量子态, 让 Alice 和 Bob 发现窃听者的存在.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E6%9C%AF%E5%9E%83%E5%9C%BE/" rel="tag"># 学术垃圾</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/19/%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BF%83%E4%BB%AA%E5%AF%B9%E8%B1%A1/" rel="prev" title="如何选择心仪对象">
+                  <i class="fa fa-angle-left"></i> 如何选择心仪对象
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/08/PSL/" rel="next" title="Private Sequential Learning 论文详解">
+                  Private Sequential Learning 论文详解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Phoenix Rain</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
