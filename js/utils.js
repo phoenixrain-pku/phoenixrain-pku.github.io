@@ -277,7 +277,7 @@ NexT.utils = {
       targets  : tocElement,
       duration : 200,
       easing   : 'linear',
-      scrollTop: tocElement.scrollTop - (tocElement.offsetHeight / 2) + target.getBoundingClientRect().top - tocElement.getBoundingClientRect().top
+      scrollTop: tocElement.scrollTop // [patched] no TOC auto-center; keep it manually scrollable
     });
   },
 
@@ -313,7 +313,7 @@ NexT.utils = {
     let sidebarSchemePadding = (CONFIG.sidebar.padding * 2) + sidebarNavHeight + sidebarb2tHeight;
     if (CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini') sidebarSchemePadding += sidebarOffset * 2;
     // Initialize Sidebar & TOC Height.
-    const sidebarWrapperHeight = document.body.offsetHeight - sidebarSchemePadding + 'px';
+    const sidebarWrapperHeight = window.innerHeight - sidebarSchemePadding + 'px';
     document.documentElement.style.setProperty('--sidebar-wrapper-height', sidebarWrapperHeight);
   },
 
