@@ -6,3 +6,16 @@
 .sidebar-panel {
   max-height: min(var(--sidebar-wrapper-height, 100vh), calc(100vh - 40px));
 }
+
+/* THE fix for the "TOC starts at #13" bug. NexT makes the TOC scroll container
+   a flex column with `justify-content: center` (so a short TOC sits centered).
+   But when the TOC is TALLER than the container, centering pushes the first
+   items above the top edge, where scrolling can't reach them — so a long TOC
+   appears to start partway down (item 13 on a short screen, item 6 on a taller
+   one). `safe center` keeps centering only while it fits, and top-aligns once
+   it overflows, so every item is reachable from #1. flex-start is the fallback
+   for browsers without `safe` (they simply top-align, which also fixes it). */
+.sidebar-toc-active .post-toc-wrap {
+  justify-content: flex-start;
+  justify-content: safe center;
+}
